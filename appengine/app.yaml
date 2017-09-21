@@ -1,0 +1,11 @@
+runtime: python27
+api_version: 1
+threadsafe: true
+
+handlers:
+- url: /assets/md
+  static_dir: static
+  secure: always
+- url: /.*
+  script: main.app
+  secure: always

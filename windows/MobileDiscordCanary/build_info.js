@@ -1,0 +1,1 @@
+﻿const buildInfo = { "releaseChannel": "canary" };

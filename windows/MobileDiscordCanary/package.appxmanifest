@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
+  <Identity Name="11359TimothyLiang.MobileDiscordCanary" Version="1.1.2.0" Publisher="CN=4AB37AEC-D287-4225-877D-769609C011B9" />
+  <mp:PhoneIdentity PhoneProductId="5c95ee06-e151-4213-b786-77d6069f9a75" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
+  <Properties>
+    <DisplayName>MobileDiscord Canary</DisplayName>
+    <PublisherDisplayName>Timothy Liang</PublisherDisplayName>
+    <Logo>images\DiscordCanaryPackageLogo.png</Logo>
+  </Properties>
+  <Dependencies>
+    <TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.0.0" MaxVersionTested="10.0.0.0" />
+  </Dependencies>
+  <Resources>
+    <Resource Language="x-generate" />
+  </Resources>
+  <Applications>
+    <Application Id="App" StartPage="index.html">
+      <uap:ApplicationContentUriRules>
+        <uap:Rule Match="https://canary.mobilediscord.com" Type="include" WindowsRuntimeAccess="all" />
+      </uap:ApplicationContentUriRules>
+      <uap:VisualElements DisplayName="MobileDiscord Canary" Description="MobileDiscord Canary" BackgroundColor="#FAA61A" Square150x150Logo="images\DiscordMedTile.png" Square44x44Logo="images\DiscordCanaryAppList.png">
+        <uap:LockScreen Notification="badge" BadgeLogo="images\DiscordBadgeLogo.png" />
+        <uap:DefaultTile Wide310x150Logo="images\DiscordWideTile.png" ShortName="Discord Canary" Square310x310Logo="images\DiscordLargeTile.png" Square71x71Logo="images\DiscordSmallTile.png">
+          <uap:ShowNameOnTiles>
+            <uap:ShowOn Tile="square150x150Logo" />
+            <uap:ShowOn Tile="wide310x150Logo" />
+            <uap:ShowOn Tile="square310x310Logo" />
+          </uap:ShowNameOnTiles>
+        </uap:DefaultTile>
+        <uap:SplashScreen Image="images\DiscordSplashScreen.png" BackgroundColor="#282B30" />
+      </uap:VisualElements>
+    </Application>
+  </Applications>
+  <Capabilities>
+    <Capability Name="internetClient" />
+    <DeviceCapability Name="microphone" />
+    <DeviceCapability Name="webcam" />
+  </Capabilities>
+</Package>

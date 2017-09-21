@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|ARM">
+      <Configuration>Debug</Configuration>
+      <Platform>ARM</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x86">
+      <Configuration>Debug</Configuration>
+      <Platform>x86</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|ARM">
+      <Configuration>Release</Configuration>
+      <Platform>ARM</Platform>
+      <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+      <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x86">
+      <Configuration>Release</Configuration>
+      <Platform>x86</Platform>
+      <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>ea053c3d-69c4-4149-94c2-4dc95e44703e</ProjectGuid>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup Condition="'$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0'">
+    <VisualStudioVersion>14.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\$(WMSJSProjectDirectory)\Microsoft.VisualStudio.$(WMSJSProject).Default.props" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\$(WMSJSProjectDirectory)\Microsoft.VisualStudio.$(WMSJSProject).props" />
+  <PropertyGroup>
+    <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
+    <TargetPlatformVersion>10.0.14393.0</TargetPlatformVersion>
+    <TargetPlatformMinVersion>10.0.10240.0</TargetPlatformMinVersion>
+    <MinimumVisualStudioVersion>$(VersionNumberMajor).$(VersionNumberMinor)</MinimumVisualStudioVersion>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <PackageCertificateKeyFile>MobileDiscordPTB_StoreKey.pfx</PackageCertificateKeyFile>
+    <PackageCertificateThumbprint>F2AE31E969F952F56134232E27AFDEF002F6F159</PackageCertificateThumbprint>
+    <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
+    <AppxBundle>Always</AppxBundle>
+    <AppxBundlePlatforms>x86|x64|arm</AppxBundlePlatforms>
+  </PropertyGroup>
+  <ItemGroup>
+    <AppxManifest Include="package.appxmanifest">
+      <SubType>Designer</SubType>
+    </AppxManifest>
+    <Content Include="build_info.js" />
+    <Content Include="images\DiscordAppList.altform-unplated_targetsize-16.png" />
+    <Content Include="images\DiscordAppList.altform-unplated_targetsize-20.png" />
+    <Content Include="images\DiscordAppList.altform-unplated_targetsize-24.png" />
+    <Content Include="images\DiscordAppList.altform-unplated_targetsize-256.png" />
+    <Content Include="images\DiscordAppList.altform-unplated_targetsize-30.png" />
+    <Content Include="images\DiscordAppList.altform-unplated_targetsize-32.png" />
+    <Content Include="images\DiscordAppList.altform-unplated_targetsize-36.png" />
+    <Content Include="images\DiscordAppList.altform-unplated_targetsize-40.png" />
+    <Content Include="images\DiscordAppList.altform-unplated_targetsize-48.png" />
+    <Content Include="images\DiscordAppList.altform-unplated_targetsize-60.png" />
+    <Content Include="images\DiscordAppList.altform-unplated_targetsize-64.png" />
+    <Content Include="images\DiscordAppList.altform-unplated_targetsize-72.png" />
+    <Content Include="images\DiscordAppList.altform-unplated_targetsize-80.png" />
+    <Content Include="images\DiscordAppList.altform-unplated_targetsize-96.png" />
+    <Content Include="images\DiscordAppList.scale-100.png" />
+    <Content Include="images\DiscordAppList.scale-125.png" />
+    <Content Include="images\DiscordAppList.scale-150.png" />
+    <Content Include="images\DiscordAppList.scale-200.png" />
+    <Content Include="images\DiscordAppList.scale-400.png" />
+    <Content Include="images\DiscordAppList.targetsize-16.png" />
+    <Content Include="images\DiscordAppList.targetsize-20.png" />
+    <Content Include="images\DiscordAppList.targetsize-24.png" />
+    <Content Include="images\DiscordAppList.targetsize-256.png" />
+    <Content Include="images\DiscordAppList.targetsize-30.png" />
+    <Content Include="images\DiscordAppList.targetsize-32.png" />
+    <Content Include="images\DiscordAppList.targetsize-36.png" />
+    <Content Include="images\DiscordAppList.targetsize-40.png" />
+    <Content Include="images\DiscordAppList.targetsize-48.png" />
+    <Content Include="images\DiscordAppList.targetsize-60.png" />
+    <Content Include="images\DiscordAppList.targetsize-64.png" />
+    <Content Include="images\DiscordAppList.targetsize-72.png" />
+    <Content Include="images\DiscordAppList.targetsize-80.png" />
+    <Content Include="images\DiscordAppList.targetsize-96.png" />
+    <Content Include="images\DiscordPackageLogo.scale-100.png" />
+    <Content Include="images\DiscordPackageLogo.scale-125.png" />
+    <Content Include="images\DiscordPackageLogo.scale-150.png" />
+    <Content Include="images\DiscordPackageLogo.scale-200.png" />
+    <Content Include="images\DiscordPackageLogo.scale-400.png" />
+    <None Include="MobileDiscordPTB_StoreKey.pfx" />
+    <None Include="Package.StoreAssociation.xml" />
+    <None Include="MobileDiscordPTB_TemporaryKey.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\webrtc-uwp-sdk\webrtc\windows\projects\msvc\Org.WebRtc.Universal\Org.WebRtc.vcxproj" />
+  </ItemGroup>
+  <Import Project="..\MobileDiscordShared\MobileDiscordShared.projitems" Label="Shared" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\$(WMSJSProjectDirectory)\Microsoft.VisualStudio.$(WMSJSProject).targets" />
+  <!-- To modify your build process, add your task inside one of the targets below then uncomment
+       that target and the DisableFastUpToDateCheck PropertyGroup. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  <PropertyGroup>
+    <DisableFastUpToDateCheck>true</DisableFastUpToDateCheck>
+  </PropertyGroup>
+  -->
+</Project>

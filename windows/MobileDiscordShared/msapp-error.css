@@ -1,0 +1,106 @@
+﻿@font-face {
+    font-family: Whitney;
+    font-weight: 400;
+    src: url(fonts/whitney-book.woff) format("woff");
+}
+
+@font-face {
+    font-family: Whitney;
+    font-weight: 500;
+    src: url(fonts/whitney-medium.woff) format("woff");
+}
+
+body {
+    -ms-content-zooming: none;
+    font-family: Whitney, "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    color: #fff;
+    background-color: #282b30;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+}
+
+#ui-error {
+    display: -ms-grid;
+    -ms-grid-columns: 1fr;
+    -ms-grid-rows: 1fr auto;
+    box-sizing: border-box;
+    height: 100%;
+    padding: 12px;
+    text-align: center;
+}
+
+#ui-error[hidden] {
+    display: none;
+}
+
+#ui-error > section {
+    -ms-grid-row: 1;
+    -ms-grid-row-align: center;
+    margin: 0 12px;
+    animation: fade-in .2s ease-out;
+}
+
+#ui-error > footer {
+    -ms-grid-row: 2;
+    margin: 0 12px;
+    animation: fade-in .2s ease-out;
+}
+
+#ui-error .title {
+    margin: 12px 0;
+    font-weight: 400;
+    font-size: 24px;
+}
+
+#ui-error .body {
+    margin: 12px 0;
+    font-size: 16px;
+}
+
+button {
+    border: none;
+    border-radius: 3px;
+    padding: 2px 16px;
+    min-width: 60px;
+    min-height: 32px;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: inherit;
+    line-height: 16px;
+    color: #fff;
+    background-color: #7289da;
+}
+
+button:hover {
+    background-color: #677bc4;
+}
+
+button:active {
+    background-color: #5b6eae;
+}
+
+#error {
+    margin: 12px 0;
+    font-size: 14px;
+    color: #b9bbbe;
+}
+
+#loading {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 60px;
+    margin: auto;
+    color: #7289da;
+}
+
+#loading::-ms-fill {
+    animation-name: -ms-ring;
+}

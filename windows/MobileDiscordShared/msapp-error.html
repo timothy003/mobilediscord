@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Navigation Error</title>
+    <link rel="stylesheet" href="msapp-error.css" />
+</head>
+<body>
+    <div id="ui-error" hidden>
+        <section id="page-unavailable">
+            <h1 class="title">Try that again</h1>
+            <p class="body">Page could not be loaded. Please try again later.</p>
+            <p><button id="page-unavailable-refresh">Refresh the page</button></p>
+        </section>
+        <section id="not-connected">
+            <h1 class="title">Check your connection</h1>
+            <p class="body">Discord needs to be online. It looks like you're not.</p>
+            <p><button id="not-connected-refresh">Refresh the page</button></p>
+        </section>
+        <footer>
+            <p id="error"></p>
+        </footer>
+    </div>
+    <progress id="loading" hidden></progress>
+    <script src="msapp-error.js"></script>
+</body>
+</html>
