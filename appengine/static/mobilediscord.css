@@ -134,6 +134,11 @@
     background-size: 24px 24px;
 }
 
+/* tutorial popout */
+.tutorial-popout {
+    max-width: 100%;
+}
+
 /* chat */
 .chat > .title-wrap > .title {
     flex-shrink: 1;
