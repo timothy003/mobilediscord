@@ -842,6 +842,16 @@ form.deprecated.auth-form {
     }
 }
 
+@media not all and (min-width: 1068px) {
+    .invite-marketing-wrapper .auth-center {
+        padding-left: 0;
+    }
+
+    .invite-marketing {
+        display: none;
+    }
+}
+
 /* guilds */
 .md-app .guilds-wrapper .btn-download-apps {
     display: none;
