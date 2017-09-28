@@ -300,6 +300,25 @@
     margin-left: 0;
 }
 
+/* new-user modal */
+.modal-new-user > .steps {
+    max-width: 100%;
+}
+
+.modal-new-user > .steps > li {
+    max-width: 100%;
+    overflow: auto;
+}
+
+.modal-new-user > .steps .step-2 .guild-form {
+    flex-wrap: wrap;
+    margin: -16px;
+}
+
+.modal-new-user > .steps .step-2 .guild-form li {
+    margin: 16px;
+}
+
 /* help */
 .need-help-modal.deprecated .header {
     flex: none; /* for Safari */
