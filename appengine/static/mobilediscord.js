@@ -20,8 +20,10 @@
     else if (/\bFirefox\b/.test(ua)) {
         ua = ua.replace(/\bAndroid[^;)]*; /, "");
         ua = ua.replace(/\b(?:Mobile|Tablet|TV); /, "");
-    } else if (/\bSafari\b/.test(ua))
+    } else if (/\bSafari\b/.test(ua)) {
         isSafari = true;
+        ua = ua.replace(/\b(?:iPad|iPhone|iPod)\b/g, "");
+    }
     if (navigator.userAgent !== ua)
         Object.defineProperty(navigator, "userAgent", { value: ua });
     // Element.matches() for Edge (fixes topic opening)
