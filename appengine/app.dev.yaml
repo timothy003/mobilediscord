@@ -11,3 +11,7 @@ handlers:
 - url: /.*
   script: main.app
   secure: always
+
+libraries:
+- name: flask
+  version: "0.12"
