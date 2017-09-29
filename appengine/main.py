@@ -73,6 +73,7 @@ def proxy(path):
                         location = location._replace(scheme='', netloc='')
                         location = location.geturl()
                         headers['location'] = request.script_root + location
+        headers['x-robots-tag'] = 'noindex'
         return response, status, headers.iteritems()
     except urlfetch_errors.Error as e:
         logging.exception("Couldn't fetch URL %s", url)
