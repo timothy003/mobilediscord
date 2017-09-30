@@ -205,6 +205,7 @@
 }
 
 .embed {
+    max-width: 100%;
     min-width: 1px;
 }
 
@@ -229,6 +230,10 @@
 }
 
 .embed.embed-tweet .embed-inner > * {
+    max-width: 100%;
+}
+
+.embed iframe {
     max-width: 100%;
 }
 
