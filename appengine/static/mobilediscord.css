@@ -789,7 +789,7 @@
 }
 
 /* modal container */
-.tutorial-indicators + div + div + div {
+.tutorial-indicators + div + div {
     position: fixed;
     top: 0;
     right: 0;
@@ -801,7 +801,7 @@
     -webkit-overflow-scrolling: touch;
 }
 
-.tutorial-indicators + div + div + div:empty {
+.tutorial-indicators + div + div:empty {
     visibility: hidden;
     -ms-content-zoom-limit: 100% 100%; /* reset zoom */
 }

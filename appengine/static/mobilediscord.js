@@ -605,7 +605,7 @@
                         }).observe(node, { childList: true });
                         // adjust popout position
                         // TODO: handle window resize
-                        const target = node.querySelector(".tutorial-indicators + div + div");
+                        const target = node.querySelector(".tutorial-indicators + div");
                         if (target)
                             new MutationObserver((mutations, observer) => {
                                 for (const mutation of mutations)
