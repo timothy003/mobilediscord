@@ -726,6 +726,23 @@
     height: auto; /* for Safari */
 }
 
+/* voice settings */
+.user-settings-voice > .flex-vertical > .horizontal-2BEEBe,
+.user-settings-voice > .flex-vertical > div > .horizontal-2BEEBe.alignStretch-1hwxMa {
+    flex-wrap: wrap;
+    margin: -10px;
+}
+
+.user-settings-voice > .flex-vertical > .horizontal-2BEEBe.margin-bottom-20 {
+    margin-bottom: 10px;
+}
+
+.user-settings-voice > .flex-vertical > .horizontal-2BEEBe > .flexChild-1KGW5q,
+.user-settings-voice > .flex-vertical > div > .horizontal-2BEEBe.alignStretch-1hwxMa > .flexChild-1KGW5q {
+    flex-basis: 320px !important;
+    margin: 10px;
+}
+
 /* no text channels */
 .channels-wrap + .wrapper-1-BJK5 {
     box-sizing: border-box;
