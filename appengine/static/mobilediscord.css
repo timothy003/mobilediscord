@@ -873,7 +873,9 @@ form.deprecated.auth-form {
     }
 
     form.deprecated.auth-form {
+        width: auto;
         height: auto;
+        padding: 16px;
         flex: 1;
         overflow: visible;
         min-width: 1px;
