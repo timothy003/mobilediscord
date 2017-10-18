@@ -155,14 +155,14 @@
 .topic-1KFf6J {
     width: 24px; /* intrinsic size */
     min-width: 24px;
-    padding-top: 13px;
+    padding-top: 15px;
     padding-right: 12px;
-    padding-bottom: 13px;
+    padding-bottom: 11px;
+    top: auto;
 }
 
 .topic-1KFf6J::before {
-    bottom: 0;
-    margin: auto;
+    top: auto;
 }
 
 @keyframes md-fade-in {
