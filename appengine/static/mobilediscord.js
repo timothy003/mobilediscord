@@ -394,7 +394,7 @@
         if (element.closest(".guilds-wrapper .guilds .guild .guild-inner a")) {
             if (!element.closest(".guild.active, .guild.selected")) {
                 const channels = document.querySelector(".scroller-NXV0-d, .private-channels .scroller-fzNley");
-                const chat = document.querySelector(".chat .messages-wrapper, .chat > .content > .flex-lFgbSz, .channels-wrap + .wrapper-1-BJK5, #friends .friends-table");
+                const chat = document.querySelector(".chat .messages-wrapper, .chat > .content > .flex-lFgbSz, .noChannel-2EQ0a9 > .wrapper-1-BJK5, #friends .friends-table");
                 const tooltip = document.querySelector(".tooltip");
                 // channels animation is buggy on Safari - use transition instead
                 animateNavigation(event,
@@ -605,8 +605,8 @@
                         }).observe(node, { childList: true });
                         // adjust popout position
                         // TODO: handle window resize
-                        const target = node.querySelector(".tutorial-indicators + div");
-                        if (target)
+                        const popouts = node.querySelector(".popouts");
+                        if (popouts)
                             new MutationObserver((mutations, observer) => {
                                 for (const mutation of mutations)
                                     for (const node of mutation.addedNodes)
@@ -621,7 +621,7 @@
                                                         node.style.left = node.offsetLeft - (rect.right - viewportRight) + "px";
                                                 }
                                             }
-                            }).observe(target, { childList: true });
+                            }).observe(popouts, { childList: true });
                     }
         }).observe(mount, { childList: true });
     }

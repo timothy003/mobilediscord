@@ -1,8 +1,8 @@
 (function () {
     "use strict";
     // loading spinner
-    const connecting = document.createElement("div");
-    connecting.className = "connecting";
+    const container = document.createElement("div");
+    container.className = "container-2oOGIt";
     const inner = document.createElement("span");
     inner.className = "spinner-inner spinner-wandering-cubes";
     const item = document.createElement("span");
@@ -11,9 +11,9 @@
     const item2 = document.createElement("span");
     item2.className = "spinner-item";
     inner.appendChild(item2);
-    connecting.appendChild(inner);
-    document.body.insertBefore(connecting, document.body.firstChild);
+    container.appendChild(inner);
+    document.body.insertBefore(container, document.body.firstChild);
     document.addEventListener("DOMContentLoaded", event => {
-        document.body.removeChild(connecting);
+        document.body.removeChild(container);
     }, { once: true });
 })();
