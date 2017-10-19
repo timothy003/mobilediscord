@@ -946,6 +946,10 @@ form.deprecated.auth-form {
     max-width: 100%;
 }*/
 
+.message-group .comment .markup pre code {
+    overflow-x: hidden; /* for Edge */
+}
+
 .message-group .comment .attachment-image canvas,
 .message-group .comment .attachment-image img {
     height: auto;
