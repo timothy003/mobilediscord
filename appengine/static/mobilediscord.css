@@ -829,10 +829,6 @@ body {
     background-color: #282b30;
 }
 
-.callout-backdrop {
-    position: fixed;
-}
-
 /* login */
 .auth-center {
     flex-direction: column;

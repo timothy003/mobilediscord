@@ -142,7 +142,7 @@
                         document.body.click();
                         return true;
                     }
-                    const backdrop = document.querySelector(".callout-backdrop");
+                    const backdrop = document.querySelector(".backdrop-2ohBEd");
                     if (backdrop) {
                         activeElement.blur();
                         backdrop.click();
