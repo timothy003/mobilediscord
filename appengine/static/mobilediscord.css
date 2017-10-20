@@ -1253,6 +1253,10 @@ form.deprecated.auth-form {
     flex-grow: 1;
 }
 
+.app-XZYfmp {
+    z-index: 0; /* for Edge */
+}
+
 /* fold channel members */
 @media not all and (min-width: 870px) {
     .container-2OU7Cz {
