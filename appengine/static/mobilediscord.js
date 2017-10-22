@@ -142,7 +142,7 @@
                         document.body.click();
                         return true;
                     }
-                    const backdrop = document.querySelector(".backdrop-2ohBEd");
+                    const backdrop = document.querySelector(".callout-backdrop, .backdrop-2ohBEd");
                     if (backdrop) {
                         activeElement.blur();
                         backdrop.click();
@@ -394,7 +394,7 @@
         if (element.closest(".guilds-wrapper .guilds .guild .guild-inner a")) {
             if (!element.closest(".guild.active, .guild.selected")) {
                 const channels = document.querySelector(".scroller-NXV0-d, .private-channels .scroller-fzNley");
-                const chat = document.querySelector(".chat .messages-wrapper, .chat > .content > .flex-lFgbSz, .noChannel-2EQ0a9 > .wrapper-1-BJK5, #friends .friends-table");
+                const chat = document.querySelector(".chat .messages-wrapper, .chat > .content > .flex-lFgbSz, .channels-wrap + .wrapper-1-BJK5, .noChannel-2EQ0a9 > .wrapper-1-BJK5, #friends .friends-table");
                 const tooltip = document.querySelector(".tooltip");
                 // channels animation is buggy on Safari - use transition instead
                 animateNavigation(event,
@@ -605,7 +605,7 @@
                         }).observe(node, { childList: true });
                         // adjust popout position
                         // TODO: handle window resize
-                        const popouts = node.querySelector(".popouts");
+                        const popouts = node.querySelector(".tooltips + div, .popouts");
                         if (popouts)
                             new MutationObserver((mutations, observer) => {
                                 for (const mutation of mutations)

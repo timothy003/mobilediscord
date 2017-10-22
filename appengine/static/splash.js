@@ -2,7 +2,7 @@
     "use strict";
     // loading spinner
     const container = document.createElement("div");
-    container.className = "container-2oOGIt";
+    container.className = "connecting container-2oOGIt";
     const inner = document.createElement("span");
     inner.className = "spinner-inner spinner-wandering-cubes";
     const item = document.createElement("span");

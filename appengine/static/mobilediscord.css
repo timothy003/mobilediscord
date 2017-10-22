@@ -152,6 +152,17 @@
 }
 
 /* chat */
+.chat > .title-wrap > .title {
+    flex-shrink: 1;
+}
+
+.chat > .title-wrap > .title .channel-name {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.chat > .title-wrap > .topic,
 .topic-1KFf6J {
     width: 24px; /* intrinsic size */
     min-width: 24px;
@@ -161,6 +172,7 @@
     top: auto;
 }
 
+.chat > .title-wrap > .topic::before,
 .topic-1KFf6J::before {
     top: auto;
 }
@@ -446,7 +458,7 @@
 /* titlebar buttons */
 .header-toolbar {
     margin-left: auto;
-    margin-right: -8px;
+    margin-right: -20px;
 }
 
 .header-toolbar .search {
@@ -465,6 +477,10 @@
 .header-toolbar .separator {
     margin-right: 0;
     margin-left: 0;
+}
+
+.header-toolbar .separator.separator-win {
+    margin-right: 106px;
 }
 
 /* old settings modal */
@@ -829,6 +845,10 @@ body {
     background-color: #282b30;
 }
 
+.callout-backdrop {
+    position: fixed;
+}
+
 /* login */
 .auth-center {
     flex-direction: column;
@@ -1041,6 +1061,17 @@ form.deprecated.auth-form {
 }
 
 /* no-channel */
+.channels-wrap + .wrapper-1-BJK5 {
+    box-sizing: border-box;
+    padding: 20px;
+    max-width: none;
+    animation: md-fade-in .1s ease-out;
+}
+
+.channels-wrap + .wrapper-1-BJK5 > .flexChild-1KGW5q {
+    max-width: 440px;
+}
+
 .noChannel-2EQ0a9 {
     box-sizing: border-box;
     padding: 20px;
@@ -1133,8 +1164,6 @@ form.deprecated.auth-form {
 .notice {
     line-height: 32px;
     padding: 4px 12px;
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
 }
 
 .notice::before {
@@ -1255,6 +1284,7 @@ form.deprecated.auth-form {
 
 /* fold channel members */
 @media not all and (min-width: 870px) {
+    .layers > .layer > section,
     .container-2OU7Cz {
         overflow-x: scroll;
         -ms-scroll-snap-type: mandatory;
@@ -1266,6 +1296,7 @@ form.deprecated.auth-form {
         contain: layout paint;
     }
 
+    .md-no-contain-paint .layers > .layer > section,
     .md-no-contain-paint .container-2OU7Cz {
         contain: layout;
     }
@@ -1295,6 +1326,7 @@ form.deprecated.auth-form {
         overflow: visible;
     }
 
+    .chat > .title-wrap,
     .title-qAcLxz,
     #friends .friends-header {
         scroll-snap-coordinate: calc(100% - 100vw) 0%;
@@ -1319,6 +1351,7 @@ form.deprecated.auth-form {
 
 /* fold guilds/channels */
 @media not all and (min-width: 630px) {
+    .layers > .layer > section,
     .container-2OU7Cz {
         -ms-scroll-snap-points-x: snapList(0, 310px, 550px);
     }
@@ -1341,6 +1374,10 @@ form.deprecated.auth-form {
     .private-channel-call,
     .noChannel-2EQ0a9 {
         width: 100vw;
+    }
+
+    .channels-wrap + .wrapper-1-BJK5 {
+        flex-shrink: 0 !important;
     }
 }
 
@@ -1379,6 +1416,7 @@ form.deprecated.auth-form {
         margin-right: 15px;
     }
 
+    .channels-wrap + .wrapper-1-BJK5,
     .noChannel-2EQ0a9 {
         padding: 16px;
     }
@@ -1491,6 +1529,11 @@ form.deprecated.auth-form {
         padding: 16px;
     }
  
+    .channel-text-area-default {
+        margin-top: 16px;
+        margin-bottom: 24px;
+    }
+
     .channelTextArea-os01xC {
         margin-bottom: 24px;
     } 
@@ -1498,6 +1541,7 @@ form.deprecated.auth-form {
 
 /* CompactOverlay mode */
 @media not all and (min-width: 310px) {
+    .layers > .layer > section,
     .container-2OU7Cz {
         -ms-scroll-snap-points-x: snapList(0, 288px, 528px);
     }
@@ -1570,6 +1614,7 @@ form.deprecated.auth-form {
         font-size: 28.8px;
     }
 
+    .channels-wrap,
     .channels-3g2vYe {
         width: 232px;
     }
