@@ -605,7 +605,7 @@
                         }).observe(node, { childList: true });
                         // adjust popout position
                         // TODO: handle window resize
-                        const popouts = node.querySelector(".tooltips + div, .popouts");
+                        const popouts = node.matches(".popouts") ? node : node.querySelector(".tooltips + div, .popouts");
                         if (popouts)
                             new MutationObserver((mutations, observer) => {
                                 for (const mutation of mutations)
