@@ -808,7 +808,8 @@
 }
 
 /* modal container */
-.app + div {
+.app + div,
+.popouts + div {
     position: fixed;
     top: 0;
     right: 0;
@@ -820,7 +821,8 @@
     -webkit-overflow-scrolling: touch;
 }
 
-.app + div:empty {
+.app + div:empty,
+.popouts + div:empty {
     visibility: hidden;
     -ms-content-zoom-limit: 100% 100%; /* reset zoom */
 }
@@ -1278,7 +1280,8 @@ form.deprecated.auth-form {
     flex-grow: 1;
 }
 
-.app-XZYfmp {
+/* app */
+.appMount-14L89u {
     z-index: 0; /* for Edge */
 }
 
