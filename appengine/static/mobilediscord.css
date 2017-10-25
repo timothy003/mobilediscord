@@ -1298,6 +1298,7 @@ form.deprecated.auth-form {
     .layers > .layer > section,
     .container-2OU7Cz {
         overflow-x: scroll;
+        overflow-y: hidden;
         -ms-scroll-snap-type: mandatory;
         scroll-snap-type: mandatory;
         scroll-snap-type: x mandatory;
