@@ -5,23 +5,23 @@
     const MIN_HEIGHT = localSettings.values.MIN_HEIGHT || 500;
     const applicationView = Windows.UI.ViewManagement.ApplicationView.getForCurrentView();
     applicationView.setPreferredMinSize({ width: MIN_WIDTH, height: MIN_HEIGHT });
-    const backgroundColor = { a: 0xff, r: 0x28, g: 0x2b, b: 0x30 };
+    const backgroundColor = { a: 255, r: 40, g: 43, b: 48 };
     const foregroundColor = Windows.UI.Colors.white;
     const titleBar = applicationView.titleBar;
     titleBar.backgroundColor = backgroundColor;
     titleBar.foregroundColor = foregroundColor;
     titleBar.buttonBackgroundColor = backgroundColor;
     titleBar.buttonForegroundColor = foregroundColor;
-    titleBar.buttonHoverBackgroundColor = { a: 0xff, r: 0x3d, g: 0x3f, b: 0x44 };
+    titleBar.buttonHoverBackgroundColor = { a: 255, r: 61, g: 63, b: 68 };
     titleBar.buttonHoverForegroundColor = foregroundColor;
-    titleBar.buttonPressedBackgroundColor = { a: 0xff, r: 0x53, g: 0x55, b: 0x59 };
+    titleBar.buttonPressedBackgroundColor = { a: 255, r: 83, g: 85, b: 89 };
     titleBar.buttonPressedForegroundColor = foregroundColor;
     // phone status bar
     if ("StatusBar" in Windows.UI.ViewManagement) {
         const statusBar = Windows.UI.ViewManagement.StatusBar.getForCurrentView();
         statusBar.backgroundColor = backgroundColor;
         statusBar.backgroundOpacity = 1;
-        statusBar.foregroundColor = foregroundColor;
+        statusBar.foregroundColor = { a: 255, r: 201, g: 202, b: 203 };
         statusBar.showAsync();
     }
     Windows.UI.WebUI.WebUIApplication.onactivated = eventArgs => {

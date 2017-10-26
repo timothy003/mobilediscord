@@ -48,26 +48,10 @@
         embedded = true;
         try {
             const applicationView = Windows.UI.ViewManagement.ApplicationView.getForCurrentView();
-            const backgroundColor = { a: 0xff, r: 0x28, g: 0x2b, b: 0x30 };
-            const foregroundColor = Windows.UI.Colors.white;
-            const titleBar = applicationView.titleBar;
-            titleBar.backgroundColor = backgroundColor;
-            titleBar.foregroundColor = foregroundColor;
-            titleBar.buttonBackgroundColor = backgroundColor;
-            titleBar.buttonForegroundColor = foregroundColor;
-            titleBar.buttonHoverBackgroundColor = { a: 0xff, r: 0x3d, g: 0x3f, b: 0x44 };
-            titleBar.buttonHoverForegroundColor = foregroundColor;
-            titleBar.buttonPressedBackgroundColor = { a: 0xff, r: 0x53, g: 0x55, b: 0x59 };
-            titleBar.buttonPressedForegroundColor = foregroundColor;
             // phone status bar
             if ("StatusBar" in Windows.UI.ViewManagement) {
                 const statusBar = Windows.UI.ViewManagement.StatusBar.getForCurrentView();
                 const progressIndicator = statusBar.progressIndicator;
-                statusBar.backgroundColor = backgroundColor;
-                statusBar.backgroundOpacity = 1;
-                statusBar.foregroundColor = foregroundColor;
-                progressIndicator.hideAsync();
-                statusBar.showAsync();
                 let timeoutId = 0;
                 const origWarn = console.warn;
                 console.warn = function (...data) {
