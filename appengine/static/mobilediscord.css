@@ -77,6 +77,11 @@
     -ms-scroll-chaining: none;
 }
 
+/* connecting */
+.container-2oOGIt video {
+    position: relative; /* enable independent composition */
+}
+
 /* copyable textbox */
 .clipboard-input-inner input {
     min-width: 1px;
