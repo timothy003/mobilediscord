@@ -1045,6 +1045,11 @@ form.deprecated.auth-form {
     margin-left: auto;
 }
 
+/* private channel invite */
+.private-channel-recipients-invite {
+    overflow: visible; /* for performance */
+}
+
 /* titlebar call buttons */
 .private-channel-call-btns-wrapper {
     margin-right: 0;
