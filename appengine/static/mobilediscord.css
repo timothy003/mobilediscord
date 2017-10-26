@@ -1140,12 +1140,6 @@ form.deprecated.auth-form {
     }
 }
 
-/* channels header */
-.container-3NvGrL,
-.header-1tSljs {
-    border-top-left-radius: 5px;
-}
-
 /* channel notices */
 .channel-notices .channel-notice .close {
     padding: 6.75px;
@@ -1155,10 +1149,6 @@ form.deprecated.auth-form {
 }
 
 /* channels */
-.container-RYiLUQ {
-    background-color: transparent;
-}
-
 .scroller-NXV0-d {
     animation: md-fade-in .1s ease-out;
     transition: opacity .1s ease-out;
@@ -1205,11 +1195,8 @@ form.deprecated.auth-form {
     min-height: 1px;
 }
 
-.base-3AoPqv,
-.channels-3g2vYe {
-    overflow: visible; /* for performance */
-    min-width: 1px;
-    min-height: 1px;
+.base-3AoPqv {
+    z-index: 0; /* for Edge */
 }
 
 .base-3AoPqv > .flex-lFgbSz {
