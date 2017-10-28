@@ -977,8 +977,12 @@ form.deprecated.auth-form {
     max-width: 100%;
 }*/
 
+.message-group .comment .markup pre {
+    max-width: none;
+}
+
 .message-group .comment .markup pre code {
-    overflow-x: hidden; /* for Edge */
+    overflow-x: visible;
 }
 
 .message-group .comment .attachment-image canvas,
