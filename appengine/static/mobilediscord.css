@@ -1542,14 +1542,10 @@ form.deprecated.auth-form {
         padding: 16px;
     }
  
-    .channel-text-area-default {
+    .channelTextArea-os01xC {
         margin-top: 16px;
         margin-bottom: 24px;
     }
-
-    .channelTextArea-os01xC {
-        margin-bottom: 24px;
-    } 
 }
 
 /* CompactOverlay mode */
