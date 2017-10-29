@@ -1213,6 +1213,15 @@ form.deprecated.auth-form {
     z-index: 0; /* for Edge */
 }
 
+.base-3AoPqv > .flexChild-1KGW5q {
+    display: flex;
+}
+
+.base-3AoPqv > .flexChild-1KGW5q > div {
+    flex: 1 1 0;
+    min-width: 1px;
+}
+
 .base-3AoPqv > .flex-lFgbSz {
     min-height: 1px;
 }
