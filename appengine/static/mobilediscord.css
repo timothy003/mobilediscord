@@ -1175,33 +1175,12 @@ form.deprecated.auth-form {
 }
 
 /* notice */
-.notice {
-    line-height: 32px;
-    padding: 4px 12px;
-}
-
 .notice::before {
     display: block;
     float: right;
-    width: 40px;
-    height: 40px;
-    margin: -4px -12px -4px 0;
+    width: 36px;
+    height: 36px;
     content: "";
-}
-
-.notice .notice-dismiss {
-    top: 0;
-    right: 0;
-    width: 40px;
-    height: 40px;
-    background-position: center;
-    background-size: 14px 14px;
-}
-
-.notice .btn {
-    vertical-align: baseline;
-    margin-top: 0;
-    margin-bottom: 0;
 }
 
 /* layers */
