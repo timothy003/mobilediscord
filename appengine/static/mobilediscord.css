@@ -177,11 +177,12 @@
 }
 
 .topic-1KFf6J {
-    width: 24px; /* intrinsic size */
-    min-width: 24px;
+    width: 36px; /* intrinsic size */
+    min-width: 36px;
     padding-top: 14px;
     padding-right: 12px;
     padding-bottom: 12px;
+    margin-right: -12px;
     top: auto;
 }
 
