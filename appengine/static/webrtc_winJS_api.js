@@ -14,6 +14,7 @@
 
   const media = Org.WebRtc.Media.createMedia();
   media.setAudioOutputDevice("default");
+  Object.defineProperty(navigator, "userAgent", { value: "AppleWebKit/537.36 Chrome/54.0.2840.59 Safari/537.36" });
 
   MediaStream = Org.WebRtc.MediaStream;
 
