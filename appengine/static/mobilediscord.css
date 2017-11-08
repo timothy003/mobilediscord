@@ -822,8 +822,10 @@
 }
 
 /* modal container */
-.app + div,
-.popouts + div {
+.app + .theme-dark,
+.app + .theme-light,
+.container-2oOGIt + .theme-dark,
+.container-2oOGIt + .theme-light {
     position: fixed;
     top: 0;
     right: 0;
@@ -835,8 +837,10 @@
     -webkit-overflow-scrolling: touch;
 }
 
-.app + div:empty,
-.popouts + div:empty {
+.app + .theme-dark:empty,
+.app + .theme-light:empty,
+.container-2oOGIt + .theme-dark:empty,
+.container-2oOGIt + .theme-light:empty {
     visibility: hidden;
     -ms-content-zoom-limit: 100% 100%; /* reset zoom */
 }
