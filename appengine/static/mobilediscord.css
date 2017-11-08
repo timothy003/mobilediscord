@@ -1,3 +1,8 @@
+/* app content */
+.app-XZYfmp:first-child {
+    position: static; /* for Edge */
+}
+
 /* app downloads */
 .download-apps {
     position: relative;
