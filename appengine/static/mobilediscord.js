@@ -420,8 +420,10 @@
         }
         const btn = element.closest(".ui-standard-sidebar-view .btn-close");
         if (btn) {
-            const layer = btn.closest(".layers > .layer");
-            animateNavigation(event, [layer, { animationName: "md-layer-out", pointerEvents: "none" }]);
+            if (!document.querySelector(".ui-settings-notice")) {
+                const layer = btn.closest(".layers > .layer");
+                animateNavigation(event, [layer, { animationName: "md-layer-out", pointerEvents: "none" }]);
+            }
             return;
         }
         // jump to message when tapping a search result
