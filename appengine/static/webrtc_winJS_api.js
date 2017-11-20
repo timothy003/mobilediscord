@@ -150,6 +150,9 @@
     return result;
   }
 
+  let numOpenConnections = 0;
+  let audioContext = null;
+  let mediaPlayer = null;
   class RTCPeerConnection {
     constructor(pcConfig, pcConstraints) {
       //Todo: do we need to implement pcConstraints in C++/CX API?
@@ -169,6 +172,48 @@
       }
 
       this._nativePC = new Org.WebRtc.RTCPeerConnection(winrtConfig);
+      // background audio
+      if (numOpenConnections == 0) {
+        // use a MediaStreamSource to keep the network active
+        const audioProps = Windows.Media.MediaProperties.AudioEncodingProperties.createPcm(16000, 1, 16);
+        const audioDescriptor = new Windows.Media.Core.AudioStreamDescriptor(audioProps);
+        const mss = new Windows.Media.Core.MediaStreamSource(audioDescriptor);
+        mss.bufferTime = 0;
+        let deferral = null;
+        let timeOffset = 0;
+        const sampleSize = 1920;
+        const sampleDuration = 60;
+        mss.onsamplerequested = e => {
+          // generate samples until playback starts
+          if (mediaPlayer.playbackSession.playbackState === Windows.Media.Playback.MediaPlaybackState.playing)
+            deferral = e.request.getDeferral();
+          else {
+            const buffer = new Windows.Storage.Streams.Buffer(sampleSize);
+            buffer.length = sampleSize;
+            const sample = Windows.Media.Core.MediaStreamSample.createFromBuffer(buffer, timeOffset);
+            sample.duration = sampleDuration;
+            sample.keyFrame = true;
+            timeOffset = timeOffset + sampleDuration;
+            e.request.sample = sample;
+          }
+        };
+        mss.onclosed = e => {
+          e.target.onsamplerequested = null;
+          e.target.onclosed = null;
+          if (deferral)
+            deferral.complete();
+        };
+        if (!mediaPlayer) {
+          mediaPlayer = new Windows.Media.Playback.MediaPlayer();
+          mediaPlayer.audioCategory = Windows.Media.Playback.MediaPlayerAudioCategory.gameChat;
+          mediaPlayer.isMuted = true;
+          mediaPlayer.autoPlay = true;
+        }
+        mediaPlayer.source = Windows.Media.Core.MediaSource.createFromMediaStreamSource(mss);
+        if (audioContext)
+          audioContext.resume();
+      }
+      ++numOpenConnections;
     }
     createOffer(...args) {
       let options = null;
@@ -304,7 +349,15 @@
       ][this._nativePC.iceConnectionState];
     }
     close() {
-      return this._nativePC.close();
+      this._nativePC.close();
+      if (--numOpenConnections == 0) {
+        // Closing the MediaPlayer while an audio stream is active stops the system from suspending the app.
+        // As a workaround, hold on to the MediaPlayer and just release the MediaSource.
+        mediaPlayer.source = null;
+        // pause audio context to allow app suspension
+        if (audioContext)
+          audioContext.suspend();
+      }
     }
     getStats() {
       return new Promise((resolve, reject) => {
@@ -360,6 +413,9 @@
     return Promise.resolve(media.setAudioOutputDevice(sinkId));
   };
   AudioContext.prototype.createMediaStreamSource = function (mediaStream) {
+    audioContext = this;
+    if (!numOpenConnections)
+      this.suspend();
     const osc = this.createOscillator();
     osc.start();
     return osc;
