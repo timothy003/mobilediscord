@@ -9,11 +9,6 @@
     <Content Include="$(MSBuildThisFileDirectory)default.css" />
     <Content Include="$(MSBuildThisFileDirectory)fonts\whitney-book.woff" />
     <Content Include="$(MSBuildThisFileDirectory)fonts\whitney-medium.woff" />
-    <Content Include="$(MSBuildThisFileDirectory)images\DiscordBadgeLogo.scale-100.png" />
-    <Content Include="$(MSBuildThisFileDirectory)images\DiscordBadgeLogo.scale-125.png" />
-    <Content Include="$(MSBuildThisFileDirectory)images\DiscordBadgeLogo.scale-150.png" />
-    <Content Include="$(MSBuildThisFileDirectory)images\DiscordBadgeLogo.scale-200.png" />
-    <Content Include="$(MSBuildThisFileDirectory)images\DiscordBadgeLogo.scale-400.png" />
     <Content Include="$(MSBuildThisFileDirectory)images\DiscordLargeTile.scale-100.png" />
     <Content Include="$(MSBuildThisFileDirectory)images\DiscordLargeTile.scale-125.png" />
     <Content Include="$(MSBuildThisFileDirectory)images\DiscordLargeTile.scale-150.png" />

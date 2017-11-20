@@ -19,7 +19,6 @@
         <uap:Rule Match="https://canary.mobilediscord.com" Type="include" WindowsRuntimeAccess="all" />
       </uap:ApplicationContentUriRules>
       <uap:VisualElements DisplayName="MobileDiscord Canary" Description="MobileDiscord Canary" BackgroundColor="#FAA61A" Square150x150Logo="images\DiscordMedTile.png" Square44x44Logo="images\DiscordCanaryAppList.png">
-        <uap:LockScreen Notification="badge" BadgeLogo="images\DiscordBadgeLogo.png" />
         <uap:DefaultTile Wide310x150Logo="images\DiscordWideTile.png" ShortName="Discord Canary" Square310x310Logo="images\DiscordLargeTile.png" Square71x71Logo="images\DiscordSmallTile.png">
           <uap:ShowNameOnTiles>
             <uap:ShowOn Tile="square150x150Logo" />
