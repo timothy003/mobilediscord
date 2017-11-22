@@ -3,18 +3,51 @@
   if (!("Org" in self && "WebRtc" in Org))
     return;
 
-  function copy(target, source) {
-    for (const key in source)
-      target[key] = source[key];
-    return target;
-  }
-
   // initialize api
   Org.WebRtc.WinJSHooks.initialize();
 
   const media = Org.WebRtc.Media.createMedia();
   media.setAudioOutputDevice("default");
   Object.defineProperty(navigator, "userAgent", { value: "AppleWebKit/537.36 Chrome/54.0.2840.59 Safari/537.36" });
+  
+  let mediaPlayer = null;
+  let deferral = null;
+  class PowerSaveBlocker {
+    constructor() {
+      // use a MediaPlayer to keep the network active
+      const mb = new Windows.Media.Core.MediaBinder();
+      mb.onbinding = e => {
+        deferral = e.getDeferral();
+      };
+      const ms = Windows.Media.Core.MediaSource.createFromMediaBinder(mb);
+      if (!mediaPlayer) {
+        mediaPlayer = new Windows.Media.Playback.MediaPlayer();
+        mediaPlayer.audioCategory = Windows.Media.Playback.MediaPlayerAudioCategory.gameChat;
+        // HACK: network becomes inactive if background playback is killed
+        Windows.UI.WebUI.WebUIApplication.addEventListener("resuming", function (e) {
+          const source = mediaPlayer.source;
+          if (source) {
+            mediaPlayer.source = null;
+            if (deferral) {
+              deferral.complete();
+              deferral = null;
+            }
+            mediaPlayer.source = source;
+          }
+        });
+      }
+      mediaPlayer.source = ms;
+    }
+    close() {
+      // Closing the MediaPlayer while an audio stream is active stops the system from suspending the app.
+      // As a workaround, keep the MediaPlayer open and just unset its source.
+      mediaPlayer.source = null;
+      if (deferral) {
+        deferral.complete();
+        deferral = null;
+      }
+    }
+  }
 
   MediaStream = Org.WebRtc.MediaStream;
 
@@ -33,7 +66,8 @@
           for (const key in constraint)
             result.addOptional(key, constraint[key]);
     } else
-      copy(result, constraints);
+      for (const key in constraints)
+        result[key] = constraints[key];
     return result;
   }
 
@@ -134,7 +168,9 @@
   }
 
   function convertToRTCOfferAnswerOptions(options) {
-    const result = copy(new Org.WebRtc.RTCOfferAnswerOptions, options);
+    const result = new Org.WebRtc.RTCOfferAnswerOptions();
+    for (const key in options)
+      result[key] = options[key];
     const optionKeys = {
       OfferToReceiveAudio: "offerToReceiveAudio",
       OfferToReceiveVideo: "offerToReceiveVideo",
@@ -151,8 +187,8 @@
   }
 
   let numOpenConnections = 0;
+  let powerSaveBlocker = null;
   let audioContext = null;
-  let mediaPlayer = null;
   class RTCPeerConnection {
     constructor(pcConfig, pcConstraints) {
       //Todo: do we need to implement pcConstraints in C++/CX API?
@@ -172,44 +208,8 @@
       }
 
       this._nativePC = new Org.WebRtc.RTCPeerConnection(winrtConfig);
-      // background audio
       if (numOpenConnections == 0) {
-        // use a MediaStreamSource to keep the network active
-        const audioProps = Windows.Media.MediaProperties.AudioEncodingProperties.createPcm(16000, 1, 16);
-        const audioDescriptor = new Windows.Media.Core.AudioStreamDescriptor(audioProps);
-        const mss = new Windows.Media.Core.MediaStreamSource(audioDescriptor);
-        mss.bufferTime = 0;
-        let deferral = null;
-        let timeOffset = 0;
-        const sampleSize = 1920;
-        const sampleDuration = 60;
-        mss.onsamplerequested = e => {
-          // generate samples until playback starts
-          if (mediaPlayer.playbackSession.playbackState === Windows.Media.Playback.MediaPlaybackState.playing)
-            deferral = e.request.getDeferral();
-          else {
-            const buffer = new Windows.Storage.Streams.Buffer(sampleSize);
-            buffer.length = sampleSize;
-            const sample = Windows.Media.Core.MediaStreamSample.createFromBuffer(buffer, timeOffset);
-            sample.duration = sampleDuration;
-            sample.keyFrame = true;
-            timeOffset = timeOffset + sampleDuration;
-            e.request.sample = sample;
-          }
-        };
-        mss.onclosed = e => {
-          e.target.onsamplerequested = null;
-          e.target.onclosed = null;
-          if (deferral)
-            deferral.complete();
-        };
-        if (!mediaPlayer) {
-          mediaPlayer = new Windows.Media.Playback.MediaPlayer();
-          mediaPlayer.audioCategory = Windows.Media.Playback.MediaPlayerAudioCategory.gameChat;
-          mediaPlayer.isMuted = true;
-          mediaPlayer.autoPlay = true;
-        }
-        mediaPlayer.source = Windows.Media.Core.MediaSource.createFromMediaStreamSource(mss);
+        powerSaveBlocker = new PowerSaveBlocker();
         if (audioContext)
           audioContext.resume();
       }
@@ -351,9 +351,8 @@
     close() {
       this._nativePC.close();
       if (--numOpenConnections == 0) {
-        // Closing the MediaPlayer while an audio stream is active stops the system from suspending the app.
-        // As a workaround, hold on to the MediaPlayer and just release the MediaSource.
-        mediaPlayer.source = null;
+        powerSaveBlocker.close();
+        powerSaveBlocker = null;
         // pause audio context to allow app suspension
         if (audioContext)
           audioContext.suspend();
