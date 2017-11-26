@@ -297,17 +297,27 @@
         });
         Audio.prototype.constructor = Audio;
     }
-    // handle audio unloading
-    // Edge fetches the page URL if src is set to "".
+    // handle audio loading and unloading
     const origSrc = Object.getOwnPropertyDescriptor(HTMLMediaElement.prototype, "src").set;
+    const openElements = new Set();
     Object.defineProperty(HTMLMediaElement.prototype, "src", {
         set(value) {
+            // Edge fetches the page URL if src is set to ""
             if (value === "") {
                 this.removeAttribute("src");
                 this.load();
                 return;
             }
             origSrc.call(this, value);
+            // prevent element from being garbage collected before it's loaded
+            function ondone(event) {
+                this.removeEventListener("loadeddata", ondone);
+                this.removeEventListener("error", ondone);
+                openElements.delete(this);
+            }
+            this.addEventListener("loadeddata", ondone);
+            this.addEventListener("error", ondone);
+            openElements.add(this);
         }
     });
     // prevent scrolling to the same position (e.g. reactions)
