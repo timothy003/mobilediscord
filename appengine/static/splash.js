@@ -40,8 +40,22 @@
     item2.className = "spinner-item";
     inner.appendChild(item2);
     container.appendChild(inner);
-    document.body.insertBefore(container, document.body.firstChild);
-    document.addEventListener("DOMContentLoaded", event => {
-        document.body.removeChild(container);
-    }, { once: true });
+    document.addEventListener("DOMContentLoaded", function ondomcontentloaded(event) {
+        try {
+            document.removeEventListener("DOMContentLoaded", ondomcontentloaded);
+            if (document.querySelector(".loading-wNT9ra")) {
+                new MutationObserver((mutations, observer) => {
+                    if (!document.querySelector(".loading-wNT9ra")) {
+                        observer.disconnect();
+                        document.body.removeChild(container);
+                    }
+                }).observe(document.body, { childList: true, subtree: true });
+            } else
+                document.body.removeChild(container);
+        } catch (e) {
+            document.body.removeChild(container);
+            throw e;
+        }
+    });
+    document.body.appendChild(container);
 })();
