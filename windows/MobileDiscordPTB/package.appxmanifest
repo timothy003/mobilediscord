@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" xmlns:uap3="http://schemas.microsoft.com/appx/manifest/uap/windows10/3" IgnorableNamespaces="uap mp uap3">
-  <Identity Name="11359TimothyLiang.MobileDiscordPTB" Version="1.1.3.0" Publisher="CN=4AB37AEC-D287-4225-877D-769609C011B9" />
+  <Identity Name="11359TimothyLiang.MobileDiscordPTB" Version="1.1.5.0" Publisher="CN=4AB37AEC-D287-4225-877D-769609C011B9" />
   <mp:PhoneIdentity PhoneProductId="ea053c3d-69c4-4149-94c2-4dc95e44703e" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>MobileDiscord PTB</DisplayName>

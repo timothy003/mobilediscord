@@ -46,7 +46,7 @@
     <DefaultLanguage>en-US</DefaultLanguage>
     <PackageCertificateKeyFile>MobileDiscordPTB_StoreKey.pfx</PackageCertificateKeyFile>
     <PackageCertificateThumbprint>F2AE31E969F952F56134232E27AFDEF002F6F159</PackageCertificateThumbprint>
-    <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
+    <AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
     <AppxBundle>Always</AppxBundle>
     <AppxBundlePlatforms>x86|x64|arm</AppxBundlePlatforms>
   </PropertyGroup>
