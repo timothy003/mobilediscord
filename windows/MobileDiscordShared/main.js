@@ -61,12 +61,12 @@
             extendedSplashImage.style.width = imageRect.width + "px";
         }
         positionImage();
-        window.onresize = eventArgs => {
+        applicationView.onvisibleboundschanged = eventArgs => {
             positionImage();
         };
         const extendedSplashScreen = document.getElementById("extended-splash-screen");
         extendedSplashScreen.hidden = false;
-        setImmediate(() => {
+        MSApp.execAsyncAtPriority(() => {
             const releaseChannel = buildInfo.releaseChannel;
             const WEBAPP_ENDPOINT = buildInfo.WEBAPP_ENDPOINT || (releaseChannel === "stable" ? "https://mobilediscord.com" : "https://" + releaseChannel + ".mobilediscord.com");
             let lastUrl;
@@ -76,6 +76,8 @@
             const WEBAPP_PATH = lastUrl || localSettings.values.WEBAPP_PATH || appPath;
             const urlToLoad = "" + WEBAPP_ENDPOINT + WEBAPP_PATH;
             location.replace(urlToLoad);
-        });
+            // preload webrtc
+            Org.WebRtc.WinJSHooks.initialize();
+        }, MSApp.HIGH);
     };
 })();
