@@ -1,3 +1,11 @@
+/* login */
+.md-login {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+}
+
 /* app content */
 .app-XZYfmp:first-child {
     position: static; /* for Edge */
@@ -1294,6 +1302,10 @@ form.deprecated.auth-form {
 /* app */
 .appMount-14L89u {
     z-index: 0; /* for Edge */
+}
+
+.appMount-14L89u[hidden] {
+    display: none;
 }
 
 /* fold channel members */

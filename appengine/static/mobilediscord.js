@@ -178,8 +178,6 @@
         // enable web notifications
         if ("Notification" in self)
             Notification.requestPermission();
-        // prevent adding history entries
-        history.pushState = history.replaceState;
         // stay on this page when activated
         MSApp.pageHandlesAllApplicationActivations(true);
         // save session state
@@ -187,6 +185,75 @@
             const url = location.pathname + location.search;
             Windows.Storage.ApplicationData.current.localSettings.values.lastUrl = url;
         });
+        // HACK: login page must be loaded on discordapp.com for reCAPTCHA
+        const appMount = document.getElementById("app-mount");
+        class Login {
+            constructor() {
+                const webview = document.createElement("x-ms-webview");
+                this.webview = webview;
+                webview.className = "md-login";
+                this.script = "delete localStorage.token; window.mdLocalStorage = localStorage";
+                webview.addEventListener("MSWebViewContentLoading", event => {
+                    if (!this.webview)
+                        return;
+                    const operation = this.webview.invokeScriptAsync("eval", this.script);
+                    operation.oncomplete = event => {
+                        if (!this.webview)
+                            return;
+                        const result = event.target.result;
+                        if (result) {
+                            localStorage.token = result;
+                            this.close();
+                            window.dispatchEvent(new PopStateEvent("popstate", { state: history.state }));
+                        }
+                    };
+                    operation.onerror = event => {
+                        this.close();
+                    };
+                    operation.start();
+                    this.script = "window.mdLocalStorage = window.mdLocalStorage || localStorage; mdLocalStorage.token";
+                });
+                webview.addEventListener("MSWebViewNavigationCompleted", event => {
+                    if (!event.isSuccess)
+                        this.close();
+                });
+                webview.src = "https://discordapp.com/login";
+                document.body.appendChild(webview);
+                webview.focus();
+                appMount.hidden = true;
+            }
+            close() {
+                const webview = this.webview;
+                if (!webview)
+                    return;
+                this.webview = null;
+                appMount.hidden = false;
+                webview.remove();
+                webview.src = "about:blank";
+            }
+        }
+        let login = null;
+        function updateState() {
+            if (location.pathname === "/login") {
+                if (!login)
+                    login = new Login();
+            } else
+                if (login) {
+                    login.close();
+                    login = null;
+                }
+        }
+        const origPushState = history.pushState;
+        history.pushState = function (data, title, url) {
+            origPushState.apply(this, arguments);
+            updateState();
+        };
+        const origReplaceState = history.replaceState;
+        history.replaceState = function (data, title, url) {
+            origReplaceState.apply(this, arguments);
+            updateState();
+        };
+        updateState();
     }
     if (embedded) {
         // hide download nag
