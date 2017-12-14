@@ -8,6 +8,17 @@
         STATUSBAR_DISCONNECTED_RECONNECTING: seconds => `Disconnected — reconnecting in ${seconds} sec`,
         STATUSBAR_DISCONNECTED_RETRYING: seconds => `Disconnected — retrying in ${seconds} sec`,
     };
+    // keep custom styles last in order
+    const styles = document.getElementById("md-styles");
+    new MutationObserver((mutations, observer) => {
+        for (const mutation of mutations)
+            for (const node of mutation.addedNodes)
+                if (node instanceof HTMLLinkElement)
+                    if (node !== styles) {
+                        document.head.appendChild(styles);
+                        return;
+                    }
+    }).observe(document.head, { childList: true });
     // use desktop UA strings to enable WebRTC
     let isSafari = false;
     let ua = navigator.userAgent;
