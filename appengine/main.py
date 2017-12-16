@@ -7,7 +7,6 @@ from werkzeug.datastructures import Headers
 from flask import Flask, request, abort
 
 app = Flask(__name__)
-app.config['DEBUG'] = True
 
 def get_forward_url():
     if request.host.startswith('canary'):
