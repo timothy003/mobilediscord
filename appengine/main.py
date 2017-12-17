@@ -10,16 +10,16 @@ app = Flask(__name__)
 
 def get_forward_url():
     if request.host.startswith('canary'):
-        url = 'https://canary.discordapp.com'
+        origin = 'https://canary.discordapp.com'
     elif request.host.startswith('ptb'):
-        url = 'https://ptb.discordapp.com'
+        origin = 'https://ptb.discordapp.com'
     else:
-        url = 'https://discordapp.com'
-    url += quote(request.environ.get('PATH_INFO') or '/')
+        origin = 'https://discordapp.com'
+    url = origin + quote(request.environ.get('PATH_INFO') or '/')
     if request.query_string:
         url += '?'
         url += request.query_string
-    return url
+    return url, origin
 
 def get_links():
     if not hasattr(get_links, 'cached'):
@@ -39,7 +39,7 @@ def get_scripts():
 @app.route('/<path:path>')
 def proxy(path):
     try:
-        url = get_forward_url()
+        url, origin = get_forward_url()
         headers = request.headers
         headers_to_strip = ['host', 'if-none-match', 'x-cloud-trace-context', 'x-google-apps-metadata', 'x-zoo']
         etag, links = get_links()
@@ -61,7 +61,8 @@ def proxy(path):
                     if index == -1:
                         logging.warning("<script> tag missing from document %s", url)
                     else:
-                        response = response[:index] + get_scripts() + response[index:]
+                        scripts = '<script>const MD_ORIGIN = "' + origin + '"</script>' + get_scripts()
+                        response = response[:index] + scripts + response[index:]
             headers['etag'] = 'W/"%s"' % etag
         else:
             if 'location' in headers:

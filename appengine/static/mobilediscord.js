@@ -228,7 +228,7 @@
                     if (!event.isSuccess)
                         this.close();
                 });
-                webview.src = "https://discordapp.com/login";
+                webview.src = MD_ORIGIN + "/login";
                 document.body.appendChild(webview);
                 webview.focus();
                 appMount.hidden = true;
