@@ -477,7 +477,7 @@
             }
             return;
         }
-        // scroll to chat when tapping a channel
+        // animate channel navigation
         if (element.closest(
             ".wrapperDefaultText-3M3F1R," +
             ".wrapperHoveredText-1PA_Uk," +
@@ -489,7 +489,6 @@
         )) {
             if (element.closest(".iconSpacing-5GIHkT, .private-channels .channel .close"))
                 return;
-            // animate channel navigation
             const chat = document.querySelector(".chat .messages-wrapper, .chat > .content > .flex-lFgbSz, #friends .friends-table");
             if (!element.closest(".wrapperSelectedText-31jJa8, .private-channels .channel.selected"))
                 animateNavigation(event, [chat, { animation: "md-fade-out .1s ease-in forwards" }]);
@@ -545,6 +544,7 @@
                 ".wrapperMutedText-34VhKk," +
                 ".wrapperSelectedText-31jJa8," +
                 ".wrapperUnreadText-1MykVG," +
+                ".guilds-wrapper .dms a," +
                 ".private-channels .channel a," +
                 ".messages-popout .channel-separator .channel-name," +
                 ".messages-popout .message-group .action-buttons .jump-button," +
