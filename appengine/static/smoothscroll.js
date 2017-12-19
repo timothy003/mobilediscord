@@ -25,7 +25,7 @@
      * globals
      */
     var Element = w.HTMLElement || w.Element;
-    var SCROLL_TIME = 200;
+    var SCROLL_TIME = 400;
 
     /*
      * object gathering original scroll methods
@@ -108,6 +108,8 @@
      * @param {Number} y
      */
     function smoothScroll(el, x, y) {
+      if ("msZoomTo" in el)
+        return el.msZoomTo({ contentX: x, contentY: y, viewportX: 0, viewportY: 0 });
       w.requestAnimationFrame(time => {
         var scrollable;
         var startX;
