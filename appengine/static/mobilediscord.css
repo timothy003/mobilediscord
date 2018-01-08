@@ -807,6 +807,10 @@
     margin: 10px;
 }
 
+.md-app .user-settings-voice .volume {
+    display: none;
+}
+
 /* instant invite */
 #instant-invite-modal .form-actions .advanced {
     box-sizing: content-box;
