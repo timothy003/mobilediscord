@@ -610,6 +610,14 @@
                 chat.scrollIntoView({ behavior: "smooth" });
                 return;
             }
+            // open topic
+            if (element.closest(".topic-1KFf6J")) {
+                if (!document.querySelector(".modal-3HOjGZ")) {
+                    element.dispatchEvent(new MouseEvent("mousedown", event));
+                    element.dispatchEvent(new MouseEvent("mouseup", event));
+                }
+                return;
+            }
         });
         // context menu for messages
         if ("Windows" in self)
