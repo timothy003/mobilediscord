@@ -286,15 +286,70 @@
             AudioContext.prototype.close = function () {
                 return Promise.resolve();
             };
-    // prevent adding global touch event listeners
-    if ("EventTarget" in self) {
-        const origAddEventListener = EventTarget.prototype.addEventListener;
-        EventTarget.prototype.addEventListener = function (type, listener, options) {
-            if (type === "touchmove" || type === "touchstart" || type === "touchend")
-                if (this === window || this === document)
+    // move slider if track is touched
+    window.addEventListener("mousedown", event => {
+        const target = event.target;
+        if (target.matches(".track-1h2wOF")) {
+            const grabber = target.querySelector(".grabber-1TZCZi");
+            const rect = grabber.getBoundingClientRect();
+            const mouseDown = new MouseEvent("mousedown", {
+                bubbles: event.bubbles,
+                cancelable: event.cancelable,
+                composed: event.composed,
+                clientX: rect.left + rect.width / 2,
+                clientY: rect.top + rect.height / 2
+            });
+            if (!grabber.dispatchEvent(mouseDown))
+                event.preventDefault();
+            event.stopImmediatePropagation();
+            const mouseMove = new MouseEvent("mousemove", event);
+            target.dispatchEvent(mouseMove);
+        }
+    }, true);
+    if ("ontouchstart" in window) {
+        // mouse events for sliders
+        // compatibility mouse events aren't generated when both touch events and pointer events are supported
+        if ("onpointerdown" in window) {
+            function handlePointerDown(event) {
+                const target = event.target;
+                if (!target.matches(".track-1h2wOF, .grabber-1TZCZi"))
                     return;
-            return origAddEventListener.apply(this, arguments);
-        };
+                if (!event.isPrimary)
+                    return;
+                event.preventDefault();
+                window.addEventListener("pointermove", handlePointerMove);
+                window.addEventListener("pointerup", handlePointerUp);
+                window.addEventListener("pointercancel", handlePointerUp);
+                const mouseEvent = new MouseEvent("mousedown", event);
+                target.dispatchEvent(mouseEvent);
+            }
+            function handlePointerMove(event) {
+                if (!event.isPrimary)
+                    return;
+                const mouseEvent = new MouseEvent("mousemove", event);
+                event.target.dispatchEvent(mouseEvent);
+            }
+            function handlePointerUp(event) {
+                if (!event.isPrimary)
+                    return;
+                window.removeEventListener("pointermove", handlePointerMove);
+                window.removeEventListener("pointerup", handlePointerUp);
+                window.removeEventListener("pointercancel", handlePointerUp);
+                const mouseEvent = new MouseEvent("mouseup", event);
+                event.target.dispatchEvent(mouseEvent);
+            }
+            window.addEventListener("pointerdown", handlePointerDown);
+        }
+        // prevent adding global touch event listeners
+        if ("EventTarget" in self) {
+            const origAddEventListener = EventTarget.prototype.addEventListener;
+            EventTarget.prototype.addEventListener = function (type, listener, options) {
+                if (type === "touchmove" || type === "touchstart" || type === "touchend")
+                    if (this === window || this === document)
+                        return;
+                return origAddEventListener.apply(this, arguments);
+            };
+        }
     }
     // prevent auto focusing
     // touch keyboard is shown when focusing a text box in touch/tablet mode
@@ -423,7 +478,6 @@
             return origGetUserMedia.apply(this, arguments);
         };
     }
-    let deferredEvent = false;
     function deferEvent(event, applyStyles, revertStyles) {
         try {
             applyStyles();
@@ -431,10 +485,8 @@
             const clonedEvent = new event.constructor(event.type, event);
             setTimeout(() => {
                 try {
-                    deferredEvent = true;
                     target.dispatchEvent(clonedEvent);
                 } finally {
-                    deferredEvent = false;
                     revertStyles();
                 }
             });
@@ -459,7 +511,7 @@
         });
     }
     document.addEventListener("click", event => {
-        if (deferredEvent)
+        if (!event.isTrusted)
             return;
         const element = event.target;
         // animate guild navigation

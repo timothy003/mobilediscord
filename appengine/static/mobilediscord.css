@@ -103,6 +103,12 @@
     -ms-scroll-chaining: none;
 }
 
+/* slider */
+.track-1h2wOF,
+.grabber-1TZCZi {
+    touch-action: none;
+}
+
 /* connecting */
 .container-2oOGIt {
     background-color: #25262a;
