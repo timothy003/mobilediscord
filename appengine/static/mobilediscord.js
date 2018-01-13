@@ -313,6 +313,17 @@
             return F;
         }
     };
+    // convert DataTransfer.types to a frozen array
+    const origTypes = Object.getOwnPropertyDescriptor(DataTransfer.prototype, "types").get;
+    Object.defineProperty(DataTransfer.prototype, "types", {
+        get() {
+            const types = origTypes.call(this);
+            if (types instanceof DOMStringList)
+                return Object.freeze(Array.prototype.slice.call(types));
+            else
+                return types;
+        }
+    });
     // move slider if track is touched
     window.addEventListener("mousedown", event => {
         const target = event.target;
