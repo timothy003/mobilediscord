@@ -160,7 +160,22 @@
                     applicationView.exitFullScreenMode();
             });
             // open links in browser
+            class FakeLocation {
+                set href(url) {
+                    Windows.System.Launcher.launchUriAsync(new Windows.Foundation.Uri(document.baseURI, url));
+                }
+            }
+            class FakeWindow {
+                get location() {
+                    return new FakeLocation();
+                }
+                set location(url) {
+                    this.location.href = url;
+                }
+            }
             window.open = function (url, target, features, replace) {
+                if (!url)
+                    return new FakeWindow();
                 Windows.System.Launcher.launchUriAsync(new Windows.Foundation.Uri(document.baseURI, url));
                 return null;
             };
