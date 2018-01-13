@@ -301,6 +301,18 @@
             AudioContext.prototype.close = function () {
                 return Promise.resolve();
             };
+    // File constructor for Edge
+    const origFile = File;
+    File = function (fileBits, fileName, options) {
+        try {
+            return new origFile(...arguments);
+        } catch (e) {
+            const n = fileName.replace("/", ":");
+            const F = new Blob(fileBits, options);
+            F.name = n;
+            return F;
+        }
+    };
     // move slider if track is touched
     window.addEventListener("mousedown", event => {
         const target = event.target;
