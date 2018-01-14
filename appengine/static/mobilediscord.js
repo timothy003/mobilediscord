@@ -153,12 +153,12 @@
                     eventArgs.handled = true;
             });
             // fullscreen video support for build < 15063
-            document.addEventListener("webkitfullscreenchange", event => {
+            window.addEventListener("webkitfullscreenchange", event => {
                 if (document.webkitFullscreenElement)
                     applicationView.tryEnterFullScreenMode();
                 else
                     applicationView.exitFullScreenMode();
-            });
+            }, true);
             // open links in browser
             class FakeLocation {
                 set href(url) {
@@ -549,7 +549,7 @@
                         element.style[key] = "";
         });
     }
-    document.addEventListener("click", event => {
+    window.addEventListener("click", event => {
         if (!event.isTrusted)
             return;
         const element = event.target;
@@ -615,116 +615,114 @@
             return;
         }
     }, true);
-    document.addEventListener("DOMContentLoaded", event => {
-        document.addEventListener("click", event => {
-            // https://bugzilla.mozilla.org/show_bug.cgi?id=184051
-            if (event.button !== 0)
+    window.addEventListener("click", event => {
+        // https://bugzilla.mozilla.org/show_bug.cgi?id=184051
+        if (event.button !== 0)
+            return;
+        const element = event.target;
+        // scroll to content when tapping a settings tab
+        if (element.closest(".side-2nYO0F .item-3879bf.selected-eNoxEK")) {
+            const content = document.querySelector(".ui-standard-sidebar-view .content-region");
+            content.scrollIntoView({ behavior: "smooth" });
+            return;
+        }
+        // scroll to chat when tapping a channel or jump button
+        if (element.closest(
+            ".wrapperDefaultText-3M3F1R," +
+            ".wrapperHoveredText-1PA_Uk," +
+            ".wrapperLockedText-Dsondf," +
+            ".wrapperMutedText-34VhKk," +
+            ".wrapperSelectedText-31jJa8," +
+            ".wrapperUnreadText-1MykVG," +
+            ".guilds-wrapper .dms a," +
+            ".private-channels .channel a," +
+            ".messages-popout .channel-separator .channel-name," +
+            ".messages-popout .message-group .action-buttons .jump-button," +
+            ".messages-popout .message-group .sink-interactions," +
+            ".search-results-wrap .channel-separator .channel-name," +
+            ".search-results-wrap .action-buttons .jump-button"
+        )) {
+            if (element.closest(".iconSpacing-5GIHkT, .private-channels .channel .close"))
                 return;
-            const element = event.target;
-            // scroll to content when tapping a settings tab
-            if (element.closest(".side-2nYO0F .item-3879bf.selected-eNoxEK")) {
-                const content = document.querySelector(".ui-standard-sidebar-view .content-region");
-                content.scrollIntoView({ behavior: "smooth" });
-                return;
+            const chat = document.querySelector(".chat .messages-wrapper, .chat > .content > .flex-lFgbSz, #friends .friends-table");
+            chat.scrollIntoView({ behavior: "smooth" });
+            return;
+        }
+        // open topic
+        if (element.closest(".topic-1KFf6J")) {
+            if (!document.querySelector(".modal-3HOjGZ")) {
+                element.dispatchEvent(new MouseEvent("mousedown", event));
+                element.dispatchEvent(new MouseEvent("mouseup", event));
             }
-            // scroll to chat when tapping a channel or jump button
-            if (element.closest(
-                ".wrapperDefaultText-3M3F1R," +
-                ".wrapperHoveredText-1PA_Uk," +
-                ".wrapperLockedText-Dsondf," +
-                ".wrapperMutedText-34VhKk," +
-                ".wrapperSelectedText-31jJa8," +
-                ".wrapperUnreadText-1MykVG," +
-                ".guilds-wrapper .dms a," +
-                ".private-channels .channel a," +
-                ".messages-popout .channel-separator .channel-name," +
-                ".messages-popout .message-group .action-buttons .jump-button," +
-                ".messages-popout .message-group .sink-interactions," +
-                ".search-results-wrap .channel-separator .channel-name," +
-                ".search-results-wrap .action-buttons .jump-button"
-            )) {
-                if (element.closest(".iconSpacing-5GIHkT, .private-channels .channel .close"))
-                    return;
-                const chat = document.querySelector(".chat .messages-wrapper, .chat > .content > .flex-lFgbSz, #friends .friends-table");
-                chat.scrollIntoView({ behavior: "smooth" });
+            return;
+        }
+    });
+    // context menu for messages
+    if ("Windows" in self)
+        window.addEventListener("contextmenu", event => {
+            if (event.defaultPrevented)
                 return;
-            }
-            // open topic
-            if (element.closest(".topic-1KFf6J")) {
-                if (!document.querySelector(".modal-3HOjGZ")) {
-                    element.dispatchEvent(new MouseEvent("mousedown", event));
-                    element.dispatchEvent(new MouseEvent("mouseup", event));
-                }
-                return;
-            }
-        });
-        // context menu for messages
-        if ("Windows" in self)
-            document.addEventListener("contextmenu", event => {
-                if (event.defaultPrevented)
-                    return;
-                const message = event.target.closest(".message-group .comment > div");
-                if (message) {
-                    const menu = new Windows.UI.Popups.PopupMenu();
-                    const addCommand = (label, action) => {
-                        try {
-                            menu.commands.append(new Windows.UI.Popups.UICommand(label, action));
-                        } catch (e) {
-                            console.warn(e);
-                        }
-                    };
-                    if (!document.getSelection().isCollapsed)
-                        addCommand(strings.COPY, command => {
-                            copyTextToClipboard(document.getSelection());
-                        });
-                    if (message.querySelector(".btn-reaction"))
-                        addCommand(strings.ADD_REACTION, command => {
-                            const btn = message.querySelector(".btn-reaction");
-                            btn.click();
-                        });
-                    const btn = message.querySelector(".btn-option");
-                    if (btn) {
-                        const action = command => {
-                            const btn = message.querySelector(".btn-option");
-                            if (!btn.classList.contains("popout-open"))
-                                btn.click();
-                            const popout = document.querySelector(".option-popout");
-                            try {
-                                for (const item of popout.querySelectorAll(".btn-item"))
-                                    if (item.textContent === command.label) {
-                                        item.click();
-                                        break;
-                                    }
-                            } finally {
-                                document.body.click();
-                                popout.parentElement.style.display = "none";
-                            }
-                        };
+            const message = event.target.closest(".message-group .comment > div");
+            if (message) {
+                const menu = new Windows.UI.Popups.PopupMenu();
+                const addCommand = (label, action) => {
+                    try {
+                        menu.commands.append(new Windows.UI.Popups.UICommand(label, action));
+                    } catch (e) {
+                        console.warn(e);
+                    }
+                };
+                if (!document.getSelection().isCollapsed)
+                    addCommand(strings.COPY, command => {
+                        copyTextToClipboard(document.getSelection());
+                    });
+                if (message.querySelector(".btn-reaction"))
+                    addCommand(strings.ADD_REACTION, command => {
+                        const btn = message.querySelector(".btn-reaction");
                         btn.click();
+                    });
+                const btn = message.querySelector(".btn-option");
+                if (btn) {
+                    const action = command => {
+                        const btn = message.querySelector(".btn-option");
+                        if (!btn.classList.contains("popout-open"))
+                            btn.click();
                         const popout = document.querySelector(".option-popout");
                         try {
                             for (const item of popout.querySelectorAll(".btn-item"))
-                                addCommand(item.textContent, action);
+                                if (item.textContent === command.label) {
+                                    item.click();
+                                    break;
+                                }
                         } finally {
                             document.body.click();
                             popout.parentElement.style.display = "none";
                         }
+                    };
+                    btn.click();
+                    const popout = document.querySelector(".option-popout");
+                    try {
+                        for (const item of popout.querySelectorAll(".btn-item"))
+                            addCommand(item.textContent, action);
+                    } finally {
+                        document.body.click();
+                        popout.parentElement.style.display = "none";
                     }
-                    const link = event.target.closest("a");
-                    if (link)
-                        if (link.href)
-                            addCommand(strings.COPY_LINK, command => {
-                                copyTextToClipboard(link.href);
-                            });
-                    const zoomFactor = document.documentElement.msContentZoomFactor;
-                    menu.showAsync({
-                        x: (event.pageX - pageXOffset) * zoomFactor,
-                        y: (event.pageY - pageYOffset) * zoomFactor
-                    });
-                    event.preventDefault();
                 }
-            });
-    });
+                const link = event.target.closest("a");
+                if (link)
+                    if (link.href)
+                        addCommand(strings.COPY_LINK, command => {
+                            copyTextToClipboard(link.href);
+                        });
+                const zoomFactor = document.documentElement.msContentZoomFactor;
+                menu.showAsync({
+                    x: (event.pageX - pageXOffset) * zoomFactor,
+                    y: (event.pageY - pageYOffset) * zoomFactor
+                });
+                event.preventDefault();
+            }
+        });
     const mount = document.getElementById("app-mount");
     if (mount) {
         new MutationObserver((mutations, observer) => {
