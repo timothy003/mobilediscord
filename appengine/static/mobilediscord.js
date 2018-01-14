@@ -406,6 +406,7 @@
             out: try {
                 if (!this.matches(
                     ".input-2YozMi," +
+                    ".quickMessage-318jK-," +
                     ".quick-message," +
                     "#autocomplete-popout input[type=text]," +
                     ".need-help-modal .header #help-query," +
