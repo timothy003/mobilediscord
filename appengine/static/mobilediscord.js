@@ -588,7 +588,7 @@
         // animate settings navigation
         const button = element.closest("div.button-1aU9q1");
         if (button) {
-            const layer = button.closest(".layers > .layer");
+            const layer = button.closest(".layers-20RVFW > .layer-kosS71, .layers > .layer");
             const tooltip = document.querySelector(".tooltip");
             animateNavigation(event,
                 [layer, { animationName: "md-layer-under", pointerEvents: "none" }],
@@ -599,7 +599,7 @@
         const btn = element.closest(".ui-standard-sidebar-view .btn-close");
         if (btn) {
             if (!document.querySelector(".ui-settings-notice")) {
-                const layer = btn.closest(".layers > .layer");
+                const layer = btn.closest(".layers-20RVFW > .layer-kosS71, .layers > .layer");
                 animateNavigation(event, [layer, { animationName: "md-layer-out", pointerEvents: "none" }]);
             }
             return;
@@ -733,11 +733,11 @@
                     if (node instanceof Element) {
                         // CSS animations for layers
                         const observe = element => {
-                            const layers = element.querySelector(".layers");
+                            const layers = element.querySelector(".layers-20RVFW, .layers");
                             if (layers) {
                                 const observeLayer = layer => {
                                     new MutationObserver((mutations, observer) => {
-                                        if (layer.classList.contains("animating"))
+                                        if (layer.matches(".animating-XaAvB3, .animating"))
                                             if (layer.style.opacity === "0") {
                                                 layer.style.animationName = "md-layer-in";
                                                 layer.style.pointerEvents = "";

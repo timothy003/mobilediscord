@@ -1269,11 +1269,13 @@ form.deprecated.auth-form {
     min-height: 1px;
 }
 
+.layers-20RVFW > .layer-kosS71,
 .layers > .layer {
     z-index: 0;
     animation: .3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
 
+.layers-20RVFW > .layer-kosS71.animating-XaAvB3,
 .layers > .layer.animating {
     pointer-events: auto;
 }
