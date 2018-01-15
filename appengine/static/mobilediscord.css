@@ -265,13 +265,19 @@
     max-width: 100%;
 }
 
-/* embed */
-.embed-wrapper {
-    align-self: stretch;
+.imageWrapper-38T7d9 {
+    height: auto !important;
+    max-width: 100%;
 }
 
-.embed {
+.imageWrapper-38T7d9 img {
+    display: block;
+    height: auto !important;
     max-width: 100%;
+}
+
+/* embed */
+.embed {
     min-width: 1px;
 }
 
@@ -309,10 +315,12 @@
     max-width: 100%;
 }
 
+.embedProvider-1KNREX,
 .embed .embed-provider {
     max-width: 100%;
 }
 
+.embedAuthorName-29phCh,
 .embed .embed-author-name {
     max-width: 100%;
     min-width: 1px;
@@ -322,28 +330,33 @@
     max-width: 100%;
 }
 
+.embedTitle-2e667Z,
 .embed .embed-title {
     max-width: 100%;
 }
 
 /* responsive iframe */
+.embedInner-t4ag7g .embedVideo-3EiCm6,
 .embed .embed-thumbnail-video {
     width: 400px !important;
     height: auto !important;
     max-width: 100%;
 }
 
+.embedInner-t4ag7g .embedVideo-3EiCm6::after,
 .embed .embed-thumbnail-video::after {
     content: "";
     display: block;
     padding-bottom: 56.25%;
 }
 
+.embedInner-t4ag7g .embedVideo-3EiCm6 .imageWrapper-38T7d9,
+.embedInner-t4ag7g .embedVideo-3EiCm6 iframe,
 .embed .embed-thumbnail-video .image {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
+    width: 100% !important;
     height: 100% !important;
     object-fit: cover;
 }
@@ -352,6 +365,15 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+.embedInner-t4ag7g .embedVideo-3EiCm6 .imageWrapper-38T7d9 img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
 }
 
 .embed .embed-video-actions .embed-video-actions-inner {
@@ -369,6 +391,10 @@
 .embed .embed-video-actions .embed-video-play + *,
 .embed .embed-video-actions .embed-video-popout + * {
     margin-left: 0;
+}
+
+.embedFooterText-3vI__m {
+    min-width: 1px;
 }
 
 /* new-user modal */
@@ -1037,6 +1063,10 @@ form.deprecated.auth-form {
         width: 0;
         height: 0;
     }
+}
+
+.message-group .accessory {
+    align-items: stretch;
 }
 
 /*.message-group .image {
