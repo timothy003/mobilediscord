@@ -598,7 +598,7 @@
         }
         const btn = element.closest(".ui-standard-sidebar-view .btn-close");
         if (btn) {
-            if (!document.querySelector(".ui-settings-notice")) {
+            if (!document.querySelector(".container-2oeFrl, .ui-settings-notice")) {
                 const layer = btn.closest(".layers-20RVFW > .layer-kosS71, .layers > .layer");
                 animateNavigation(event, [layer, { animationName: "md-layer-out", pointerEvents: "none" }]);
             }
