@@ -1057,6 +1057,7 @@ form.deprecated.auth-form {
     max-width: 100%;
 }
  
+.typing-3eiiL_ .text-1rI06-,
 .typing .text {
     flex: 1;
     white-space: nowrap;
@@ -1064,6 +1065,7 @@ form.deprecated.auth-form {
     text-overflow: ellipsis;
 }
 
+.typing-3eiiL_ .ellipsis--nKTEd,
 .typing .ellipsis {
     margin-top: -2px;
 } 
@@ -1584,11 +1586,13 @@ form.deprecated.auth-form {
         padding-left: 80px;
     }
  
+    .typing-3eiiL_,
     .typing {
         height: 22px;
         line-height: 22px;
     }
 
+    .typing-3eiiL_ .ellipsis--nKTEd,
     .typing .ellipsis {
         margin-top: 0;
     } 
