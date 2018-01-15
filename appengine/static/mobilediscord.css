@@ -39,6 +39,7 @@
 .scroller-fzNley {
     padding-right: 14px;
     overflow-x: hidden;
+    overflow-y: auto;
     overflow-y: overlay;
     -ms-overflow-style: -ms-autohiding-scrollbar;
     -webkit-overflow-scrolling: touch;
@@ -88,6 +89,7 @@
 .scroller-wrap .scroller {
     padding-right: 14px;
     overflow-x: hidden;
+    overflow-y: auto;
     overflow-y: overlay;
     -ms-overflow-style: -ms-autohiding-scrollbar;
     -webkit-overflow-scrolling: touch;
