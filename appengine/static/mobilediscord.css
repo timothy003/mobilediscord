@@ -274,7 +274,8 @@
     max-width: 100%;
 }
 
-.imageWrapper-38T7d9 img {
+.imageWrapper-38T7d9 img,
+.md-image-placeholder {
     display: block;
     height: auto !important;
     max-width: 100%;

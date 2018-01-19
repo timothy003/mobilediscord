@@ -492,6 +492,24 @@
             openElements.add(this);
         }
     });
+    // insert image placeholders
+    // prevents messages from jumping when images load
+    const origOffsetHeight = Object.getOwnPropertyDescriptor(HTMLElement.prototype, "offsetHeight").get;
+    Object.defineProperty(HTMLElement.prototype, "offsetHeight", {
+        get() {
+            const images = document.querySelectorAll(".imageWrapperInner-BRGZ7A:first-child");
+            for (let i = 0; i < images.length; ++i) {
+                const inner = images[i];
+                const wrapper = inner.parentElement;
+                const placeholder = document.createElement("canvas");
+                placeholder.className = "md-image-placeholder";
+                placeholder.width = parseInt(wrapper.style.width, 10);
+                placeholder.height = parseInt(wrapper.style.height, 10);
+                wrapper.insertBefore(placeholder, inner);
+            }
+            return origOffsetHeight.call(this);
+        }
+    });
     // prevent scrolling to the same position (e.g. reactions)
     const origScrollTop = Object.getOwnPropertyDescriptor(Element.prototype, "scrollTop").set;
     Object.defineProperty(Element.prototype, "scrollTop", {
