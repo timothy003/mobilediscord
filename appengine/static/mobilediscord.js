@@ -319,7 +319,7 @@
         get() {
             const types = origTypes.call(this);
             if (types instanceof DOMStringList)
-                return Object.freeze(Array.prototype.slice.call(types));
+                return Object.freeze(Array.from(types));
             else
                 return types;
         }
