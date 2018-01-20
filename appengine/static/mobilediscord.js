@@ -494,19 +494,22 @@
     });
     // insert image placeholders
     // prevents messages from jumping when images load
+    function updateImagePlaceholders() {
+        const images = document.querySelectorAll(".imageWrapperInner-BRGZ7A:first-child");
+        for (let i = 0; i < images.length; ++i) {
+            const inner = images[i];
+            const wrapper = inner.parentElement;
+            const placeholder = document.createElement("canvas");
+            placeholder.className = "md-image-placeholder";
+            placeholder.width = parseInt(wrapper.style.width, 10);
+            placeholder.height = parseInt(wrapper.style.height, 10);
+            wrapper.insertBefore(placeholder, inner);
+        }
+    }
     const origOffsetHeight = Object.getOwnPropertyDescriptor(HTMLElement.prototype, "offsetHeight").get;
     Object.defineProperty(HTMLElement.prototype, "offsetHeight", {
         get() {
-            const images = document.querySelectorAll(".imageWrapperInner-BRGZ7A:first-child");
-            for (let i = 0; i < images.length; ++i) {
-                const inner = images[i];
-                const wrapper = inner.parentElement;
-                const placeholder = document.createElement("canvas");
-                placeholder.className = "md-image-placeholder";
-                placeholder.width = parseInt(wrapper.style.width, 10);
-                placeholder.height = parseInt(wrapper.style.height, 10);
-                wrapper.insertBefore(placeholder, inner);
-            }
+            updateImagePlaceholders();
             return origOffsetHeight.call(this);
         }
     });
@@ -791,6 +794,7 @@
                                 for (const node of mutation.addedNodes)
                                     if (node instanceof Element)
                                         observe(node);
+                            updateImagePlaceholders();
                         }).observe(node, { childList: true });
                         // adjust popout position
                         // TODO: handle window resize
