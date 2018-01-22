@@ -406,6 +406,11 @@
     min-width: 1px;
 }
 
+/* upload modal */
+.uploadModal-2KN6Mm {
+    max-width: 100%;
+}
+
 /* new-user modal */
 .modal-new-user > .steps {
     max-width: 100%;
