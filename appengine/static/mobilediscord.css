@@ -495,19 +495,19 @@
 }
 
 /* emoji picker */
-.emoji-picker {
+.emojiPicker-3g68GS {
     /* avoid rounded clipping for performance */
     overflow: visible;
 }
 
-.emoji-picker .dimmer {
+.emojiPicker-3g68GS .dimmer-jySV_v {
     /* fix accelerated scrolling on Chrome */
     background-color: hsla(0,0%,100%,.6);
     opacity: 0;
     transition: opacity .15s ease-in-out;
 }
 
-.emoji-picker .dimmer.visible {
+.emojiPicker-3g68GS .dimmer-jySV_v.visible-1CGy1m {
     opacity: 1;
 }
 

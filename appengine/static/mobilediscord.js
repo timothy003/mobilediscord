@@ -411,7 +411,7 @@
                     "#autocomplete-popout input[type=text]," +
                     ".need-help-modal .header #help-query," +
                     ".textArea-20yzAH," +
-                    ".emoji-picker .search-bar input"
+                    ".emojiPicker-3g68GS .search-bar input"
                 ))
                     break out;
                 // allow if a text box already has focus
