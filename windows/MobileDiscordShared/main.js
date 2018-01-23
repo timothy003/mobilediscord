@@ -72,6 +72,8 @@
             let lastUrl;
             if (eventArgs.previousExecutionState === Windows.ApplicationModel.Activation.ApplicationExecutionState.terminated)
                 lastUrl = localSettings.values.lastUrl;
+            else
+                localSettings.values.remove("lastUrl");
             const appPath = "/channels/@me";
             const WEBAPP_PATH = lastUrl || localSettings.values.WEBAPP_PATH || appPath;
             const urlToLoad = "" + WEBAPP_ENDPOINT + WEBAPP_PATH;
