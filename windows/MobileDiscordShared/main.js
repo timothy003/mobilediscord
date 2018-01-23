@@ -76,8 +76,6 @@
             const WEBAPP_PATH = lastUrl || localSettings.values.WEBAPP_PATH || appPath;
             const urlToLoad = "" + WEBAPP_ENDPOINT + WEBAPP_PATH;
             location.replace(urlToLoad);
-            // preload webrtc
-            Org.WebRtc.WinJSHooks.initialize();
         }, MSApp.HIGH);
     };
 })();
