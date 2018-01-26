@@ -119,7 +119,7 @@
                 if (eventArgs.handled)
                     return;
                 if ((() => {
-                    if (document.querySelector(".context-menu")) {
+                    if (document.querySelector(".contextMenu-uoJTbz")) {
                         document.dispatchEvent(new MouseEvent("mousedown"));
                         return true;
                     }
