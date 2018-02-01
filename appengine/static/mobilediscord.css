@@ -281,7 +281,8 @@
     max-width: 100%;
 }
 
-.md-image-placeholder ~ img {
+.md-image-placeholder ~ img,
+.md-image-placeholder ~ video {
     position: absolute;
     top: 0;
     left: 0;

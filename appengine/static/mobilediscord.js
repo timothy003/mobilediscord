@@ -495,14 +495,14 @@
     // insert image placeholders
     // prevents messages from jumping when images load
     function updateImagePlaceholders() {
-        const images = document.querySelectorAll(".imageWrapperInner-BRGZ7A:first-child");
+        const images = document.querySelectorAll(".imageWrapperInner-BRGZ7A:first-child, .embedVideo-3EiCm6 video:nth-child(2)");
         for (let i = 0; i < images.length; ++i) {
             const inner = images[i];
             const wrapper = inner.parentElement;
             const placeholder = document.createElement("canvas");
             placeholder.className = "md-image-placeholder";
-            placeholder.width = parseInt(wrapper.style.width, 10);
-            placeholder.height = parseInt(wrapper.style.height, 10);
+            placeholder.width = inner.width || parseInt(wrapper.style.width, 10);
+            placeholder.height = inner.height || parseInt(wrapper.style.height, 10);
             wrapper.insertBefore(placeholder, inner);
         }
     }
