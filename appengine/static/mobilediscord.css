@@ -931,10 +931,8 @@
 }
 
 /* modal container */
-.app + .theme-dark,
-.app + .theme-light,
-.container-2oOGIt + .theme-dark,
-.container-2oOGIt + .theme-light {
+.popouts + .theme-dark,
+.popouts + .theme-light {
     position: fixed;
     top: 0;
     right: 0;
@@ -946,10 +944,8 @@
     -webkit-overflow-scrolling: touch;
 }
 
-.app + .theme-dark:empty,
-.app + .theme-light:empty,
-.container-2oOGIt + .theme-dark:empty,
-.container-2oOGIt + .theme-light:empty {
+.popouts + .theme-dark:empty,
+.popouts + .theme-light:empty {
     visibility: hidden;
     -ms-content-zoom-limit: 100% 100%; /* reset zoom */
 }
