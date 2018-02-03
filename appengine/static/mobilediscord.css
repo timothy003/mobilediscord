@@ -292,6 +292,7 @@
 
 /* embed */
 .embed {
+    width: auto !important;
     min-width: 1px;
 }
 
