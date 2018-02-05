@@ -846,6 +846,16 @@
     flex-basis: calc(50% - 20px) !important;
 }
 
+.guildSettingsBaseSection-24U5O2 + .divider-1G01Z9 + .margin-bottom-40 > .horizontal-2BEEBe {
+    flex-wrap: wrap;
+    margin: -10px;
+}
+
+.guildSettingsBaseSection-24U5O2 + .divider-1G01Z9 + .margin-bottom-40 > .horizontal-2BEEBe > .flexChild-1KGW5q {
+    flex-basis: 320px !important;
+    margin: 10px;
+}
+
 .guild-settings-widget img.flexChild-1KGW5q {
     min-width: 1px;
 }
