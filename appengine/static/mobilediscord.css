@@ -835,13 +835,13 @@
     }
 }
 
-.guild-settings-base-section {
+.guildSettingsBaseSection-24U5O2 {
     flex-wrap: wrap;
     margin: -10px -10px 30px -10px;
 }
 
-.guild-settings-base-section > .flex-lFgbSz,
-.guild-settings-base-section > .flexChild-1KGW5q {
+.guildSettingsBaseSection-24U5O2 > .flex-lFgbSz,
+.guildSettingsBaseSection-24U5O2 > .flexChild-1KGW5q {
     margin: 10px !important;
     flex-basis: calc(50% - 20px) !important;
 }
