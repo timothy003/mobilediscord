@@ -1166,30 +1166,34 @@ form.deprecated.auth-form {
 }
 
 /* phone verification */
-.ui-phone-field .input-field {
+.phoneField-36t5MB .inputField-3os-YM {
     min-width: 1px;
+}
+
+.phoneFieldPopout-ix8zib .scrollerWrap-26zcom {
+    height: 196px !important;
 }
 
 .input-3_iTLI {
     min-width: 1px;
 }
 
-.ui-phone-verification-modal {
+.phoneVerificationModal-9lrF8A {
     max-width: calc(100% - 20px);
 }
 
-.ui-phone-verification-modal .animation-container {
+.phoneVerificationModal-9lrF8A .animationContainer-1bagwZ {
     left: auto;
     right: auto;
 }
 
-.ui-phone-verification-modal .field {
+.phoneVerificationModal-9lrF8A .field-yA08X8 {
     margin-left: 0;
     margin-right: 0;
     align-items: stretch;
 }
 
-.ui-phone-verification-modal .field .button-2t3of8 {
+.phoneVerificationModal-9lrF8A .field-yA08X8 .button-2t3of8 {
     margin-right: auto;
     margin-left: auto;
 }
