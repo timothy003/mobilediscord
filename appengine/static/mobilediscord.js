@@ -495,7 +495,7 @@
     // insert image placeholders
     // prevents messages from jumping when images load
     function updateImagePlaceholders() {
-        const images = document.querySelectorAll(".imageWrapperInner-BRGZ7A:first-child, .embedVideo-3EiCm6 video:nth-child(2)");
+        const images = document.querySelectorAll(".imageWrapperInner-BRGZ7A:first-child, .embedGIFTag-2V6BC0 + video");
         for (let i = 0; i < images.length; ++i) {
             const inner = images[i];
             const wrapper = inner.parentElement;

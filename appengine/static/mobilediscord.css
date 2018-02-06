@@ -290,6 +290,10 @@
     height: 100% !important;
 }
 
+.imageAccessory-11VcoF {
+    z-index: 1;
+}
+
 /* embed */
 .embed {
     width: auto !important;
