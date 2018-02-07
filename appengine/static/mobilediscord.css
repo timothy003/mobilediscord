@@ -1066,9 +1066,13 @@ form.deprecated.auth-form {
 }
 
 /* user settings */
-.user-settings-account .user-info-viewing-button {
+.userSettingsAccount-2WOnTW .userInfoViewingButton-3o3aim {
     top: 4px;
     right: 4px;
+}
+
+.userSettingsSecurity-1hjwAn > .flex-vertical > .directionRow-yNbSvJ > .flexChild-1KGW5q {
+    min-width: 1px;
 }
 
 /* reations modal */
