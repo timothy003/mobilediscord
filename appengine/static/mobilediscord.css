@@ -59,7 +59,6 @@
 .modal-3HOjGZ {
     max-width: 100%;
     max-height: none; /* for Safari */
-    min-height: 1px;
 }
 
 .inner-tqJwAU {
@@ -253,6 +252,10 @@
 .form.deprecated,
 .instant-invite-modal {
     max-width: 100%;
+}
+
+.size-2pbXxj {
+    min-height: 1px;
 }
 
 .content-3KEfmo img {
