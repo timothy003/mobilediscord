@@ -499,6 +499,8 @@
         for (let i = 0; i < images.length; ++i) {
             const inner = images[i];
             const wrapper = inner.parentElement;
+            if (wrapper.matches(".embedInner-t4ag7g .embedVideo-3EiCm6 .imageWrapper-38T7d9"))
+                continue;
             const placeholder = document.createElement("canvas");
             placeholder.className = "md-image-placeholder";
             placeholder.width = inner.width || parseInt(wrapper.style.width, 10);
