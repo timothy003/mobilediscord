@@ -279,6 +279,7 @@
 
 .imageWrapper-38T7d9 img,
 .md-image-placeholder {
+    position: static;
     display: block;
     height: auto !important;
     max-width: 100%;
