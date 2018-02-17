@@ -287,6 +287,7 @@
 
 .md-image-placeholder ~ img,
 .md-image-placeholder ~ video,
+.md-image-placeholder ~ .wrapper-GhVnpx,
 .imagePlaceholder-jWw28v {
     position: absolute;
     top: 0;
@@ -546,6 +547,12 @@
 
 .emojiPicker-3g68GS .dimmer-jySV_v.visible-1CGy1m {
     opacity: 1;
+}
+
+/* video player */
+.wrapper-GhVnpx {
+    height: auto !important;
+    max-width: 100%;
 }
 
 /* invite button */
