@@ -277,7 +277,7 @@
     max-width: 100%;
 }
 
-.imageWrapper-38T7d9 img,
+.imageWrapper-38T7d9 > img,
 .md-image-placeholder {
     position: static;
     display: block;
@@ -286,7 +286,8 @@
 }
 
 .md-image-placeholder ~ img,
-.md-image-placeholder ~ video {
+.md-image-placeholder ~ video,
+.imagePlaceholder-jWw28v {
     position: absolute;
     top: 0;
     left: 0;
