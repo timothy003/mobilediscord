@@ -324,6 +324,16 @@
                 return types;
         }
     });
+    // swap DataTransfer.items so that the string comes first
+    const origItems = Object.getOwnPropertyDescriptor(DataTransfer.prototype, "items").get;
+    Object.defineProperty(DataTransfer.prototype, "items", {
+        get() {
+            const items = origItems.call(this);
+            if (items.length === 2 && items[0].kind === "file" && items[1].kind === "string")
+                [items[0], items[1]] = [items[1], items[0]];
+            return items;
+        }
+    });
     // move slider if track is touched
     window.addEventListener("mousedown", event => {
         const target = event.target;
