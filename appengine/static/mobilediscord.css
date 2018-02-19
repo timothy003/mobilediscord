@@ -491,6 +491,16 @@
     flex: none;
 }
 
+/* user agreements modal */
+.modal-2vVdTr {
+    overflow-y: auto;
+    max-width: 100%;
+}
+
+.modal-2vVdTr img {
+    min-width: 1px;
+}
+
 /* ChannelTextArea */
 .attachButton-Di6YUh {
     height: auto;
