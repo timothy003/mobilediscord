@@ -212,13 +212,15 @@
             Windows.Storage.ApplicationData.current.localSettings.values.lastUrl = url;
         });
         // HACK: login page must be loaded on discordapp.com for reCAPTCHA
+        const INIT_SCRIPT = `Object.defineProperty(navigator, "userAgent", { value: "AppleWebKit/537.36 Chrome/54.0.2840.59 Safari/537.36" });` +
+            `window.mdLocalStorage = window.mdLocalStorage || localStorage;`;
         const appMount = document.getElementById("app-mount");
         class Login {
             constructor() {
                 const webview = document.createElement("x-ms-webview");
                 this.webview = webview;
                 webview.className = "md-login";
-                this.script = "delete localStorage.token; window.mdLocalStorage = localStorage";
+                this.script = INIT_SCRIPT + `delete localStorage.token`;
                 webview.addEventListener("MSWebViewContentLoading", event => {
                     if (!this.webview)
                         return;
@@ -237,7 +239,7 @@
                         this.close();
                     };
                     operation.start();
-                    this.script = "window.mdLocalStorage = window.mdLocalStorage || localStorage; mdLocalStorage.token";
+                    this.script = INIT_SCRIPT + `mdLocalStorage.token`;
                 });
                 webview.addEventListener("MSWebViewNavigationCompleted", event => {
                     if (!event.isSuccess)
