@@ -9,7 +9,7 @@
   const media = Org.WebRtc.Media.createMedia();
   media.setAudioOutputDevice("default");
   Object.defineProperty(navigator, "userAgent", { value: "AppleWebKit/537.36 Chrome/54.0.2840.59 Safari/537.36" });
-  
+
   let mediaPlayer = null;
   let deferral = null;
   class PowerSaveBlocker {
@@ -388,7 +388,13 @@
       },
       set(value) {
         if (value)
-          this._nativePC[prop] = event => value.call(this, event);
+          this._nativePC[prop] = event => {
+            try {
+              value.call(this, event);
+            } catch (e) {
+              console.error(e);
+            }
+          };
         else
           this._nativePC[prop] = null;
       }
