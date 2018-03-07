@@ -275,6 +275,7 @@
 .imageWrapper-38T7d9 {
     height: auto !important;
     max-width: 100%;
+    z-index: 0;
 }
 
 .imageWrapper-38T7d9 > img,
@@ -341,6 +342,10 @@
     max-width: 100%;
 }
 
+.embedInner-t4ag7g {
+    z-index: 0;
+}
+
 .embedContent-AqkoYv {
     align-items: flex-start;
 }
@@ -363,6 +368,14 @@
 .embedTitle-2e667Z,
 .embed .embed-title {
     max-width: 100%;
+}
+
+.embedImage-1JnXMa {
+    z-index: 0;
+}
+
+.embedImage-1JnXMa .imageWrapper-38T7d9 {
+    border-radius: 0;
 }
 
 /* responsive iframe */
@@ -566,6 +579,11 @@
 .wrapper-GhVnpx {
     height: auto !important;
     max-width: 100%;
+    border-radius: 0;
+}
+
+.video-3ihULu {
+    border-radius: 0;
 }
 
 /* invite button */
