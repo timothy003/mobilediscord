@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" xmlns:uap3="http://schemas.microsoft.com/appx/manifest/uap/windows10/3" IgnorableNamespaces="uap mp uap3">
-  <Identity Name="11359TimothyLiang.MobileDiscordCanary" Version="1.1.5.0" Publisher="CN=4AB37AEC-D287-4225-877D-769609C011B9" />
+  <Identity Name="11359TimothyLiang.MobileDiscordCanary" Version="1.1.6.0" Publisher="CN=4AB37AEC-D287-4225-877D-769609C011B9" />
   <mp:PhoneIdentity PhoneProductId="5c95ee06-e151-4213-b786-77d6069f9a75" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>MobileDiscord Canary</DisplayName>
