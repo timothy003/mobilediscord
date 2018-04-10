@@ -212,8 +212,19 @@
             Windows.Storage.ApplicationData.current.localSettings.values.lastUrl = url;
         });
         // HACK: login page must be loaded on discordapp.com for reCAPTCHA
-        const INIT_SCRIPT = `Object.defineProperty(navigator, "userAgent", { value: "AppleWebKit/537.36 Chrome/54.0.2840.59 Safari/537.36" });` +
-            `window.mdLocalStorage = window.mdLocalStorage || localStorage;`;
+        const INIT_SCRIPT = `if (!("mdLocalStorage" in window)) {` +
+            `   if (!("RTCPeerConnection" in window)) window.RTCPeerConnection = function () {};` +
+            `   const origSource = Object.getOwnPropertyDescriptor(MessageEvent.prototype, "source").get;` +
+            `   Object.defineProperty(MessageEvent.prototype, "source", {` +
+            `       get() {` +
+            `           const source = origSource.call(this);` +
+            `           if (source && source.top !== window.top)` +
+            `               return undefined;` +
+            `           return source;` +
+            `       }` +
+            `   });` +
+            `   window.mdLocalStorage = localStorage;` +
+            `}`;
         const appMount = document.getElementById("app-mount");
         class Login {
             constructor() {
