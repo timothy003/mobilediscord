@@ -151,7 +151,8 @@
     right: 0;
 }
 
-.popout {
+.popout,
+.popout-2RRwAO {
     max-width: 100%;
     /* remove blur filter for performance */
     filter: none;
@@ -1231,20 +1232,24 @@ form.deprecated.auth-form {
 } 
 
 /* messages popout */
-.messages-popout-wrap {
+.messages-popout-wrap,
+.messagesPopoutWrap-1VBR-j {
     max-width: 100%;
 }
 
-.scroller-wrap .messages-popout.scroller {
+.messages-popout,
+.messagesPopout-MzE43I {
     border-radius: 0; /* for performance */
-    padding-right: 19px;
+    padding-right: 19px !important;
 }
 
-.messages-popout .message-group .action-buttons .jump-button .loading {
+.messages-popout .message-group .action-buttons .jump-button .loading,
+.actionButtons-LKmOj2 .jumpButton-1CVJpO .loading-3lRnoi {
     display: none; /* high CPU usage on Edge */
 }
 
-.messages-popout .message-group .action-buttons .jump-button .loading.visible {
+.messages-popout .message-group .action-buttons .jump-button .loading.visible,
+.actionButtons-LKmOj2 .jumpButton-1CVJpO .loading-3lRnoi.visible-2tqseo {
     display: flex;
 }
 

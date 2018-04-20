@@ -133,7 +133,7 @@
                         document.webkitExitFullscreen();
                         return true;
                     }
-                    if (document.querySelector(".popout")) {
+                    if (document.querySelector(".popout, .popout-2RRwAO")) {
                         document.body.click();
                         return true;
                     }
@@ -683,8 +683,11 @@
             ".guilds-wrapper .dms a," +
             ".private-channels .channel a," +
             ".messages-popout .channel-separator .channel-name," +
+            ".channelName-1C6XzK," +
             ".messages-popout .message-group .action-buttons .jump-button," +
+            ".actionButtons-LKmOj2 .jumpButton-1CVJpO," +
             ".messages-popout .message-group .sink-interactions," +
+            ".messagesPopout-MzE43I .message-group .sink-interactions," +
             ".search-results-wrap .channel-separator .channel-name," +
             ".search-results-wrap .action-buttons .jump-button"
         )) {
@@ -823,13 +826,13 @@
                         }).observe(node, { childList: true });
                         // adjust popout position
                         // TODO: handle window resize
-                        const popouts = node.matches(".popouts") ? node : node.querySelector(".tooltips + div, .popouts");
+                        const popouts = node.matches(".popouts, .popouts-1TN9u9") ? node : node.querySelector(".tooltips + div, .popouts");
                         if (popouts)
                             new MutationObserver((mutations, observer) => {
                                 for (const mutation of mutations)
                                     for (const node of mutation.addedNodes)
                                         if (node instanceof HTMLElement)
-                                            if (node.classList.contains("popout")) {
+                                            if (node.matches(".popout, .popout-2RRwAO")) {
                                                 const rect = node.getBoundingClientRect();
                                                 if (rect.left < 0)
                                                     node.style.left = node.offsetLeft - rect.left + "px";
