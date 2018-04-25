@@ -1041,7 +1041,9 @@ div.embedVideo-3EiCm6 .imageWrapper-38T7d9 img,
 
 /* modal container */
 .popouts + .theme-dark,
-.popouts + .theme-light {
+.popouts + .theme-light,
+.popouts-1TN9u9 + .theme-dark,
+.popouts-1TN9u9 + .theme-light {
     position: fixed;
     top: 0;
     right: 0;
@@ -1054,7 +1056,9 @@ div.embedVideo-3EiCm6 .imageWrapper-38T7d9 img,
 }
 
 .popouts + .theme-dark:empty,
-.popouts + .theme-light:empty {
+.popouts + .theme-light:empty,
+.popouts-1TN9u9 + .theme-dark:empty,
+.popouts-1TN9u9 + .theme-light:empty {
     visibility: hidden;
     -ms-content-zoom-limit: 100% 100%; /* reset zoom */
 }
