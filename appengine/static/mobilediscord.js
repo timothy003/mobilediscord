@@ -518,17 +518,27 @@
     // insert image placeholders
     // prevents messages from jumping when images load
     function updateImagePlaceholders() {
-        const images = document.querySelectorAll(".imageWrapperInner-BRGZ7A:first-child, .embedGIFTag-2V6BC0 + video");
+        const images = document.querySelectorAll(".imageWrapper-38T7d9[style], .embedVideo-3EiCm6[style]");
         for (let i = 0; i < images.length; ++i) {
-            const inner = images[i];
-            const wrapper = inner.parentElement;
-            if (wrapper.matches(".embedInner-t4ag7g .embedVideo-3EiCm6 .imageWrapper-38T7d9"))
-                continue;
-            const placeholder = document.createElement("canvas");
-            placeholder.className = "md-image-placeholder";
-            placeholder.width = inner.width || parseInt(wrapper.style.width, 10);
-            placeholder.height = inner.height || parseInt(wrapper.style.height, 10);
-            wrapper.insertBefore(placeholder, inner);
+            const wrapper = images[i];
+            if (!wrapper.matches(".embedVideo-3EiCm6 > .imageWrapper-38T7d9")) {
+                const width = parseInt(wrapper.style.width, 10);
+                const height = parseInt(wrapper.style.height, 10);
+                let placeholder = wrapper.querySelector(".md-image-placeholder");
+                if (placeholder) {
+                    if (width)
+                        placeholder.width = width;
+                    if (height)
+                        placeholder.height = height;
+                } else {
+                    placeholder = document.createElement("canvas");
+                    placeholder.className = "md-image-placeholder";
+                    placeholder.width = width;
+                    placeholder.height = height;
+                    wrapper.insertBefore(placeholder, wrapper.firstChild);
+                }
+            }
+            wrapper.removeAttribute("style");
         }
     }
     const origOffsetHeight = Object.getOwnPropertyDescriptor(HTMLElement.prototype, "offsetHeight").get;
