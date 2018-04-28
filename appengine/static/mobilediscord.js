@@ -119,7 +119,7 @@
                 if (eventArgs.handled)
                     return;
                 if ((() => {
-                    if (document.querySelector(".contextMenu-uoJTbz")) {
+                    if (document.querySelector(".contextMenu-HLZMGh")) {
                         document.dispatchEvent(new MouseEvent("mousedown"));
                         return true;
                     }
@@ -133,11 +133,11 @@
                         document.webkitExitFullscreen();
                         return true;
                     }
-                    if (document.querySelector(".popout, .popout-2RRwAO")) {
+                    if (document.querySelector(".popout, .popout-3sVMXz")) {
                         document.body.click();
                         return true;
                     }
-                    const backdrop = document.querySelector(".callout-backdrop, .backdrop-2ohBEd");
+                    const backdrop = document.querySelector(".callout-backdrop, .backdrop-1ocfXc");
                     if (backdrop) {
                         activeElement.blur();
                         backdrop.click();
@@ -350,8 +350,8 @@
     // move slider if track is touched
     window.addEventListener("mousedown", event => {
         const target = event.target;
-        if (target.matches(".track-1h2wOF")) {
-            const grabber = target.querySelector(".grabber-1TZCZi");
+        if (target.matches(".track-11EASc")) {
+            const grabber = target.querySelector(".grabber-3mFHz2");
             const rect = grabber.getBoundingClientRect();
             const mouseDown = new MouseEvent("mousedown", {
                 bubbles: event.bubbles,
@@ -373,7 +373,7 @@
         if ("onpointerdown" in window) {
             function handlePointerDown(event) {
                 const target = event.target;
-                if (!target.matches(".track-1h2wOF, .grabber-1TZCZi"))
+                if (!target.matches(".track-11EASc, .grabber-3mFHz2"))
                     return;
                 if (!event.isPrimary)
                     return;
@@ -428,13 +428,13 @@
         return function () {
             out: try {
                 if (!this.matches(
-                    ".input-2YozMi," +
-                    ".quickMessage-318jK-," +
+                    ".input-cIJ7To," +
+                    ".quickMessage-2XpSaN," +
                     ".quick-message," +
                     "#autocomplete-popout input[type=text]," +
                     ".need-help-modal .header #help-query," +
-                    ".textArea-20yzAH," +
-                    ".emojiPicker-3g68GS .search-bar input"
+                    ".textArea-2Spzkt," +
+                    ".emojiPicker-3m1S-j .search-bar input"
                 ))
                     break out;
                 // allow if a text box already has focus
@@ -518,10 +518,10 @@
     // insert image placeholders
     // prevents messages from jumping when images load
     function updateImagePlaceholders() {
-        const images = document.querySelectorAll(".imageWrapper-38T7d9[style], .embedVideo-3EiCm6[style]");
+        const images = document.querySelectorAll(".imageWrapper-2p5ogY[style], .embedVideo-3nf0O9[style]");
         for (let i = 0; i < images.length; ++i) {
             const wrapper = images[i];
-            if (!wrapper.matches(".embedVideo-3EiCm6 > .imageWrapper-38T7d9")) {
+            if (!wrapper.matches(".embedVideo-3nf0O9 > .imageWrapper-2p5ogY")) {
                 const width = parseInt(wrapper.style.width, 10);
                 const height = parseInt(wrapper.style.height, 10);
                 let placeholder = wrapper.querySelector(".md-image-placeholder");
@@ -612,8 +612,8 @@
         // animate guild navigation
         if (element.closest(".guilds-wrapper .guilds .guild .guild-inner a")) {
             if (!element.closest(".guild.active, .guild.selected")) {
-                const channels = document.querySelector(".scroller-NXV0-d, .private-channels .scroller-fzNley");
-                const chat = document.querySelector(".chat .messages-wrapper, .chat > .content > .flex-lFgbSz, .channels-wrap + .wrapper-1-BJK5, .noChannel-2EQ0a9 > .wrapper-1-BJK5, #friends .friends-table");
+                const channels = document.querySelector(".scroller-2v3d_F, .private-channels .scroller-2FKFPG");
+                const chat = document.querySelector(".chat .messages-wrapper, .chat > .content > .flex-1xMQg5, .channels-wrap + .wrapper-r-6rrt, .noChannel-Z1DQK7 > .wrapper-r-6rrt, #friends .friends-table");
                 const tooltip = document.querySelector(".tooltip");
                 // channels animation is buggy on Safari - use transition instead
                 animateNavigation(event,
@@ -626,25 +626,25 @@
         }
         // animate channel navigation
         if (element.closest(
-            ".wrapperDefaultText-3M3F1R," +
-            ".wrapperHoveredText-1PA_Uk," +
-            ".wrapperLockedText-Dsondf," +
-            ".wrapperMutedText-34VhKk," +
-            ".wrapperSelectedText-31jJa8," +
-            ".wrapperUnreadText-1MykVG," +
+            ".wrapperDefaultText-2IWcE8," +
+            ".wrapperHoveredText-2geN_M," +
+            ".wrapperLockedText-wfOnM5," +
+            ".wrapperMutedText-1YBpvv," +
+            ".wrapperSelectedText-3dSUjC," +
+            ".wrapperUnreadText-2zuiuD," +
             ".private-channels .channel a"
         )) {
-            if (element.closest(".iconSpacing-5GIHkT, .private-channels .channel .close"))
+            if (element.closest(".iconSpacing-3JkGQO, .private-channels .channel .close"))
                 return;
-            const chat = document.querySelector(".chat .messages-wrapper, .chat > .content > .flex-lFgbSz, #friends .friends-table");
-            if (!element.closest(".wrapperSelectedText-31jJa8, .private-channels .channel.selected"))
+            const chat = document.querySelector(".chat .messages-wrapper, .chat > .content > .flex-1xMQg5, #friends .friends-table");
+            if (!element.closest(".wrapperSelectedText-3dSUjC, .private-channels .channel.selected"))
                 animateNavigation(event, [chat, { animation: "md-fade-out .1s ease-in forwards" }]);
             return;
         }
         // animate settings navigation
-        const button = element.closest("div.button-1aU9q1");
+        const button = element.closest("div.button-2b6hmh");
         if (button) {
-            const layer = button.closest(".layers-20RVFW > .layer-kosS71, .layers > .layer");
+            const layer = button.closest(".layers-3iHuyZ > .layer-3QrUeG, .layers > .layer");
             const tooltip = document.querySelector(".tooltip");
             animateNavigation(event,
                 [layer, { animationName: "md-layer-under", pointerEvents: "none" }],
@@ -654,8 +654,8 @@
         }
         const btn = element.closest(".ui-standard-sidebar-view .btn-close");
         if (btn) {
-            if (!document.querySelector(".container-2oeFrl, .ui-settings-notice")) {
-                const layer = btn.closest(".layers-20RVFW > .layer-kosS71, .layers > .layer");
+            if (!document.querySelector(".container-2VW0UT, .ui-settings-notice")) {
+                const layer = btn.closest(".layers-3iHuyZ > .layer-3QrUeG, .layers > .layer");
                 animateNavigation(event, [layer, { animationName: "md-layer-out", pointerEvents: "none" }]);
             }
             return;
@@ -677,39 +677,39 @@
             return;
         const element = event.target;
         // scroll to content when tapping a settings tab
-        if (element.closest(".side-2nYO0F .item-3879bf.selected-eNoxEK")) {
+        if (element.closest(".side-8zPYf6 .item-PXvHYJ.selected-3s45Ha")) {
             const content = document.querySelector(".ui-standard-sidebar-view .content-region");
             content.scrollIntoView({ behavior: "smooth" });
             return;
         }
         // scroll to chat when tapping a channel or jump button
         if (element.closest(
-            ".wrapperDefaultText-3M3F1R," +
-            ".wrapperHoveredText-1PA_Uk," +
-            ".wrapperLockedText-Dsondf," +
-            ".wrapperMutedText-34VhKk," +
-            ".wrapperSelectedText-31jJa8," +
-            ".wrapperUnreadText-1MykVG," +
+            ".wrapperDefaultText-2IWcE8," +
+            ".wrapperHoveredText-2geN_M," +
+            ".wrapperLockedText-wfOnM5," +
+            ".wrapperMutedText-1YBpvv," +
+            ".wrapperSelectedText-3dSUjC," +
+            ".wrapperUnreadText-2zuiuD," +
             ".guilds-wrapper .dms a," +
             ".private-channels .channel a," +
             ".messages-popout .channel-separator .channel-name," +
-            ".channelName-1C6XzK," +
+            ".channelName-3kBz6H," +
             ".messages-popout .message-group .action-buttons .jump-button," +
-            ".actionButtons-LKmOj2 .jumpButton-1CVJpO," +
+            ".actionButtons-1sUUug .jumpButton-3DTcS_," +
             ".messages-popout .message-group .sink-interactions," +
-            ".messagesPopout-MzE43I .message-group .sink-interactions," +
+            ".messagesPopout-24nkyi .message-group .sink-interactions," +
             ".search-results-wrap .channel-separator .channel-name," +
             ".search-results-wrap .action-buttons .jump-button"
         )) {
-            if (element.closest(".iconSpacing-5GIHkT, .private-channels .channel .close"))
+            if (element.closest(".iconSpacing-3JkGQO, .private-channels .channel .close"))
                 return;
-            const chat = document.querySelector(".chat .messages-wrapper, .chat > .content > .flex-lFgbSz, #friends .friends-table");
+            const chat = document.querySelector(".chat .messages-wrapper, .chat > .content > .flex-1xMQg5, #friends .friends-table");
             chat.scrollIntoView({ behavior: "smooth" });
             return;
         }
         // open topic
-        if (element.closest(".topic-1KFf6J")) {
-            if (!document.querySelector(".modal-3HOjGZ")) {
+        if (element.closest(".topic-2QX7LI")) {
+            if (!document.querySelector(".modal-3HD5ck")) {
                 element.dispatchEvent(new MouseEvent("mousedown", event));
                 element.dispatchEvent(new MouseEvent("mouseup", event));
             }
@@ -790,11 +790,11 @@
                     if (node instanceof Element) {
                         // CSS animations for layers
                         const observe = element => {
-                            const layers = element.querySelector(".layers-20RVFW, .layers");
+                            const layers = element.querySelector(".layers-3iHuyZ, .layers");
                             if (layers) {
                                 const observeLayer = layer => {
                                     new MutationObserver((mutations, observer) => {
-                                        if (layer.matches(".animating-XaAvB3, .animating"))
+                                        if (layer.matches(".animating-rRxada, .animating"))
                                             if (layer.style.opacity === "0") {
                                                 layer.style.animationName = "md-layer-in";
                                                 layer.style.pointerEvents = "";
@@ -836,13 +836,13 @@
                         }).observe(node, { childList: true });
                         // adjust popout position
                         // TODO: handle window resize
-                        const popouts = node.matches(".popouts, .popouts-1TN9u9") ? node : node.querySelector(".tooltips + div, .popouts");
+                        const popouts = node.matches(".popouts, .popouts-3dRSmE") ? node : node.querySelector(".tooltips + div, .popouts");
                         if (popouts)
                             new MutationObserver((mutations, observer) => {
                                 for (const mutation of mutations)
                                     for (const node of mutation.addedNodes)
                                         if (node instanceof HTMLElement)
-                                            if (node.matches(".popout, .popout-2RRwAO")) {
+                                            if (node.matches(".popout, .popout-3sVMXz")) {
                                                 const rect = node.getBoundingClientRect();
                                                 if (rect.left < 0)
                                                     node.style.left = node.offsetLeft - rect.left + "px";
