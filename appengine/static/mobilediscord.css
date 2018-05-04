@@ -514,6 +514,10 @@
     opacity: 1;
 }
 
+.emojiPicker-3m1S-j .header-1nkwgG {
+    position: relative; /* fix z-index */
+}
+
 /* video player */
 .wrapper-2TxpI8 {
     border-radius: 0;
