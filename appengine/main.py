@@ -50,7 +50,7 @@ def proxy(path):
         response, status, headers = result.content, result.status_code, result.headers
         if status == 200 or status == 206 or status == 304:
             if status == 200:
-                if headers.get('content-type') == 'text/html; charset=UTF-8':
+                if headers.get('content-type', '').startswith('text/html'):
                     # inject style sheet / scripts
                     index = response.find('</head>')
                     if index == -1:
