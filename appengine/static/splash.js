@@ -43,9 +43,9 @@
     document.addEventListener("DOMContentLoaded", function ondomcontentloaded(event) {
         try {
             document.removeEventListener("DOMContentLoaded", ondomcontentloaded);
-            if (document.querySelector(".loading-wNT9ra")) {
+            if (document.querySelector(".loading-Ags1CY")) {
                 new MutationObserver((mutations, observer) => {
-                    if (!document.querySelector(".loading-wNT9ra")) {
+                    if (!document.querySelector(".loading-Ags1CY")) {
                         observer.disconnect();
                         document.body.removeChild(container);
                     }
