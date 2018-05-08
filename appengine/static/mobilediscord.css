@@ -849,7 +849,7 @@
 }
 
 /* empty placeholder */
-.wrapper-r-6rrt {
+.ui-standard-sidebar-view .wrapper-r-6rrt {
     height: auto; /* for Safari */
 }
 
@@ -1255,6 +1255,8 @@ form.deprecated.auth-form {
     height: auto;
     min-width: 1px;
     padding: 20px;
+    position: relative;
+    z-index: 0;
     animation: md-fade-in .1s ease-out;
 }
 
@@ -1276,6 +1278,8 @@ form.deprecated.auth-form {
 }
 
 .noChannel-Z1DQK7 > .wrapper-r-6rrt {
+    position: relative;
+    z-index: 0;
     animation: md-fade-in .1s ease-out;
 }
 
@@ -1338,12 +1342,16 @@ form.deprecated.auth-form {
 
 /* channels */
 .scroller-2v3d_F {
+    position: relative;
+    z-index: 0;
     animation: md-fade-in .1s ease-out;
     transition: opacity .1s ease-out;
 }
 
 /* private channels */
 .private-channels .scroller-2FKFPG {
+    position: relative;
+    z-index: 0;
     animation: md-fade-in .1s ease-out;
     transition: opacity .1s ease-out;
 }
