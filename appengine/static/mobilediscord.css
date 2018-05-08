@@ -1083,6 +1083,17 @@ form.deprecated.auth-form {
     flex-basis: auto;
 }
 
+/* members */
+.member-3W1lQa {
+    align-items: stretch;
+    border-radius: 0; /* fix avatar filter */
+}
+
+.content-OzHfo4 {
+    min-width: 1px;
+    border-radius: 3px;
+}
+
 /* messages */
 .chat .empty-message {
     margin-right: 6px;
