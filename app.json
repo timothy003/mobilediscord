@@ -1,0 +1,9 @@
+{
+	"name": "MobileDiscord",
+	"description": "Mobile-friendly Discord web app",
+	"keywords": [
+		"discord"
+	],
+	"website": "https://github.com/timothy003/mobilediscord",
+	"repository": "https://github.com/timothy003/mobilediscord"
+}
