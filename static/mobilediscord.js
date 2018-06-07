@@ -308,6 +308,18 @@
         // hide "download apps" button
         document.documentElement.classList.add("md-app");
     }
+
+    // fix protocol for API requests
+    if (location.protocol != "https:") {
+        const origOpen = XMLHttpRequest.prototype.open;
+        XMLHttpRequest.prototype.open = function (method, url, async, user, password) {
+            url = String(url)
+            if (url.startsWith(location.protocol))
+                arguments[1] = url.replace(location.protocol, "https:");
+            origOpen.apply(this, arguments);
+        };
+    }
+
     // disable xhr caching for Edge < 14
     if ("msCaching" in XMLHttpRequest.prototype) {
         const origOpen = XMLHttpRequest.prototype.open;
