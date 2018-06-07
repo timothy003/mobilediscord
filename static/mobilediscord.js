@@ -206,11 +206,19 @@
             Notification.requestPermission();
         // stay on this page when activated
         MSApp.pageHandlesAllApplicationActivations(true);
-        // save session state
-        Windows.UI.WebUI.WebUIApplication.addEventListener("suspending", eventArgs => {
+
+        const { WebUIApplication } = Windows.UI.WebUI;
+        WebUIApplication.addEventListener("suspending", eventArgs => {
+            // save session state
             const url = location.pathname + location.search;
             Windows.Storage.ApplicationData.current.localSettings.values.lastUrl = url;
         });
+        WebUIApplication.addEventListener("resuming", eventArgs => {
+            // perform expedited heartbeat
+            const online = new Event("online");
+            window.dispatchEvent(online);
+        });
+
         // HACK: login page must be loaded on discordapp.com for reCAPTCHA
         const INIT_SCRIPT = `if (!("mdLocalStorage" in window)) {` +
             `   if (!("RTCPeerConnection" in window)) window.RTCPeerConnection = function () {};` +
