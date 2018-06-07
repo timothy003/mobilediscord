@@ -535,6 +535,16 @@
             openElements.add(this);
         }
     });
+
+    // replace transparent WebM
+    // Edge doesn't support alpha transparency in videos.
+    HTMLSourceElement.prototype.setAttribute = function (qualifiedName, value) {
+        if (qualifiedName == "src")
+            if (value == "/assets/0bdc0497eb3a19e66f2b1e3d5741634c.webm")
+                arguments[1] = "/assets/md/connecting.webm";
+        HTMLElement.prototype.setAttribute.apply(this, arguments);
+    };
+
     // insert image placeholders
     // prevents messages from jumping when images load
     function updateImagePlaceholders() {
