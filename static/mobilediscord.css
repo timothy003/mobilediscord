@@ -340,6 +340,11 @@
     max-width: 100%;
 }
 
+/* Spotify */
+.embed > iframe {
+    max-width: 100%;
+}
+
 .embedInner-1-fpTo {
     z-index: 0;
 }
