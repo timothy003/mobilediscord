@@ -340,16 +340,6 @@
     max-width: 100%;
 }
 
-.embed iframe {
-    max-width: 100%;
-}
-
-.embed .image,
-.embed video {
-    height: auto;
-    max-width: 100%;
-}
-
 .embedInner-1-fpTo {
     z-index: 0;
 }
@@ -1137,22 +1127,12 @@ form.deprecated.auth-form {
     align-items: stretch;
 }
 
-/*.message-group .image {
-    max-width: 100%;
-}*/
-
 .message-group .comment .markup pre {
     max-width: none;
 }
 
 .message-group .comment .markup pre code {
     overflow-x: visible;
-}
-
-.message-group .comment .attachment-image canvas,
-.message-group .comment .attachment-image img {
-    height: auto;
-    max-width: 100%;
 }
  
 .typing-2GQL18 .text-1y-e8-,
