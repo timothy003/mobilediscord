@@ -91,31 +91,17 @@ func director(req *http.Request) {
 }
 
 func modifyResponse(res *http.Response) error {
+	// remove __cfduid cookie to let Cloudflare cache
+	delete(res.Header, "Set-Cookie")
+
 	if res.StatusCode >= 500 {
 		return nil
 	}
-
-	// remove __cfduid cookie to let Cloudflare cache
-	delete(res.Header, "Set-Cookie")
 
 	// hide from search engines
 	res.Header.Set("X-Robots-Tag", "noindex, nofollow, noarchive, nocache, noimageindex, noodp")
 
 	if strings.HasPrefix(res.Request.URL.Path, "/assets/") {
-		// static assets never expire
-		switch res.StatusCode {
-		case http.StatusOK,
-			http.StatusNonAuthoritativeInfo,
-			http.StatusPartialContent,
-			http.StatusNotModified:
-			if cc := res.Header.Get("Cache-Control"); !strings.Contains(cc, "no-cache") &&
-				!strings.Contains(cc, "no-store") &&
-				!strings.Contains(cc, "max-age") &&
-				res.Header.Get("Expires") == "" &&
-				res.Header.Get("Last-Modified") != "" {
-				res.Header.Add("Cache-Control", "max-age=31536000")
-			}
-		}
 		return nil
 	}
 
