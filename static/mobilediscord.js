@@ -776,9 +776,9 @@
                         const btn = message.querySelector(".btn-option");
                         if (!btn.classList.contains("popout-open"))
                             btn.click();
-                        const popout = document.querySelector(".option-popout");
+                        const popout = document.querySelector(".option-popout, .container-1rPqdX");
                         try {
-                            for (const item of popout.querySelectorAll(".btn-item"))
+                            for (const item of popout.querySelectorAll(".btn-item, .button-1ZXqCA"))
                                 if (item.textContent === command.label) {
                                     item.click();
                                     break;
@@ -789,9 +789,9 @@
                         }
                     };
                     btn.click();
-                    const popout = document.querySelector(".option-popout");
+                    const popout = document.querySelector(".option-popout, .container-1rPqdX");
                     try {
-                        for (const item of popout.querySelectorAll(".btn-item"))
+                        for (const item of popout.querySelectorAll(".btn-item, .button-1ZXqCA"))
                             addCommand(item.textContent, action);
                     } finally {
                         document.body.click();
