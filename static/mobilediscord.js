@@ -137,7 +137,7 @@
                         document.body.click();
                         return true;
                     }
-                    const backdrop = document.querySelector(".callout-backdrop, .backdrop-1ocfXc");
+                    const backdrop = document.querySelector(".callout-backdrop, .backdrop-1wrmKB");
                     if (backdrop) {
                         activeElement.blur();
                         backdrop.click();
