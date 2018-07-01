@@ -1458,6 +1458,11 @@ form.deprecated.auth-form {
     flex-grow: 1;
 }
 
+/* picture-in-picture */
+.overlay-1NmNEg:focus {
+    opacity: 1;
+}
+
 /* app */
 .appMount-3VJmYg {
     z-index: 0; /* for Edge */

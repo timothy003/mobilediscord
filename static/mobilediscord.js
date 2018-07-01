@@ -605,7 +605,7 @@
     }
     // make video call focusable
     window.addEventListener("mousedown", event => {
-        const videoWrapper = event.target.closest(".videoWrapper-2wbLD-");
+        const videoWrapper = event.target.closest(".videoWrapper-2wbLD-, .overlay-1NmNEg");
         if (videoWrapper)
             videoWrapper.tabIndex = -1;
     });
