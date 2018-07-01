@@ -1526,6 +1526,7 @@ form.deprecated.auth-form {
     }
 
     .private-channel-call,
+    .video-1FfuMD,
     .noChannel-Z1DQK7 {
         width: calc(100vw - 310px);
     }
@@ -1558,6 +1559,7 @@ form.deprecated.auth-form {
     .chat > .content > .flex-spacer,
     .chat > .content > .flex-1xMQg5,
     .private-channel-call,
+    .video-1FfuMD,
     .noChannel-Z1DQK7 {
         width: 100vw;
     }
@@ -1711,6 +1713,15 @@ form.deprecated.auth-form {
     .channel-textarea-guard {
         margin-top: 16px;
         margin-bottom: 24px;
+    }
+
+    .wrapper-29NfPK .actions-2vadYq {
+        padding: 16px;
+    }
+
+    .wrapper-29NfPK .actions-2vadYq .center-1Vp33r {
+        margin-left: -18px;
+        margin-right: -18px;
     }
 
     .nsfw-1jCH4N {
