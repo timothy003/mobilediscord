@@ -1208,6 +1208,18 @@ form.deprecated.auth-form {
     margin-left: auto;
 }
 
+/* video call */
+.video-1FfuMD.fullScreen-lH2Q2c:not(.idle-1sRXLT) .videoWrapper-2wbLD-:focus .videoBottom-2_HYXG,
+.video-1FfuMD.noChat-3nt48u:not(.idle-1sRXLT) .videoWrapper-2wbLD-:focus .videoBottom-2_HYXG,
+.video-1FfuMD.normal-1jW0uq:not(.idle-1sRXLT) .videoWrapper-2wbLD-:focus .videoBottom-2_HYXG {
+    opacity: 1;
+    transform: translateZ(0);
+}
+
+.video-1kutKI {
+    pointer-events: none;
+}
+
 /* private channel invite */
 .private-channel-recipients-invite {
     overflow: visible; /* for performance */

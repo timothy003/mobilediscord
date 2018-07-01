@@ -603,6 +603,12 @@
             return origGetUserMedia.apply(this, arguments);
         };
     }
+    // make video call focusable
+    window.addEventListener("mousedown", event => {
+        const videoWrapper = event.target.closest(".videoWrapper-2wbLD-");
+        if (videoWrapper)
+            videoWrapper.tabIndex = -1;
+    });
     function deferEvent(event, applyStyles, revertStyles) {
         try {
             applyStyles();
