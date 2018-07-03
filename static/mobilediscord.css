@@ -159,50 +159,9 @@
 }
 
 /* channels */
-.container-2Thooq {
-    padding-right: 2px;
-}
-
-.accountDetails-3k9g4n {
-    min-width: 1px;
-}
-
-.button-2b6hmh {
-    width: 48px;
-    height: 48px;
-    background-size: 24px 24px;
-}
-
-.md-app :nth-child(2) > .button-2b6hmh {
-    display: none;
-}
-
-.button-2b6hmh svg {
-    width: 24px;
-    height: 24px;
-}
-
-.container-1UB9sr {
-    padding: 2px;
-}
-
-.inner-btChU7 {
-    margin: 8px 0 8px 8px;
-}
-
-.inner-btChU7 .rtc-connection-status .ping {
-    flex: none;
-}
-
 .inner-btChU7 .channel-SEolQq {
     line-height: 1.4;
     margin-top: 2px;
-}
-
-.button-2KyEfG {
-    width: 48px;
-    height: 48px;
-    background-size: 24px 24px;
 }
 
 /* tutorial popout */
@@ -853,10 +812,6 @@
 .userSettingsVoice-iwdUCU > .flex-vertical > div > .horizontal-1ae9ci.alignStretch-DpGPf3 > .flexChild-faoVW3 {
     flex-basis: 320px !important;
     margin: 10px;
-}
-
-.md-app .userSettingsVoice-iwdUCU .volume {
-    display: none;
 }
 
 /* instant invite */

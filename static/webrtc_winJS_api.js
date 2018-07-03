@@ -402,18 +402,43 @@
   }
   self.RTCPeerConnection = RTCPeerConnection;
 
+  const objectURLs = new Map();
+
   const origCreateObjectURL = URL.createObjectURL;
   URL.createObjectURL = function (object) {
-    if (object instanceof MediaStream)
-      return "webrtc:";
+    if (object instanceof MediaStream) {
+      const url = "webrtc:" + object.id;
+      objectURLs.set(url, object);
+      return url;
+    }
     return origCreateObjectURL.apply(this, arguments);
   };
   const origRevokeObjectURL = URL.revokeObjectURL;
   URL.revokeObjectURL = function (url) {
-    if (url === "webrtc:")
+    if (url.startsWith("webrtc:")) {
+      objectURLs.delete(url);
       return;
+    }
     return origRevokeObjectURL.apply(this, arguments);
   };
+
+  if ("setVolume" in Org.WebRtc.MediaAudioTrack.prototype)
+    for (const p of ["muted", "volume"]) {
+      const origSet = Object.getOwnPropertyDescriptor(HTMLMediaElement.prototype, p).set;
+      Object.defineProperty(HTMLMediaElement.prototype, p, {
+        set(value) {
+          origSet.call(this, value);
+
+          if (this.src.startsWith("webrtc:")) {
+            const stream = objectURLs.get(this.src);
+            if (stream)
+              for (const track of stream.getAudioTracks())
+                track.setVolume(this.muted ? 0 : this.volume);
+          }
+        }
+      });
+    }
+
   HTMLMediaElement.prototype.setSinkId = function (sinkId) {
     return Promise.resolve(media.setAudioOutputDevice(sinkId));
   };
