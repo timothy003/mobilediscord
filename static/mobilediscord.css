@@ -466,19 +466,9 @@
 .textArea-2Spzkt {
     border: 2px solid transparent;
     margin: 0;
-}
-
-.textAreaEnabled-3vQ5WZ {
     padding-right: 54px;
     padding-left: 10px;
-}
-
-.textAreaDisabled-2_o-kZ,
-.textAreaEdit-bNLDk3,
-.textAreaEnabledNoAttach-1WxUwj,
-.textAreaForm-18s4EO {
-    padding-right: 54px;
-    padding-left: 10px;
+    min-width: 1px;
 }
 
 .textAreaDisabled-2_o-kZ {
@@ -1643,14 +1633,7 @@ form.deprecated.auth-form {
         padding: 8px;
     }
 
-    .textAreaEnabled-3vQ5WZ {
-        padding: 8px 48px 8px 8px;
-    }
-
-    .textAreaDisabled-2_o-kZ,
-    .textAreaEdit-bNLDk3,
-    .textAreaEnabledNoAttach-1WxUwj,
-    .textAreaForm-18s4EO {
+    .textArea-2Spzkt {
         padding: 8px 48px 8px 8px;
     }
 
