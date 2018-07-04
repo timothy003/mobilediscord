@@ -123,12 +123,26 @@
 }
 
 /* slider */
-.track-11EASc,
-.grabber-3mFHz2 {
+.slider-1PF9SW {
     touch-action: none;
 }
 
-.track-11EASc:active .bubble-3we2di {
+.mini-dmm9yo {
+    height: 40px;
+    margin-bottom: -20px;
+}
+
+.mini-dmm9yo .grabber-3mFHz2 {
+    margin-top: -7px;
+}
+
+.bar-2Qqk5Z,
+.track-11EASc {
+    pointer-events: none;
+}
+
+.slider-1PF9SW:active .bubble-3we2di,
+.slider-1PF9SW:hover .bubble-3we2di {
     opacity: 1;
 }
 

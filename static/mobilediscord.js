@@ -367,10 +367,10 @@
             return items;
         }
     });
-    // move slider if track is touched
+    // move grabber if slider is pressed
     window.addEventListener("mousedown", event => {
         const target = event.target;
-        if (target.matches(".track-11EASc")) {
+        if (target.matches(".slider-1PF9SW")) {
             const grabber = target.querySelector(".grabber-3mFHz2");
             const rect = grabber.getBoundingClientRect();
             const mouseDown = new MouseEvent("mousedown", {
@@ -393,7 +393,7 @@
         if ("onpointerdown" in window) {
             function handlePointerDown(event) {
                 const target = event.target;
-                if (!target.matches(".track-11EASc, .grabber-3mFHz2"))
+                if (!target.matches(".slider-1PF9SW"))
                     return;
                 if (!event.isPrimary)
                     return;
