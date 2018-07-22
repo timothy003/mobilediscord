@@ -3,6 +3,7 @@ package main
 import (
 	"bytes"
 	"context"
+	"html/template"
 	"io"
 	"io/ioutil"
 	"log"
@@ -15,8 +16,8 @@ import (
 )
 
 var (
-	links   []byte
-	scripts []byte
+	links []byte
+	tmpl  *template.Template
 )
 
 func main() {
@@ -29,9 +30,7 @@ func main() {
 	if links, err = ioutil.ReadFile("links.html"); err != nil {
 		log.Fatal("failed to read links.html: ", err)
 	}
-	if scripts, err = ioutil.ReadFile("scripts.html"); err != nil {
-		log.Fatal("failed to read scripts.html: ", err)
-	}
+	tmpl = template.Must(template.ParseFiles("scripts.html"))
 
 	http.Handle("/", &httputil.ReverseProxy{Director: director, ModifyResponse: modifyResponse})
 	http.Handle("/md/", http.NotFoundHandler())
@@ -128,16 +127,33 @@ func modifyResponse(res *http.Response) error {
 		log.Print("modifyResponse: missing <script> tag")
 	} else {
 		i2 += i1
+		origin := "https://" + res.Request.URL.Host
+		r, w := io.Pipe()
+		go func() {
+			err := tmpl.Execute(w, origin)
+			w.CloseWithError(err)
+		}()
 		res.Body = ioutil.NopCloser(io.MultiReader(
 			bytes.NewReader(s[:i1]),
 			bytes.NewReader(links),
 			bytes.NewReader(s[i1:i2]),
-			strings.NewReader("<script>window.MD_ORIGIN = 'https://"+res.Request.URL.Host+"'</script>\n"),
-			bytes.NewReader(scripts),
+			r,
 			bytes.NewReader(s[i2:]),
 		))
 		res.Header.Del("Content-Length")
 		res.Header.Del("Etag")
+
+		for _, key := range []string{"Content-Security-Policy", "Content-Security-Policy-Report-Only"} {
+			v := res.Header[key]
+			for i, csp := range v {
+				// add origin for API requests
+				csp = strings.Replace(csp, "'self'", "'self' "+origin, -1)
+				// add unsafe-inline fallback for CSP 1 compatibility
+				csp = strings.Replace(csp, "'nonce-", "'unsafe-inline' 'nonce-", -1)
+				v[i] = csp
+			}
+		}
+
 		return nil
 	}
 	res.Body = ioutil.NopCloser(bytes.NewReader(s))

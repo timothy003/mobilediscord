@@ -220,26 +220,44 @@
         });
 
         // HACK: login page must be loaded on discordapp.com for reCAPTCHA
-        const INIT_SCRIPT = `if (!("mdLocalStorage" in window)) {` +
-            `   if (!("RTCPeerConnection" in window)) window.RTCPeerConnection = function () {};` +
-            `   const origSource = Object.getOwnPropertyDescriptor(MessageEvent.prototype, "source").get;` +
-            `   Object.defineProperty(MessageEvent.prototype, "source", {` +
-            `       get() {` +
-            `           const source = origSource.call(this);` +
-            `           if (source && source.top !== window.top)` +
-            `               return undefined;` +
-            `           return source;` +
-            `       }` +
-            `   });` +
-            `   window.mdLocalStorage = localStorage;` +
-            `}`;
+        function getScript() {
+            let s = `if (!("mdLocalStorage" in window)) {
+    // reCAPTCHA expects HTMLIFrameElement.contentWindow == MessageEvent.source, but Discord removes the iframe upon verification before all the messages are processed, preventing reCAPTCHA from closing the challenge.
+    // Copy Chrome by making MessageEvent.source return undefined if the iframe is no longer in the DOM.
+    const origSource = Object.getOwnPropertyDescriptor(MessageEvent.prototype, "source").get;
+    Object.defineProperty(MessageEvent.prototype, "source", {
+        get() {
+            const source = origSource.call(this);
+            if (source && source.top !== window.top)
+                return undefined;
+            return source;
+        }
+    });
+    window.mdLocalStorage = localStorage;
+`;
+            // Include inline scripts from the current document.
+            // CSP requires a nonce, which isn't supported on Edge 14.
+            if (!("nonce" in HTMLElement.prototype))
+                for (let i = 0; i < document.scripts.length; i++) {
+                    const script = document.scripts[i];
+                    if (script.hasAttribute("nonce"))
+                        s += `    eval(\`${script.text.replace(/[`$]/g, "\\$&")}\`);
+`;
+                }
+            s += `}
+mdLocalStorage.token;
+`;
+            return s;
+        }
+        const origin = document.currentScript.dataset.origin;
         const appMount = document.getElementById("app-mount");
         class Login {
             constructor() {
                 const webview = document.createElement("x-ms-webview");
                 this.webview = webview;
                 webview.className = "md-login";
-                this.script = INIT_SCRIPT + `delete localStorage.token`;
+                this.script = `delete localStorage.token;
+` + getScript();
                 webview.addEventListener("MSWebViewContentLoading", event => {
                     if (!this.webview)
                         return;
@@ -255,16 +273,19 @@
                         }
                     };
                     operation.onerror = event => {
+                        console.error("error invoking script:", event.target.error);
                         this.close();
                     };
                     operation.start();
-                    this.script = INIT_SCRIPT + `mdLocalStorage.token`;
+                    this.script = getScript();
                 });
                 webview.addEventListener("MSWebViewNavigationCompleted", event => {
-                    if (!event.isSuccess)
+                    if (!event.isSuccess) {
+                        console.error("login navigation failed (" + event.webErrorStatus + ")");
                         this.close();
+                    }
                 });
-                webview.src = MD_ORIGIN + "/login";
+                webview.src = (origin || "https://discordapp.com") + "/login";
                 document.body.appendChild(webview);
                 webview.focus();
                 appMount.hidden = true;
@@ -281,14 +302,18 @@
         }
         let login = null;
         function updateState() {
-            if (location.pathname === "/login") {
-                if (!login)
-                    login = new Login();
-            } else
-                if (login) {
-                    login.close();
-                    login = null;
-                }
+            try {
+                if (location.pathname === "/login") {
+                    if (!login)
+                        login = new Login();
+                } else
+                    if (login) {
+                        login.close();
+                        login = null;
+                    }
+            } catch (e) {
+                console.error(e);
+            }
         }
         const origPushState = history.pushState;
         history.pushState = function (data, title, url) {
@@ -300,7 +325,9 @@
             origReplaceState.apply(this, arguments);
             updateState();
         };
-        updateState();
+        document.addEventListener("DOMContentLoaded", event => {
+            updateState();
+        });
     }
     if (embedded) {
         // hide download nag
@@ -309,7 +336,7 @@
         document.documentElement.classList.add("md-app");
     }
 
-    // fix protocol for API requests
+    // fix broken URLs when running locally
     if (location.protocol != "https:") {
         const origOpen = XMLHttpRequest.prototype.open;
         XMLHttpRequest.prototype.open = function (method, url, async, user, password) {
@@ -318,6 +345,28 @@
                 arguments[1] = url.replace(location.protocol, "https:");
             origOpen.apply(this, arguments);
         };
+
+        const origSetBackgroundImage = Object.getOwnPropertyDescriptor(CSSStyleDeclaration.prototype, "backgroundImage").set;
+        Object.defineProperty(CSSStyleDeclaration.prototype, "backgroundImage", {
+            set(value) {
+                value = value.replace(location.protocol, "https:");
+                origSetBackgroundImage.call(this, value);
+            }
+        });
+
+        const origSetAttribute = Element.prototype.setAttribute;
+        Element.prototype.setAttribute = function (qualifiedName, value) {
+            if (qualifiedName == "src")
+                arguments[1] = String(value).replace(location.protocol, "https:");
+            origSetAttribute.apply(this, arguments);
+        };
+
+        WebSocket = new Proxy(WebSocket, {
+            construct(target, argumentsList, newTarget) {
+                argumentsList[0] = String(argumentsList[0]).replace("ws:", "wss:");
+                return Reflect.construct(target, argumentsList, newTarget);
+            }
+        });
     }
 
     // disable xhr caching for Edge < 14
