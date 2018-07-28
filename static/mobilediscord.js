@@ -727,7 +727,7 @@ mdLocalStorage.token;
             return;
         }
         // animate settings navigation
-        const button = element.closest("div.button-2b6hmh");
+        const button = element.closest(".flex-1xMQg5 > .button-2b6hmh:last-child");
         if (button) {
             const layer = button.closest(".layers-3iHuyZ > .layer-3QrUeG, .layers > .layer");
             const tooltip = document.querySelector(".tooltip");
