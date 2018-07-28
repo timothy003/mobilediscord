@@ -806,7 +806,7 @@ mdLocalStorage.token;
         window.addEventListener("contextmenu", event => {
             if (event.defaultPrevented)
                 return;
-            const message = event.target.closest(".message-group .comment > div");
+            const message = event.target.closest(".message-1PNnaP");
             if (message) {
                 const menu = new Windows.UI.Popups.PopupMenu();
                 const addCommand = (label, action) => {
@@ -825,15 +825,15 @@ mdLocalStorage.token;
                         const btn = message.querySelector(".btn-reaction");
                         btn.click();
                     });
-                const btn = message.querySelector(".btn-option");
+                const btn = message.querySelector(".button-3Jq0g9");
                 if (btn) {
                     const action = command => {
-                        const btn = message.querySelector(".btn-option");
+                        const btn = message.querySelector(".button-3Jq0g9");
                         if (!btn.classList.contains("popout-open"))
                             btn.click();
-                        const popout = document.querySelector(".option-popout, .container-1rPqdX");
+                        const popout = document.querySelector(".container-3cGP6G");
                         try {
-                            for (const item of popout.querySelectorAll(".btn-item, .button-1ZXqCA"))
+                            for (const item of popout.querySelectorAll(".item-2J1YMK"))
                                 if (item.textContent === command.label) {
                                     item.click();
                                     break;
@@ -844,9 +844,9 @@ mdLocalStorage.token;
                         }
                     };
                     btn.click();
-                    const popout = document.querySelector(".option-popout, .container-1rPqdX");
+                    const popout = document.querySelector(".container-3cGP6G");
                     try {
-                        for (const item of popout.querySelectorAll(".btn-item, .button-1ZXqCA"))
+                        for (const item of popout.querySelectorAll(".item-2J1YMK"))
                             addCommand(item.textContent, action);
                     } finally {
                         document.body.click();

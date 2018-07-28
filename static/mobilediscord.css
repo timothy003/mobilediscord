@@ -1080,8 +1080,8 @@ form.deprecated.auth-form {
 }
 
 @media (pointer: coarse) {
-    .md-app .message-group .btn-option,
-    .md-app .message-group .btn-reaction {
+    .md-app .btn-reaction,
+    .md-app .button-3Jq0g9 {
         width: 0;
         height: 0;
     }
