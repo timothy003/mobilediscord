@@ -732,7 +732,7 @@ mdLocalStorage.token;
             const layer = button.closest(".layers-3iHuyZ > .layer-3QrUeG, .layers > .layer");
             const tooltip = document.querySelector(".tooltip");
             animateNavigation(event,
-                [layer, { animationName: "md-layer-under", pointerEvents: "none" }],
+                [layer, { animationName: "md-layer-under" }],
                 [tooltip, { display: "none" }]
             );
             return;
@@ -741,7 +741,7 @@ mdLocalStorage.token;
         if (btn) {
             if (!document.querySelector(".container-2VW0UT, .ui-settings-notice")) {
                 const layer = btn.closest(".layers-3iHuyZ > .layer-3QrUeG, .layers > .layer");
-                animateNavigation(event, [layer, { animationName: "md-layer-out", pointerEvents: "none" }]);
+                animateNavigation(event, [layer, { animationName: "md-layer-out" }]);
             }
             return;
         }
@@ -880,20 +880,12 @@ mdLocalStorage.token;
                                 const observeLayer = layer => {
                                     new MutationObserver((mutations, observer) => {
                                         if (layer.matches(".animating-rRxada, .animating"))
-                                            if (layer.style.opacity === "0") {
-                                                layer.style.animationName = "md-layer-in";
-                                                layer.style.pointerEvents = "";
-                                            } else {
-                                                layer.style.animationName = !layer.nextElementSibling ? "md-layer-out" : "md-layer-under";
-                                                layer.style.pointerEvents = "none";
-                                            }
-                                        else {
-                                            layer.style.animationName = "";
                                             if (layer.style.opacity === "0")
-                                                layer.style.pointerEvents = "none";
+                                                layer.style.animationName = "md-layer-in";
                                             else
-                                                layer.style.pointerEvents = "";
-                                        }
+                                                layer.style.animationName = !layer.nextElementSibling ? "md-layer-out" : "md-layer-under";
+                                        else
+                                            layer.style.animationName = "";
                                     }).observe(layer, { attributes: true, attributeFilter: ["class"] });
                                 };
                                 for (let i = 0; i < layers.children.length; i++) {
