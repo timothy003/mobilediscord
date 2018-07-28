@@ -34,6 +34,7 @@
 .scrollerWrap-2lJEkd {
     /* https://stackoverflow.com/questions/33636796/chrome-safari-not-filling-100-height-of-flex-parent */
     height: auto !important;
+    z-index: 0;
 }
 
 .scroller-2FKFPG {
