@@ -267,9 +267,11 @@ mdLocalStorage.token;
                             return;
                         const result = event.target.result;
                         if (result) {
-                            localStorage.token = result;
                             this.close();
-                            window.dispatchEvent(new PopStateEvent("popstate", { state: history.state }));
+                            window.addEventListener("beforeunload", event => {
+                                localStorage.token = result;
+                            });
+                            location.replace("/app");
                         }
                     };
                     operation.onerror = event => {
