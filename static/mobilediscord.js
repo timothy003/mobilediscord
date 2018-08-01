@@ -190,7 +190,7 @@
                             if (!event.repeat)
                                 if (applicationView.viewMode === ApplicationViewMode.default) {
                                     const compactOptions = ViewModePreferences.createDefault(ApplicationViewMode.compactOverlay);
-                                    compactOptions.customSize = { width: 288, height: 412 };
+                                    compactOptions.customSize = { width: 310, height: 500 };
                                     applicationView.tryEnterViewModeAsync(ApplicationViewMode.compactOverlay, compactOptions);
                                 } else
                                     applicationView.tryEnterViewModeAsync(ApplicationViewMode.default);
@@ -695,10 +695,17 @@ mdLocalStorage.token;
             return;
         const element = event.target;
         // animate guild navigation
-        if (element.closest(".guilds-wrapper .guilds .guild .guild-inner a")) {
+        if (element.closest(".guild-1EfMGQ .guildInner-3DSoA4 a")) {
             if (!element.closest(".guild.active, .guild.selected")) {
                 const channels = document.querySelector(".scroller-2v3d_F, .private-channels .scroller-2FKFPG");
-                const chat = document.querySelector(".chat .messages-wrapper, .chat > .content > .flex-1xMQg5, .channels-wrap + .wrapper-r-6rrt, .noChannel-Z1DQK7 > .wrapper-r-6rrt, #friends .friends-table");
+                const chat = document.querySelector(
+                    ".chat .messages-wrapper," +
+                    ".messagesWrapper-3lZDfY," +
+                    ".chat > .content > .flex-1xMQg5," +
+                    ".channels-wrap + .wrapper-r-6rrt," +
+                    ".noChannel-Z1DQK7 > .wrapper-r-6rrt," +
+                    "#friends .friends-table"
+                );
                 const tooltip = document.querySelector(".tooltip");
                 // channels animation is buggy on Safari - use transition instead
                 animateNavigation(event,
@@ -721,7 +728,12 @@ mdLocalStorage.token;
         )) {
             if (element.closest(".iconSpacing-3JkGQO, .private-channels .channel .close"))
                 return;
-            const chat = document.querySelector(".chat .messages-wrapper, .chat > .content > .flex-1xMQg5, #friends .friends-table");
+            const chat = document.querySelector(
+                ".chat .messages-wrapper," +
+                ".messagesWrapper-3lZDfY," +
+                ".chat > .content > .flex-1xMQg5," +
+                "#friends .friends-table"
+            );
             if (!element.closest(".wrapperSelectedText-3dSUjC, .private-channels .channel.selected"))
                 animateNavigation(event, [chat, { animation: "md-fade-out .1s ease-in forwards" }]);
             return;
@@ -775,7 +787,7 @@ mdLocalStorage.token;
             ".wrapperMutedText-1YBpvv," +
             ".wrapperSelectedText-3dSUjC," +
             ".wrapperUnreadText-2zuiuD," +
-            ".guilds-wrapper .dms a," +
+            ".dms-rcsEnV a," +
             ".private-channels .channel a," +
             ".messages-popout .channel-separator .channel-name," +
             ".channelName-3kBz6H," +
@@ -788,7 +800,12 @@ mdLocalStorage.token;
         )) {
             if (element.closest(".iconSpacing-3JkGQO, .private-channels .channel .close"))
                 return;
-            const chat = document.querySelector(".chat .messages-wrapper, .chat > .content > .flex-1xMQg5, #friends .friends-table");
+            const chat = document.querySelector(
+                ".chat .messages-wrapper," +
+                ".messagesWrapper-3lZDfY," +
+                ".chat > .content > .flex-1xMQg5," +
+                "#friends .friends-table"
+            );
             chat.scrollIntoView({ behavior: "smooth" });
             return;
         }

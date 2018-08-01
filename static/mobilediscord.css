@@ -231,7 +231,8 @@
     }
 }
 
-.chat .messages-wrapper {
+.chat .messages-wrapper,
+.messagesWrapper-3lZDfY {
     animation: md-fade-in .1s ease-out;
 }
 
@@ -1019,7 +1020,7 @@ form.deprecated.auth-form {
 }
 
 /* guilds */
-.md-app .guilds-wrapper .btn-download-apps {
+.md-app .downloadAppButton-3EFlA6 {
     display: none;
 }
 
@@ -1453,7 +1454,7 @@ form.deprecated.auth-form {
         contain: layout;
     }
 
-    .guilds-wrapper {
+    .guildsWrapper-5TJh6A {
         scroll-snap-coordinate: 0% 0%;
         scroll-snap-align: start;
     }
@@ -1690,87 +1691,6 @@ form.deprecated.auth-form {
     .channelTextArea-rNsIhG {
         margin-top: 16px;
         margin-bottom: 24px;
-    }
-}
-
-/* CompactOverlay mode */
-@media not all and (min-width: 310px) {
-    .layers > .layer > section,
-    .container-2lgZY8 {
-        -ms-scroll-snap-points-x: snapList(0, 288px, 528px);
-    }
-
-    @supports (-ms-scroll-snap-points-x: snapList(0, 288px, 528px)) {
-        .chat,
-        #friends {
-            width: calc(100vw + 240px);
-        }
-    }
-
-    .guilds-wrapper {
-        width: 56px;
-    }
-
-    .guilds-wrapper .guilds .friends-icon {
-        width: 36px;
-        height: 36px;
-        background-size: 23.04px 20.16px;
-    }
-
-    .guilds-wrapper .guilds .friends-online {
-        font-size: 8px;
-        width: 36px;
-    }
-
-    .guilds-wrapper .guilds .guild {
-        width: 36px;
-        height: 36px;
-    }
-
-    .guilds-wrapper .guilds .guild .avatar-small {
-        width: 36px;
-        height: 36px;
-        background-size: 36px 36px;
-    }
-
-    .guilds-wrapper .guilds .guild.selected:before {
-        height: 28.8px;
-        margin-top: -14.4px;
-    }
-
-    .guilds-wrapper .guilds .guild .guild-inner {
-        border-radius: 18px !important;
-        line-height: 36px;
-    }
-
-    .guilds-wrapper .guilds .guild.active .guild-inner,
-    .guilds-wrapper .guilds .guild.selected .guild-inner,
-    .guilds-wrapper .guilds .guild:hover .guild-inner {
-        border-radius: 12px !important;
-    }
-
-    .guilds-wrapper .guilds .guild .guild-inner a {
-        width: 36px;
-        height: 36px;
-    }
-
-    .guilds-wrapper .guild-separator {
-        width: 36px;
-    }
-
-    .guilds-wrapper .guilds-error {
-        width: 36px;
-        height: 36px;
-        line-height: 33.12px;
-    }
-
-    .guilds-wrapper .guilds-add {
-        font-size: 28.8px;
-    }
-
-    .channels-wrap,
-    .channels-Ie2l6A {
-        width: 232px;
     }
 }
 
