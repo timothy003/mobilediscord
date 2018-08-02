@@ -1459,7 +1459,8 @@ form.deprecated.auth-form {
         scroll-snap-align: start;
     }
 
-    .chat {
+    .chat,
+    .chat-3bRxxu {
         flex: 1 0 auto;
     }
 
@@ -1469,12 +1470,14 @@ form.deprecated.auth-form {
 
     @supports (-ms-scroll-snap-points-x: snapList(0, 240px)) {
         .chat,
+        .chat-3bRxxu,
         #friends {
             width: calc(100vw - 70px);
         }
     }
 
     .chat,
+    .chat-3bRxxu,
     #friends {
         overflow: visible;
     }
@@ -1487,6 +1490,7 @@ form.deprecated.auth-form {
     }
 
     .chat > .content > .flex-spacer,
+    .content-yTz4x3 > .flex-spacer,
     .chat > .content > .flex-1xMQg5 {
         flex: none !important;
         width: calc(100vw - 310px);
@@ -1511,6 +1515,7 @@ form.deprecated.auth-form {
     }
 
     .chat,
+    .chat-3bRxxu,
     #friends {
         scroll-snap-coordinate: 0% 0%;
         scroll-snap-align: start;
@@ -1518,12 +1523,14 @@ form.deprecated.auth-form {
 
     @supports (-ms-scroll-snap-points-x: snapList(0, 310px, 550px)) {
         .chat,
+        .chat-3bRxxu,
         #friends {
             width: calc(100vw + 240px);
         }
     }
 
     .chat > .content > .flex-spacer,
+    .content-yTz4x3 > .flex-spacer,
     .chat > .content > .flex-1xMQg5,
     .private-channel-call,
     .video-1FfuMD,
