@@ -272,6 +272,7 @@ mdLocalStorage.token;
                                 localStorage.token = result;
                             });
                             location.replace("/app");
+                            appMount.hidden = true;
                         }
                     };
                     operation.onerror = event => {
