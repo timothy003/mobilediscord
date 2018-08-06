@@ -3,6 +3,7 @@ package main
 import (
 	"bytes"
 	"context"
+	"crypto/tls"
 	"html/template"
 	"io"
 	"io/ioutil"
@@ -13,6 +14,7 @@ import (
 	"os/signal"
 	"strings"
 	"syscall"
+	"time"
 )
 
 var (
@@ -25,6 +27,16 @@ func main() {
 	if port == "" {
 		log.Fatal("$PORT must be set")
 	}
+
+	// disable HTTP/2 client
+	tr := http.DefaultTransport.(*http.Transport)
+	tr.TLSClientConfig = &tls.Config{
+		ClientSessionCache: tls.NewLRUClientSessionCache(0),
+	}
+	tr.MaxIdleConns = 0
+	tr.MaxIdleConnsPerHost = int(^uint(0) >> 1) // unlimited
+	tr.IdleConnTimeout = 300 * time.Second
+	tr.TLSNextProto = map[string]func(string, *tls.Conn) http.RoundTripper{}
 
 	var err error
 	if links, err = ioutil.ReadFile("links.html"); err != nil {
