@@ -118,6 +118,22 @@
     contain: layout;
 }
 
+/* spinner */
+@keyframes spinner-wandering-cubes {
+    25% {
+        transform: translate(22px, 0px) rotate(-90deg) scale(.5);
+    }
+    50% {
+        transform: translate(22px, 22px) rotate(-180deg) scale(1);
+    }
+    75% {
+        transform: translate(0px, 22px) rotate(-270deg) scale(.5);
+    }
+    100% {
+        transform: translate(0px, 0px) rotate(-360deg) scale(1);
+    }
+}
+
 /* dropdown menu */
 .Select-menu {
     -ms-scroll-chaining: none;
