@@ -699,8 +699,8 @@ mdLocalStorage.token;
         const element = event.target;
         // animate guild navigation
         if (element.closest(".guild-1EfMGQ .guildInner-3DSoA4 a")) {
-            if (!element.closest(".guild.active, .guild.selected")) {
-                const channels = document.querySelector(".scroller-2v3d_F, .private-channels .scroller-2FKFPG");
+            if (!element.closest(".guild-1EfMGQ.selected-ML3OIq")) {
+                const channels = document.querySelector(".scroller-2wx7Hm, .private-channels .scroller-2FKFPG");
                 const chat = document.querySelector(
                     ".chat .messages-wrapper," +
                     ".messagesWrapper-3lZDfY," +
