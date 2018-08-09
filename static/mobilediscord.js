@@ -700,7 +700,9 @@ mdLocalStorage.token;
         // animate guild navigation
         if (element.closest(".guild-1EfMGQ .guildInner-3DSoA4 a")) {
             if (!element.closest(".guild-1EfMGQ.selected-ML3OIq")) {
-                const channels = document.querySelector(".scroller-2wx7Hm, .private-channels .scroller-2FKFPG");
+                let channels = null;
+                if (!element.closest(".guild-1EfMGQ.selected-ML3OIq ~ .dms-rcsEnV"))
+                    channels = document.querySelector(".scroller-2wx7Hm, .private-channels .scroller-2FKFPG");
                 const chat = document.querySelector(
                     ".chat .messages-wrapper," +
                     ".messagesWrapper-3lZDfY," +
