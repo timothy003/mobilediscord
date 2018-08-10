@@ -349,13 +349,40 @@ mdLocalStorage.token;
             origOpen.apply(this, arguments);
         };
 
-        const origSetBackgroundImage = Object.getOwnPropertyDescriptor(CSSStyleDeclaration.prototype, "backgroundImage").set;
-        Object.defineProperty(CSSStyleDeclaration.prototype, "backgroundImage", {
-            set(value) {
-                value = value.replace(location.protocol, "https:");
-                origSetBackgroundImage.call(this, value);
-            }
-        });
+        if ("backgroundImage" in CSSStyleDeclaration.prototype) {
+            const origSetBackgroundImage = Object.getOwnPropertyDescriptor(CSSStyleDeclaration.prototype, "backgroundImage").set;
+            Object.defineProperty(CSSStyleDeclaration.prototype, "backgroundImage", {
+                set(value) {
+                    if (value !== null)
+                        value = String(value).replace(location.protocol, "https:");
+                    origSetBackgroundImage.call(this, value);
+                }
+            });
+        } else {
+            const origGetStyle = Object.getOwnPropertyDescriptor(HTMLElement.prototype, "style").get;
+            Object.defineProperty(HTMLElement.prototype, "style", {
+                get() {
+                    const style = origGetStyle.call(this);
+                    const proxy = new Proxy(style, {
+                        get(target, p, receiver) {
+                            return Reflect.get(target, p);
+                        },
+                        set(target, p, value, receiver) {
+                            if (p == "backgroundImage")
+                                if (value !== null)
+                                    value = String(value).replace(location.protocol, "https:");
+                            return Reflect.set(target, p, value);
+                        }
+                    });
+                    Object.defineProperty(this, "style", {
+                        configurable: true,
+                        enumerable: true,
+                        value: proxy
+                    });
+                    return proxy;
+                }
+            });
+        }
 
         const origSetAttribute = Element.prototype.setAttribute;
         Element.prototype.setAttribute = function (qualifiedName, value) {
