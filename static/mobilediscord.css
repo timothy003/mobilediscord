@@ -586,7 +586,7 @@
     contain: layout;
 }
 
-.ui-standard-sidebar-view .content-region-scroller .tools {
+.ui-standard-sidebar-view .content-region-scroller .tools-container {
     padding-right: 0;
     margin-right: 21px;
 }
@@ -626,43 +626,44 @@
     transition: margin-left .2s, margin-right .2s;
 }
 
-.ui-standard-sidebar-view .tools {
+.ui-standard-sidebar-view .tools-container {
     box-sizing: content-box;
     padding-top: 0;
     padding-right: 14px;
     padding-left: 14px;
     margin-top: 60px;
     margin-right: 21px;
+    pointer-events: none;
     transition: margin .2s;
 }
 
-.ui-standard-sidebar-view .esc-text {
-    pointer-events: none;
+.keybind-KpFkfr {
     transition: opacity .2s;
 }
 
-.ui-standard-sidebar-view .btn-close {
+.closeButton-1tv5uR {
+    pointer-events: auto;
     box-shadow: 0px 3px 1px 0px rgba(0,0,0,0.05), 0px 2px 2px 0px rgba(0,0,0,0.1), 0px 3px 3px 0px rgba(0,0,0,0.05);
 }
 
-.ui-standard-sidebar-view .btn-close:active {
+.closeButton-1tv5uR:active {
     box-shadow: none;
 }
 
-.theme-light .ui-standard-sidebar-view .btn-close {
+.theme-light .closeButton-1tv5uR {
     background-color: #fff;
 }
 
-.theme-dark .ui-standard-sidebar-view .btn-close {
+.theme-dark .closeButton-1tv5uR {
     background-color: #36393f;
 }
 
-.theme-dark .ui-standard-sidebar-view .btn-close:hover {
+.theme-dark .closeButton-1tv5uR:hover {
     background-color: #484B52;
 }
 
 @media not all and (min-width: 1037px) {
-    .ui-standard-sidebar-view .tools {
+    .ui-standard-sidebar-view .tools-container {
         position: fixed;
         right: 0;
         padding-top: 0;
@@ -673,15 +674,11 @@
         z-index: 100;
     }
 
-    .ui-standard-sidebar-view .esc-text {
+    .keybind-KpFkfr {
         opacity: 0;
     }
 
-    .ui-standard-sidebar-view .btn-close {
-        position: absolute; /* for IE/Edge */
-    }
-
-    .platform-win .ui-standard-sidebar-view .tools {
+    .platform-win .ui-standard-sidebar-view .tools-container {
         margin-top: 57px;
     }
 }
@@ -704,7 +701,7 @@
         margin-left: 24px;
     }
 
-    .ui-standard-sidebar-view .tools {
+    .ui-standard-sidebar-view .tools-container {
         margin-right: 10px !important;
         margin-left: 11px;
     }
@@ -778,7 +775,7 @@
         margin-left: 16px;
     }
 
-    .ui-standard-sidebar-view .tools {
+    .ui-standard-sidebar-view .tools-container {
         margin-right: 2px !important;
         margin-left: 19px;
     }

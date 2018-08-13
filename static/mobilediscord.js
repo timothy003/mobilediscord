@@ -141,7 +141,7 @@
                         backdrop.click();
                         return true;
                     }
-                    const btn = document.querySelector(".ui-standard-sidebar-view .btn-close");
+                    const btn = document.querySelector(".closeButton-1tv5uR");
                     if (btn) {
                         btn.click();
                         return true;
@@ -778,7 +778,7 @@ mdLocalStorage.token;
             );
             return;
         }
-        const btn = element.closest(".ui-standard-sidebar-view .btn-close");
+        const btn = element.closest(".closeButton-1tv5uR");
         if (btn) {
             if (!document.querySelector(".container-2VW0UT, .ui-settings-notice")) {
                 const layer = btn.closest(".layers-3iHuyZ > .layer-3QrUeG, .layers > .layer");
