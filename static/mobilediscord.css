@@ -44,11 +44,7 @@
     overflow-y: overlay;
     -ms-overflow-style: -ms-autohiding-scrollbar;
     -webkit-overflow-scrolling: touch;
-    contain: layout paint;
-}
-
-.md-no-contain-paint .scroller-2FKFPG {
-    contain: layout;
+    contain: content;
 }
 
 .scrollerThemed-2oenus.themeGhostHairline-DBD-2d .scroller-2FKFPG,
@@ -111,11 +107,7 @@
     overflow-y: overlay;
     -ms-overflow-style: -ms-autohiding-scrollbar;
     -webkit-overflow-scrolling: touch;
-    contain: layout paint;
-}
-
-.md-no-contain-paint .scroller-wrap .scroller {
-    contain: layout;
+    contain: content;
 }
 
 /* spinner */
@@ -433,11 +425,7 @@
     overflow: auto;
     justify-content: flex-start !important;
     -webkit-overflow-scrolling: touch;
-    contain: layout paint;
-}
-
-.md-no-contain-paint .need-help-modal.deprecated .form-inner {
-    contain: layout;
+    contain: content;
 }
 
 .need-help-modal.deprecated .footer {
@@ -1450,11 +1438,7 @@ form.deprecated.auth-form {
         -ms-scroll-snap-points-x: snapList(0, 240px);
         -ms-overflow-style: none;
         -webkit-overflow-scrolling: touch;
-        contain: layout paint;
-    }
-
-    .md-no-contain-paint .container-2lgZY8 {
-        contain: layout;
+        contain: content;
     }
 
     .guildsWrapper-5TJh6A {

@@ -22,11 +22,9 @@
     // use desktop UA strings to enable WebRTC
     let isSafari = false;
     let ua = navigator.userAgent;
-    if (/\bOPR\b/.test(ua)) {
+    if (/\bOPR\b/.test(ua))
         ua = ua.replace(/ Mobile\b/, "");
-        // disable buggy paint containment
-        document.documentElement.classList.add("md-no-contain-paint");
-    } else if (/\bChrome\b/.test(ua))
+    else if (/\bChrome\b/.test(ua))
         ua = ua.replace(/.*?\b(AppleWebKit\/[^ ]+).*?\b(Chrome\/[^ ]+).*?\b(Safari\/[^ ]+).*/, "$1 $2 $3");
     else if (/\bFirefox\b/.test(ua)) {
         ua = ua.replace(/\bAndroid[^;)]*; /, "");
