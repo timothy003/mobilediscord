@@ -251,9 +251,17 @@
     }
 }
 
-.chat .messages-wrapper,
-.messagesWrapper-3lZDfY {
+.scroller-2wx7Hm,
+.messages-3amgkR,
+.gatedContent-3-B7qB,
+.noChannel-Z1DQK7 > .wrapper-r-6rrt,
+.feed-1o0xmF,
+#friends .friends-table,
+.private-channels .scroller-2FKFPG {
+    position: relative;
+    z-index: 0;
     animation: md-fade-in .1s ease-out;
+    transition: opacity .1s ease-out;
 }
 
 /* modals */
@@ -1233,43 +1241,31 @@ form.deprecated.auth-form {
 }
 
 /* nsfw */
-.nsfw-1jCH4N {
+.gatedContent-3-B7qB {
     width: auto;
     height: auto;
     min-width: 1px;
     padding: 20px;
-    position: relative;
-    z-index: 0;
-    animation: md-fade-in .1s ease-out;
 }
 
 /* no-channel */
-.channels-wrap + .wrapper-r-6rrt {
-    box-sizing: border-box;
-    padding: 20px;
-    max-width: none;
-    animation: md-fade-in .1s ease-out;
-}
-
-.channels-wrap + .wrapper-r-6rrt > .flexChild-faoVW3 {
-    max-width: 440px;
-}
 
 .noChannel-Z1DQK7 {
     box-sizing: border-box;
     padding: 20px;
 }
 
-.noChannel-Z1DQK7 > .wrapper-r-6rrt {
-    position: relative;
-    z-index: 0;
-    animation: md-fade-in .1s ease-out;
+/* activity feed */
+
+.feed-1o0xmF {
+    padding-right: 20px;
+}
+
+.activityFeed-28jde9 > .flex-1xMQg5 {
+    min-height: 1px;
 }
 
 /* friends */
-#friends .friends-table {
-    animation: md-fade-in .1s ease-out;
-}
 
 @media not all and (min-width: 1011px) {
     #friends .friends-table .friend-table-add-wrapper .friend-table-add-header .friends-table-add {
@@ -1321,22 +1317,6 @@ form.deprecated.auth-form {
     margin: -6.75px;
     background-repeat: no-repeat;
     background-origin: content-box;
-}
-
-/* channels */
-.scroller-2wx7Hm {
-    position: relative;
-    z-index: 0;
-    animation: md-fade-in .1s ease-out;
-    transition: opacity .1s ease-out;
-}
-
-/* private channels */
-.private-channels .scroller-2FKFPG {
-    position: relative;
-    z-index: 0;
-    animation: md-fade-in .1s ease-out;
-    transition: opacity .1s ease-out;
 }
 
 /* notice */
@@ -1461,7 +1441,6 @@ form.deprecated.auth-form {
 
 /* fold channel members */
 @media not all and (min-width: 870px) {
-    .layers > .layer > section,
     .container-2lgZY8 {
         overflow-x: scroll;
         overflow-y: hidden;
@@ -1474,7 +1453,6 @@ form.deprecated.auth-form {
         contain: layout paint;
     }
 
-    .md-no-contain-paint .layers > .layer > section,
     .md-no-contain-paint .container-2lgZY8 {
         contain: layout;
     }
@@ -1484,87 +1462,59 @@ form.deprecated.auth-form {
         scroll-snap-align: start;
     }
 
-    .chat,
-    .chat-3bRxxu {
-        flex: 1 0 auto;
-    }
-
-    #friends {
-        flex: 1 0 auto;
-    }
-
-    @supports (-ms-scroll-snap-points-x: snapList(0, 240px)) {
-        .chat,
-        .chat-3bRxxu,
-        #friends {
-            width: calc(100vw - 70px);
-        }
-    }
-
-    .chat,
     .chat-3bRxxu,
     #friends {
+        flex: 1 0 auto;
+        width: calc(100vw - 70px);
         overflow: visible;
-    }
-
-    .chat > .title-wrap,
-    .title-3qD0b-,
-    #friends .friends-header {
+        contain: strict;
         scroll-snap-coordinate: calc(100% - 100vw) 0%;
         scroll-snap-align: end;
     }
 
-    .chat > .content > .flex-spacer,
     .content-yTz4x3 > .flex-spacer,
-    .chat > .content > .flex-1xMQg5 {
+    .content-yTz4x3 > .flex-1xMQg5,
+    .noChannel-Z1DQK7,
+    .activityFeed-28jde9,
+    .video-1FfuMD {
         flex: none !important;
         width: calc(100vw - 310px);
-    }
-
-    .private-channel-call,
-    .video-1FfuMD,
-    .noChannel-Z1DQK7 {
-        width: calc(100vw - 310px);
+        contain: strict;
     }
 
     .base-3dtUhz {
-        flex-shrink: 0 !important;
+        overflow: visible;
+        contain: content;
     }
 }
 
 /* fold guilds/channels */
 @media not all and (min-width: 630px) {
-    .layers > .layer > section,
     .container-2lgZY8 {
         -ms-scroll-snap-points-x: snapList(0, 310px, 550px);
     }
 
-    .chat,
     .chat-3bRxxu,
     #friends {
+        width: calc(100vw + 240px);
+    }
+
+    .content-yTz4x3 > .flex-spacer,
+    .content-yTz4x3 > .flex-1xMQg5,
+    .noChannel-Z1DQK7,
+    .activityFeed-28jde9,
+    .video-1FfuMD,
+    #friends .friends-table {
+        width: 100vw;
+        overflow: visible; /* for Safari */
+        contain: strict;
         scroll-snap-coordinate: 0% 0%;
         scroll-snap-align: start;
+        scroll-snap-stop: always;
     }
 
-    @supports (-ms-scroll-snap-points-x: snapList(0, 310px, 550px)) {
-        .chat,
-        .chat-3bRxxu,
-        #friends {
-            width: calc(100vw + 240px);
-        }
-    }
-
-    .chat > .content > .flex-spacer,
-    .content-yTz4x3 > .flex-spacer,
-    .chat > .content > .flex-1xMQg5,
-    .private-channel-call,
-    .video-1FfuMD,
-    .noChannel-Z1DQK7 {
-        width: 100vw;
-    }
-
-    .channels-wrap + .wrapper-r-6rrt {
-        flex-shrink: 0 !important;
+    #friends .friends-table {
+        width: auto;
     }
 }
 

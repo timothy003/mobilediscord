@@ -731,11 +731,10 @@ mdLocalStorage.token;
                 if (!element.closest(".guild-1EfMGQ.selected-ML3OIq ~ .dms-rcsEnV"))
                     channels = document.querySelector(".scroller-2wx7Hm, .private-channels .scroller-2FKFPG");
                 const chat = document.querySelector(
-                    ".chat .messages-wrapper," +
-                    ".messagesWrapper-3lZDfY," +
-                    ".chat > .content > .flex-1xMQg5," +
-                    ".channels-wrap + .wrapper-r-6rrt," +
+                    ".messages-3amgkR," +
+                    ".gatedContent-3-B7qB," +
                     ".noChannel-Z1DQK7 > .wrapper-r-6rrt," +
+                    ".feed-1o0xmF," +
                     "#friends .friends-table"
                 );
                 const tooltip = document.querySelector(".tooltip");
@@ -761,9 +760,9 @@ mdLocalStorage.token;
             if (element.closest(".iconSpacing-3JkGQO, .private-channels .channel .close"))
                 return;
             const chat = document.querySelector(
-                ".chat .messages-wrapper," +
-                ".messagesWrapper-3lZDfY," +
-                ".chat > .content > .flex-1xMQg5," +
+                ".messages-3amgkR," +
+                ".gatedContent-3-B7qB," +
+                ".feed-1o0xmF," +
                 "#friends .friends-table"
             );
             if (!element.closest(".wrapperSelectedText-3dSUjC, .private-channels .channel.selected"))
@@ -833,9 +832,9 @@ mdLocalStorage.token;
             if (element.closest(".iconSpacing-3JkGQO, .private-channels .channel .close"))
                 return;
             const chat = document.querySelector(
-                ".chat .messages-wrapper," +
-                ".messagesWrapper-3lZDfY," +
-                ".chat > .content > .flex-1xMQg5," +
+                ".content-yTz4x3 > .flex-spacer," +
+                ".content-yTz4x3 > .flex-1xMQg5," +
+                ".activityFeed-28jde9," +
                 "#friends .friends-table"
             );
             chat.scrollIntoView({ behavior: "smooth" });
