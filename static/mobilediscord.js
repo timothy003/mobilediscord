@@ -852,7 +852,7 @@ mdLocalStorage.token;
         window.addEventListener("contextmenu", event => {
             if (event.defaultPrevented)
                 return;
-            const message = event.target.closest(".message-1PNnaP");
+            const message = event.target.closest(".message-1PNnaP, .content-3dzVd8");
             if (message) {
                 const menu = new Windows.UI.Popups.PopupMenu();
                 const addCommand = (label, action) => {
