@@ -310,37 +310,14 @@
 }
 
 /* embed */
-.embed {
-    width: auto !important;
-    min-width: 1px;
-}
 
-.embed .embed-content .embed-content-inner {
-    min-width: 1px;
-}
-
-/* TODO: wrap thumbnail */
-.embed.embed-link {
-    padding: 3px 2px;
-    flex-wrap: wrap;
-}
-
-.embed.embed-link .embed-inner {
-    /*flex-basis: auto;*/
-    min-width: 1px;
-    margin: 5px 8px !important;
-}
-
-.embed.embed-link .embed-thumbnail {
-    margin: 5px 8px !important;
-}
-
-.embed.embed-tweet .embed-inner > * {
-    max-width: 100%;
+.embed-IeVjo6 {
+    align-self: stretch;
 }
 
 /* Spotify */
-.embed > iframe {
+.container-1e22Ot > div:not([class]),
+.container-1e22Ot > div:not([class]) > iframe {
     max-width: 100%;
 }
 
@@ -348,27 +325,15 @@
     z-index: 0;
 }
 
-.embedContent-3fnYWm {
-    align-items: flex-start;
-}
-
-.embedProvider-3k5pfl,
-.embed .embed-provider {
+.embedProvider-3k5pfl {
     max-width: 100%;
 }
 
-.embedAuthorName-3mnTWj,
-.embed .embed-author-name {
-    max-width: 100%;
+.embedAuthorName-3mnTWj {
     min-width: 1px;
 }
 
-.embed .embed-footer {
-    max-width: 100%;
-}
-
-.embedTitle-3OXDkz,
-.embed .embed-title {
+.embedTitle-3OXDkz {
     max-width: 100%;
 }
 
