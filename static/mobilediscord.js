@@ -866,9 +866,9 @@ mdLocalStorage.token;
                     addCommand(strings.COPY, command => {
                         copyTextToClipboard(document.getSelection());
                     });
-                if (message.querySelector(".btn-reaction"))
+                if (message.querySelector(".reactionBtn-2na4rd"))
                     addCommand(strings.ADD_REACTION, command => {
-                        const btn = message.querySelector(".btn-reaction");
+                        const btn = message.querySelector(".reactionBtn-2na4rd");
                         btn.click();
                     });
                 const btn = message.querySelector(".button-3Jq0g9");
