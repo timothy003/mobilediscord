@@ -197,27 +197,8 @@
 }
 
 /* chat */
-.chat > .title-wrap > .title {
-    flex-shrink: 1;
-}
-
-.chat > .title-wrap > .title .channel-name {
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-}
-
-.chat > .title-wrap > .topic {
-    width: 24px; /* intrinsic size */
-    min-width: 24px;
-    padding-top: 13px;
-    padding-right: 12px;
-    padding-bottom: 13px;
-    top: auto;
-}
 
 .topic-2QX7LI {
-    width: 36px; /* intrinsic size */
     min-width: 36px;
     padding-top: 14px;
     padding-right: 12px;
@@ -226,7 +207,6 @@
     top: auto;
 }
 
-.chat > .title-wrap > .topic::before,
 .topic-2QX7LI::before {
     top: auto;
 }
@@ -1038,32 +1018,32 @@ form.deprecated.auth-form {
 }
 
 /* messages */
-.chat .empty-message {
+.default-1VPH9n {
     margin-right: 6px;
     word-wrap: break-word;
 }
 
 @media not all and (min-width: 1000px) {
-    .chat .empty-message {
-        background-size: 192px 80px, 0 !important;
+    .base-34jWEe {
+        background-size: 192px 80px, 0;
     }
 }
 
-.chat .welcome-message {
+.welcomeMessage-3_Mcht {
     padding-right: 6px;
 }
 
-.chat .welcome-message h1 {
-    line-height: 24px;
+.app .welcomeMessage-3_Mcht h1 {
+    line-height: normal;
     margin-top: 7px;
     margin-bottom: 22px;
 }
 
-.chat .welcome-message .item-container .icon {
-    flex-shrink: 0;
+.icon-2shpbb {
+    flex: none;
 }
 
-.chat .welcome-message p {
+.welcomeMessage-3_Mcht p {
     width: auto;
     max-width: 334px;
 }
