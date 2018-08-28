@@ -469,7 +469,12 @@
 }
 
 /* system message */
-.system-message .system-message-content {
+
+.container-3-pyIM {
+    padding-right: 0;
+}
+
+.content-2M3n_H {
     min-width: 1px;
 }
 
