@@ -1082,23 +1082,19 @@ form.deprecated.auth-form {
 } 
 
 /* messages popout */
-.messages-popout-wrap,
 .messagesPopoutWrap-1MQ1bW {
     max-width: 100%;
 }
 
-.messages-popout,
 .messagesPopout-24nkyi {
     border-radius: 0; /* for performance */
     padding-right: 19px !important;
 }
 
-.messages-popout .message-group .action-buttons .jump-button .loading,
 .actionButtons-1sUUug .jumpButton-3DTcS_ .loading-2bJK5L {
     display: none; /* high CPU usage on Edge */
 }
 
-.messages-popout .message-group .action-buttons .jump-button .loading.visible,
 .actionButtons-1sUUug .jumpButton-3DTcS_ .loading-2bJK5L.visible-1PE5Ym {
     display: flex;
 }
