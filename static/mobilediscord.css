@@ -1056,15 +1056,11 @@ form.deprecated.auth-form {
     }
 }
 
-.message-group .accessory {
-    align-items: stretch;
-}
-
-.message-group .comment .markup pre {
+.markup-2BOw-j pre {
     max-width: none;
 }
 
-.message-group .comment .markup pre code {
+.markup-2BOw-j .hljs {
     overflow-x: visible;
 }
  
