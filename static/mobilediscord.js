@@ -729,7 +729,7 @@ mdLocalStorage.token;
                 if (!element.closest(".guild-1EfMGQ.selected-ML3OIq ~ .dms-rcsEnV"))
                     channels = document.querySelector(".scroller-2wx7Hm, .private-channels .scroller-2FKFPG");
                 const chat = document.querySelector(
-                    ".messages-3amgkR," +
+                    ".messagesWrapper-3lZDfY," +
                     ".gatedContent-3-B7qB," +
                     ".noChannel-Z1DQK7 > .wrapper-r-6rrt," +
                     ".feed-1o0xmF," +
@@ -758,7 +758,7 @@ mdLocalStorage.token;
             if (element.closest(".iconSpacing-3JkGQO, .private-channels .channel .close"))
                 return;
             const chat = document.querySelector(
-                ".messages-3amgkR," +
+                ".messagesWrapper-3lZDfY," +
                 ".gatedContent-3-B7qB," +
                 ".feed-1o0xmF," +
                 "#friends .friends-table"
