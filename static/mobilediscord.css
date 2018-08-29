@@ -999,6 +999,11 @@ form.deprecated.auth-form {
 }
 
 /* guilds */
+
+.guildsWrapper-5TJh6A {
+    border-radius: 0;
+}
+
 .md-app .downloadAppButton-3EFlA6 {
     display: none;
 }
