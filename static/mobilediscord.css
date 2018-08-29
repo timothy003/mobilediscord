@@ -198,6 +198,13 @@
 
 /* chat */
 
+.content-yTz4x3 > .flex-spacer,
+.content-yTz4x3 > .flex-1xMQg5 {
+    flex: auto;
+    width: 418px;
+    min-width: 1px;
+}
+
 .topic-2QX7LI {
     min-width: 36px;
     padding-top: 14px;
@@ -1404,9 +1411,7 @@ form.deprecated.auth-form {
     .noChannel-Z1DQK7,
     .activityFeed-28jde9,
     .video-1FfuMD {
-        flex: none !important;
-        width: calc(100vw - 310px);
-        contain: strict;
+        max-width: calc(100vw - 310px);
     }
 
     .base-3dtUhz {
@@ -1426,22 +1431,28 @@ form.deprecated.auth-form {
         width: calc(100vw + 240px);
     }
 
+    .noChannel-Z1DQK7,
+    .activityFeed-28jde9 {
+        flex: 1 0 auto;
+        width: 100vw;
+    }
+
     .content-yTz4x3 > .flex-spacer,
     .content-yTz4x3 > .flex-1xMQg5,
     .noChannel-Z1DQK7,
     .activityFeed-28jde9,
     .video-1FfuMD,
     #friends .friends-table {
-        width: 100vw;
+        max-width: 100vw;
         overflow: visible; /* for Safari */
-        contain: strict;
+        contain: content;
         scroll-snap-coordinate: 0% 0%;
         scroll-snap-align: start;
         scroll-snap-stop: always;
     }
 
     #friends .friends-table {
-        width: auto;
+        max-width: none;
     }
 }
 
