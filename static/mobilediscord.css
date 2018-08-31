@@ -624,6 +624,10 @@
 }
 
 @media not all and (min-width: 1037px) {
+    .ui-standard-sidebar-view .content-region-scroller .tools {
+        position: static;
+    }
+
     .ui-standard-sidebar-view .tools-container {
         position: fixed;
         right: 0;
