@@ -727,7 +727,7 @@ mdLocalStorage.token;
             if (!element.closest(".guild-1EfMGQ.selected-ML3OIq")) {
                 let channels = null;
                 if (!element.closest(".guild-1EfMGQ.selected-ML3OIq ~ .dms-rcsEnV"))
-                    channels = document.querySelector(".scroller-2wx7Hm, .private-channels .scroller-2FKFPG");
+                    channels = document.querySelector(".scroller-2wx7Hm, .privateChannels-1nO12o .scroller-2FKFPG");
                 const chat = document.querySelector(
                     ".messagesWrapper-3lZDfY," +
                     ".gatedContent-3-B7qB," +
@@ -753,9 +753,9 @@ mdLocalStorage.token;
             ".wrapperMutedText-1YBpvv," +
             ".wrapperSelectedText-3dSUjC," +
             ".wrapperUnreadText-2zuiuD," +
-            ".private-channels .channel a"
+            ".channel-2QD9_O a"
         )) {
-            if (element.closest(".iconSpacing-3JkGQO, .private-channels .channel .close"))
+            if (element.closest(".iconSpacing-3JkGQO, .close-3hZ5Ni"))
                 return;
             const chat = document.querySelector(
                 ".messagesWrapper-3lZDfY," +
@@ -763,7 +763,7 @@ mdLocalStorage.token;
                 ".feed-1o0xmF," +
                 "#friends .friends-table"
             );
-            if (!element.closest(".wrapperSelectedText-3dSUjC, .private-channels .channel.selected"))
+            if (!element.closest(".wrapperSelectedText-3dSUjC, .channel-2QD9_O.selected-1HYmZZ"))
                 animateNavigation(event, [chat, { animation: "md-fade-out .1s ease-in forwards" }]);
             return;
         }
@@ -817,14 +817,14 @@ mdLocalStorage.token;
             ".wrapperSelectedText-3dSUjC," +
             ".wrapperUnreadText-2zuiuD," +
             ".dms-rcsEnV a," +
-            ".private-channels .channel a," +
+            ".channel-2QD9_O a," +
             ".channelName-3kBz6H," +
             ".actionButtons-1sUUug .jumpButton-3DTcS_," +
             ".messageGroupWrapper-o-Zw7G .clickOverride-1J40_l," +
             ".search-results-wrap .channel-separator .channel-name," +
             ".search-results-wrap .action-buttons .jump-button"
         )) {
-            if (element.closest(".iconSpacing-3JkGQO, .private-channels .channel .close"))
+            if (element.closest(".iconSpacing-3JkGQO, .close-3hZ5Ni"))
                 return;
             const chat = document.querySelector(
                 ".content-yTz4x3 > .flex-spacer," +

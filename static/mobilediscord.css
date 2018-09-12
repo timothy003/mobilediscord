@@ -236,7 +236,7 @@
 .noChannel-Z1DQK7 > .wrapper-r-6rrt,
 .feed-1o0xmF,
 #friends .friends-table,
-.private-channels .scroller-2FKFPG {
+.privateChannels-1nO12o .scroller-2FKFPG {
     position: relative;
     z-index: 0;
     animation: md-fade-in .1s ease-out;
@@ -1469,7 +1469,7 @@ form.deprecated.auth-form {
 @media (any-hover: none) {
     .tooltip,
     .iconSpacing-3JkGQO,
-    .private-channels .channel:hover .close {
+    .channel-2QD9_O:hover .close-3hZ5Ni {
         display: none;
     }
 }
