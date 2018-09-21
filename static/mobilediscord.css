@@ -1462,6 +1462,7 @@ form.deprecated.auth-form {
 
     #friends .friends-table {
         max-width: none;
+        min-height: 1px;
     }
 }
 
