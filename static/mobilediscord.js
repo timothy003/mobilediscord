@@ -804,7 +804,7 @@ mdLocalStorage.token;
         const element = event.target;
         // scroll to content when tapping a settings tab
         if (element.closest(".side-8zPYf6 .item-PXvHYJ.selected-3s45Ha")) {
-            const content = document.querySelector(".ui-standard-sidebar-view .content-region");
+            const content = document.querySelector(".contentRegion-3nDuYy");
             content.scrollIntoView({ behavior: "smooth" });
             return;
         }
