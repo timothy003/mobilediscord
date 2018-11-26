@@ -22,7 +22,9 @@
     // use desktop UA strings to enable WebRTC
     let isSafari = false;
     let ua = navigator.userAgent;
-    if (/\bOPR\b/.test(ua))
+    if (/\bEdge\b/.test(ua))
+        ;
+    else if (/\bOPR\b/.test(ua))
         ua = ua.replace(/ Mobile\b/, "");
     else if (/\bChrome\b/.test(ua))
         ua = ua.replace(/.*?\b(AppleWebKit\/[^ ]+).*?\b(Chrome\/[^ ]+).*?\b(Safari\/[^ ]+).*/, "$1 $2 $3");
