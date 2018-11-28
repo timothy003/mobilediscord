@@ -804,7 +804,7 @@ mdLocalStorage.token;
         if (event.button !== 0)
             return;
         const element = event.target;
-        // scroll to content when tapping a settings tab
+        // scroll to content when tapping a sidebar item
         if (element.closest(".side-8zPYf6 .item-PXvHYJ.selected-3s45Ha")) {
             const content = document.querySelector(".contentRegion-3nDuYy");
             content.scrollIntoView({ behavior: "smooth" });
