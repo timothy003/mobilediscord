@@ -365,27 +365,17 @@
 }
 
 /* help */
-.need-help-modal.deprecated .header {
+
+.need-help-modal.form.deprecated .header,
+.need-help-modal.form.deprecated .footer {
     flex: none; /* for Safari */
 }
 
-.need-help-modal.deprecated .header input[type=text] {
+.need-help-modal.form.deprecated .header input[type=text] {
     align-self: stretch;
     margin-left: 30px !important;
     margin-right: 30px !important;
     width: auto;
-}
-
-.need-help-modal.deprecated .form-inner {
-    min-height: auto;
-    overflow: auto;
-    justify-content: flex-start !important;
-    -webkit-overflow-scrolling: touch;
-    contain: content;
-}
-
-.need-help-modal.deprecated .footer {
-    flex: none;
 }
 
 /* user agreements modal */
