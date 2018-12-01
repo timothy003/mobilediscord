@@ -52,6 +52,22 @@
     padding-right: 8px;
 }
 
+/* login */
+
+.wrapper-3Q5DdO {
+    overflow-x: hidden;
+    overflow-y: auto;
+    z-index: 1;
+}
+
+@media (max-width: 485px) {
+    /* background shows through scrollbar */
+    .rightSplit-2US0xy,
+    .canvas-3XuBXe {
+        display: none;
+    }
+}
+
 /* modal */
 .modal-3HD5ck {
     max-width: 100%;
