@@ -197,6 +197,12 @@
     filter: none;
 }
 
+/* tooltips */
+
+.tooltips {
+    position: static; /* hide element to avoid slow scrolling in Chrome */
+}
+
 /* channels */
 .inner-btChU7 .channel-SEolQq {
     line-height: 1.4;
@@ -442,13 +448,15 @@
 }
 
 .emojiPicker-3m1S-j .dimmer-3iH-5D {
-    /* fix accelerated scrolling on Chrome */
+    /* hide element to avoid slow scrolling in Chrome */
     background-color: hsla(0,0%,100%,.6);
+    visibility: hidden;
     opacity: 0;
-    transition: opacity .15s ease-in-out;
+    transition-property: visibility, opacity;
 }
 
 .emojiPicker-3m1S-j .dimmer-3iH-5D.visible-3k45bQ {
+    visibility: visible;
     opacity: 1;
 }
 
