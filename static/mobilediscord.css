@@ -581,23 +581,34 @@
 
 .closeButton-1tv5uR {
     pointer-events: auto;
-    box-shadow: 0px 3px 1px 0px rgba(0,0,0,0.05), 0px 2px 2px 0px rgba(0,0,0,0.1), 0px 3px 3px 0px rgba(0,0,0,0.05);
-}
-
-.closeButton-1tv5uR:active {
-    box-shadow: none;
 }
 
 .theme-light .closeButton-1tv5uR {
     background-color: #fff;
+    /* .lightElevationLow-3_Ybxi */
+    box-shadow: 0 1px 5px rgba(0,0,0,.2);
+}
+
+.theme-light .closeButton-1tv5uR:hover {
+    /* .lightElevationHigh-3usmGv */
+    box-shadow: 0 2px 10px 0 rgba(0,0,0,.1);
 }
 
 .theme-dark .closeButton-1tv5uR {
     background-color: #36393f;
+    /* .darkElevationLow-DABD7i */
+    box-shadow: 0 1px 5px 0 rgba(0,0,0,.3);
 }
 
 .theme-dark .closeButton-1tv5uR:hover {
     background-color: #484B52;
+    /* .darkElevationHigh-6iWpWi */
+    box-shadow: 0 2px 10px 0 rgba(0,0,0,.2);
+}
+
+.theme-light .closeButton-1tv5uR:active,
+.theme-dark .closeButton-1tv5uR:active {
+    box-shadow: none;
 }
 
 /* reduce margins (226 + 740 + 36 + 35) */
