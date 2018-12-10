@@ -934,60 +934,6 @@ body {
     position: fixed;
 }
 
-/* login */
-.auth-center {
-    flex-direction: column;
-}
-
-form.deprecated.auth-form {
-    overflow: auto;
-}
-
-@media (max-width: 628px) {
-    .auth-center {
-        align-items: stretch;
-    }
-
-    .auth-inner {
-        flex: 1;
-        flex-direction: column;
-        flex-wrap: nowrap;
-        overflow: auto;
-        border-radius: 0;
-    }
-
-    .auth-inner .auth-brand {
-        width: auto;
-    }
-
-    form.deprecated.auth-form {
-        width: auto;
-        height: auto;
-        padding: 16px;
-        flex: 1;
-        overflow: visible;
-        min-width: 1px;
-    }
-
-    form.deprecated.auth-form p.token-tip {
-        width: auto;
-    }
-
-    form.auth-form input {
-        width: 100% !important;
-    }
-}
-
-@media not all and (min-width: 1068px) {
-    .invite-marketing-wrapper .auth-center {
-        padding-left: 0;
-    }
-
-    .invite-marketing {
-        display: none;
-    }
-}
-
 /* guilds */
 
 .guildsWrapper-5TJh6A {
