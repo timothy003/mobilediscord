@@ -907,7 +907,7 @@
 
 .modal-1UGdnR {
     position: absolute;
-    contain: layout style; /* HACK: allow modals to overflow */
+    contain: style; /* allow modals to overflow */
 }
 
 .inner-1JeGVc {
