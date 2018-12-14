@@ -559,7 +559,7 @@
     align-items: stretch;
 }
 
-.contentRegionScroller-26nc1e {
+.contentRegionScrollerWrap-3YZXdm > .contentRegionScroller-26nc1e {
     contain: none;
 }
 
@@ -568,6 +568,12 @@
     width: 1px;
     min-width: 1px;
     min-height: auto;
+}
+
+.contentColumnDefault-1VQkGM,
+.sidebarScrollable-1qPI87 + .content-1rPSz4 {
+    z-index: 0;
+    contain: layout;
 }
 
 .customContainer-1RHXqt {
@@ -684,7 +690,6 @@
         padding-top: 12px;
         margin-right: 20px !important;
         width: auto;
-        z-index: 100;
     }
 
     .keybind-KpFkfr {
