@@ -120,7 +120,7 @@
                     return;
                 if ((() => {
                     if (document.querySelector(".contextMenu-HLZMGh")) {
-                        document.dispatchEvent(new MouseEvent("mousedown"));
+                        document.body.click();
                         return true;
                     }
                     const activeElement = document.activeElement;
