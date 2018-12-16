@@ -688,6 +688,7 @@
         padding-top: 12px;
         margin-right: 20px !important;
         width: auto;
+        z-index: 100;
     }
 
     .keybind-KpFkfr {
@@ -808,7 +809,7 @@
 
 /* roles settings */
 .sidebarScrollable-1qPI87 {
-    display: flex;
+    z-index: 1;
 }
 
 /* user profile */
