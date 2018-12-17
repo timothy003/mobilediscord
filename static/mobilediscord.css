@@ -849,10 +849,7 @@
 
 .header-QKLPzZ {
     flex-wrap: wrap;
-}
-
-.headerInfo-30uryT + .button-38aScr {
-    margin-left: auto;
+    justify-content: flex-end;
 }
 
 .tabBarContainer-1s1u-z {
