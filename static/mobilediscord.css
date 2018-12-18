@@ -31,11 +31,14 @@
 }
 
 /* scroller */
-.scrollerWrap-2lJEkd {
+
+.scrollerWrap-2lJEkd,
+.scroller-wrap {
     z-index: 0;
 }
 
-.scroller-2FKFPG {
+.scroller-2FKFPG,
+.scroller-wrap .scroller {
     padding-right: 14px;
     overflow-x: hidden;
     overflow-y: auto;
@@ -111,17 +114,6 @@
     box-sizing: content-box;
     padding: 7px 9px;
     margin: -7px -9px;
-}
-
-/* old scroller */
-.scroller-wrap .scroller {
-    padding-right: 14px;
-    overflow-x: hidden;
-    overflow-y: auto;
-    overflow-y: overlay;
-    -ms-overflow-style: -ms-autohiding-scrollbar;
-    -webkit-overflow-scrolling: touch;
-    contain: content;
 }
 
 /* spinner */
