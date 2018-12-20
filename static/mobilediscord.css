@@ -804,6 +804,12 @@
     z-index: 1;
 }
 
+.sidebarScrollable-1qPI87 + .content-1rPSz4 {
+    min-width: 1px;
+    max-width: none;
+    padding-right: 0 !important;
+}
+
 /* user profile */
 #user-profile-modal {
     overflow: visible;
