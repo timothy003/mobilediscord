@@ -245,14 +245,13 @@
     };
 
     // Element.prototype.scrollIntoView
-    Element.prototype.scrollIntoView = function() {
+    Element.prototype.scrollIntoView = function scrollIntoView(arg = undefined) {
       // avoid smooth behavior if not required
-      if (shouldBailOut(arguments[0])) {
-        original.scrollIntoView.call(this, arguments[0] || true);
-        return;
-      }
+      if (shouldBailOut(arg))
+        return original.scrollIntoView.apply(this, arguments);
 
       // LET THE SMOOTHNESS BEGIN!
+      const { block = "start", inline = "nearest" } = arg;
       var scrollableParent = this;
       var clientRects = this.getBoundingClientRect();
       while (scrollableParent = findScrollableParent(scrollableParent)) {
@@ -270,41 +269,70 @@
           parentRects = scrollableParent.getBoundingClientRect();
 
         let left = 0, top = 0;
-        if (clientRects.left > parentRects.left || clientRects.right < parentRects.right)
-          if (clientRects.left < parentRects.left && clientRects.width <= parentRects.width || clientRects.right > parentRects.right && clientRects.width >= parentRects.width)
+        switch (inline) {
+          case "start":
             left = clientRects.left - parentRects.left;
-          else if (clientRects.left < parentRects.left && clientRects.width >= parentRects.width || clientRects.right > parentRects.right && clientRects.width <= parentRects.width)
+            break;
+          case "end":
             left = clientRects.right - parentRects.right;
-        if (clientRects.top > parentRects.top || clientRects.bottom < parentRects.bottom)
-          if (clientRects.top < parentRects.top && clientRects.height <= parentRects.height || clientRects.bottom > parentRects.bottom && clientRects.height >= parentRects.height)
-            top = clientRects.top - parentRects.top;
-          else if (clientRects.top < parentRects.top && clientRects.height >= parentRects.height || clientRects.bottom > parentRects.bottom && clientRects.height <= parentRects.height)
-            top = clientRects.bottom - parentRects.bottom;
-        if (left || top) {
-          if (scrollableParent !== d.body)
-            // reveal element inside parent
-            smoothScroll.call(
-              this,
-              scrollableParent,
-              scrollableParent.scrollLeft + left,
-              scrollableParent.scrollTop + top
-            );
-          else
-            // reveal element in viewport
-            w.scrollBy({
-              left,
-              top,
-              behavior: 'smooth'
-            });
-          clientRects = {
-            width: clientRects.width,
-            height: clientRects.height,
-            top: clientRects.top - top,
-            right: clientRects.right - left,
-            bottom: clientRects.bottom - top,
-            left: clientRects.left - left
-          };
+            break;
+          case "center":
+            left = clientRects.left + clientRects.width / 2 - (parentRects.left + parentRects.width / 2);
+            break;
+          default:
+            if (clientRects.left <= parentRects.left && clientRects.right >= parentRects.right)
+              ;
+            else if (clientRects.left < parentRects.left && clientRects.width <= parentRects.width || clientRects.right > parentRects.right && clientRects.width >= parentRects.width)
+              left = clientRects.left - parentRects.left;
+            else if (clientRects.left < parentRects.left && clientRects.width >= parentRects.width || clientRects.right > parentRects.right && clientRects.width <= parentRects.width)
+              left = clientRects.right - parentRects.right;
+            break;
         }
+        switch (block) {
+          case "start":
+            top = clientRects.top - parentRects.top;
+            break;
+          case "end":
+            top = clientRects.bottom - parentRects.bottom;
+            break;
+          case "center":
+            top = clientRects.top + clientRects.height / 2 - (parentRects.top + parentRects.height / 2);
+            break;
+          default:
+            if (clientRects.top <= parentRects.top && clientRects.bottom >= parentRects.bottom)
+              ;
+            else if (clientRects.top < parentRects.top && clientRects.height <= parentRects.height || clientRects.bottom > parentRects.bottom && clientRects.height >= parentRects.height)
+              top = clientRects.top - parentRects.top;
+            else if (clientRects.top < parentRects.top && clientRects.height >= parentRects.height || clientRects.bottom > parentRects.bottom && clientRects.height <= parentRects.height)
+              top = clientRects.bottom - parentRects.bottom;
+            break;
+        }
+        let clientWidth, clientHeight;
+        if (scrollableParent === d.body) {
+          scrollableParent = d.scrollingElement;
+          clientWidth = d.documentElement.clientWidth;
+          clientHeight = d.documentElement.clientHeight;
+        } else {
+          clientWidth = scrollableParent.clientWidth;
+          clientHeight = scrollableParent.clientHeight;
+        }
+        const scrollLeft = scrollableParent.scrollLeft;
+        const scrollTop = scrollableParent.scrollTop;
+        const x = Math.max(0, Math.min(scrollLeft + left, scrollableParent.scrollWidth - clientWidth));
+        const y = Math.max(0, Math.min(scrollTop + top, scrollableParent.scrollHeight - clientHeight));
+        if (x == scrollLeft && y == scrollTop)
+          continue;
+
+        smoothScroll(scrollableParent, x, y);
+
+        clientRects = {
+          width: clientRects.width,
+          height: clientRects.height,
+          top: clientRects.top - (y - scrollTop),
+          right: clientRects.right - (x - scrollLeft),
+          bottom: clientRects.bottom - (y - scrollTop),
+          left: clientRects.left - (x - scrollLeft)
+        };
       }
     };
   }

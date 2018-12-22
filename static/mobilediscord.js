@@ -682,8 +682,17 @@ mdLocalStorage.token;
             return origGetUserMedia.apply(this, arguments);
         };
     }
-    // make video call focusable
+
     window.addEventListener("mousedown", event => {
+        if (!event.isTrusted)
+            return;
+
+        // sidebar item: supress mousedown
+        if (event.target.closest(".item-PXvHYJ"))
+            event.stopImmediatePropagation();
+    }, true);
+    window.addEventListener("mousedown", event => {
+        // make video call focusable
         const videoWrapper = event.target.closest(".videoWrapper-2wbLD-, .overlay-1NmNEg");
         if (videoWrapper)
             videoWrapper.tabIndex = -1;
@@ -804,12 +813,24 @@ mdLocalStorage.token;
         if (event.button !== 0)
             return;
         const element = event.target;
-        // scroll to content when tapping a sidebar item
-        if (element.closest(".side-8zPYf6 .item-PXvHYJ.selected-3s45Ha")) {
-            const content = document.querySelector(".contentRegion-3nDuYy");
-            content.scrollIntoView({ behavior: "smooth" });
+
+        // sidebar item: activate and scroll to content
+        const item = element.closest(".item-PXvHYJ");
+        if (item) {
+            const isSidebarScrollable = item.matches(".sidebarScrollable-1qPI87 .item-PXvHYJ");
+            element.dispatchEvent(new MouseEvent("mousedown", event));
+            element.dispatchEvent(new MouseEvent("mouseup", event));
+            if (isSidebarScrollable) {
+                // items are removed on selection
+                if (!document.contains(item) || item.matches(".itemSelected-1qLhcL"))
+                    document.querySelector(".contentRegionScrollerWrap-3YZXdm").scrollIntoView({ behavior: "smooth", inline: "end" });
+            } else {
+                if (item.matches(".itemSelected-1qLhcL"))
+                    document.querySelector(".contentRegion-3nDuYy").scrollIntoView({ behavior: "smooth", inline: "start" });
+            }
             return;
         }
+
         // scroll to chat when tapping a channel or jump button
         if (element.closest(
             ".wrapperDefaultText-2IWcE8," +
