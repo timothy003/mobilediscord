@@ -688,8 +688,9 @@
     }
 }
 
-/* overflow minimal column (226 + 232 + 240) */
-@media not all and (min-width: 698px) {
+/* overflow minimal column (226 + 232 + 308) */
+/* 308 = text channel permissions in Swedish */
+@media not all and (min-width: 766px) {
     .standardSidebarView-3F1I7i {
         overflow-x: auto;
         overflow-y: hidden;
@@ -731,8 +732,8 @@
     }
 }
 
-/* overflow minimal column content (232 + 240) */
-@media not all and (min-width: 472px) {
+/* overflow minimal column content (232 + 308) */
+@media not all and (min-width: 540px) {
     .contentRegionScrollerWrap-3YZXdm {
         scroll-snap-coordinate: calc(100% - 100vw) 0%;
         scroll-snap-align: end;
