@@ -44,7 +44,6 @@
     overflow-y: auto;
     overflow-y: overlay;
     -ms-overflow-style: -ms-autohiding-scrollbar;
-    -webkit-overflow-scrolling: touch;
     contain: content;
 }
 
@@ -699,7 +698,6 @@
         scroll-snap-type: x mandatory;
         -ms-scroll-snap-points-x: snapList(0, 226px, 458px);
         /*-ms-overflow-style: none;*/
-        -webkit-overflow-scrolling: touch;
     }
 
     .sidebarRegion-VFTUkN {
@@ -894,7 +892,6 @@
     z-index: 1000;
     overflow: auto;
     -ms-content-zooming: zoom;
-    -webkit-overflow-scrolling: touch;
 }
 
 .popouts + .theme-dark:empty,
@@ -923,6 +920,7 @@ a, abbr, acronym, address, applet, big, blockquote, body, caption, cite, code, d
 }
 
 body {
+    -webkit-overflow-scrolling: touch;
     -webkit-touch-callout: none;
     -ms-scroll-translation: vertical-to-horizontal;
     -ms-content-zooming: none;
@@ -1331,7 +1329,6 @@ body {
         scroll-snap-type: x mandatory;
         -ms-scroll-snap-points-x: snapList(0, 240px);
         -ms-overflow-style: none;
-        -webkit-overflow-scrolling: touch;
         contain: content;
     }
 
