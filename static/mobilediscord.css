@@ -400,34 +400,9 @@
 }
 
 /* ChannelTextArea */
-.attachButton-1UjEWA {
-    height: auto;
-    margin: 0;
-    padding: 10px;
-}
-
-.attachButtonDivider-3Glu60 {
-    margin-right: 0;
-    margin-left: 0;
-}
 
 .textArea-2Spzkt {
-    border: 2px solid transparent;
-    margin: 0;
-    padding-right: 54px;
-    padding-left: 10px;
     min-width: 1px;
-}
-
-.textAreaDisabled-2_o-kZ {
-    padding-right: 10px;
-}
-
-.emojiButton-2wRZts {
-    top: 0;
-    right: 0;
-    bottom: 0;
-    padding: 11px;
 }
 
 /* emoji picker */
