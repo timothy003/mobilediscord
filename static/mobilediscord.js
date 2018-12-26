@@ -741,7 +741,7 @@ mdLocalStorage.token;
                     channels = document.querySelector(".scroller-2wx7Hm, .privateChannels-1nO12o .scroller-2FKFPG");
                 const chat = document.querySelector(
                     ".messagesWrapper-3lZDfY," +
-                    ".gatedContent-3-B7qB," +
+                    ".content-yTz4x3 > .scroller-wrap," +
                     ".noChannel-Z1DQK7 > .wrapper-r-6rrt," +
                     ".feed-1o0xmF," +
                     "#friends .friends-table"
@@ -770,7 +770,7 @@ mdLocalStorage.token;
                 return;
             const chat = document.querySelector(
                 ".messagesWrapper-3lZDfY," +
-                ".gatedContent-3-B7qB," +
+                ".content-yTz4x3 > .scroller-wrap," +
                 ".feed-1o0xmF," +
                 "#friends .friends-table"
             );
@@ -851,7 +851,7 @@ mdLocalStorage.token;
                 return;
             const chat = document.querySelector(
                 ".content-yTz4x3 > .flex-spacer," +
-                ".content-yTz4x3 > .flex-1xMQg5," +
+                ".content-yTz4x3 > .scroller-wrap," +
                 ".activityFeed-28jde9," +
                 "#friends .friends-table"
             );

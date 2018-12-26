@@ -210,7 +210,7 @@
 /* chat */
 
 .content-yTz4x3 > .flex-spacer,
-.content-yTz4x3 > .flex-1xMQg5 {
+.content-yTz4x3 > .scroller-wrap {
     flex: auto;
     width: 418px;
     min-width: 1px;
@@ -243,7 +243,7 @@
 
 .scroller-2wx7Hm,
 .messagesWrapper-3lZDfY,
-.gatedContent-3-B7qB,
+.content-yTz4x3 > .scroller-wrap,
 .noChannel-Z1DQK7 > .wrapper-r-6rrt,
 .feed-1o0xmF,
 #friends .friends-table,
@@ -1092,14 +1092,6 @@ body {
     height: auto; /* for bottom margin */
 }
 
-/* nsfw */
-.gatedContent-3-B7qB {
-    width: auto;
-    height: auto;
-    min-width: 1px;
-    padding: 20px;
-}
-
 /* no-channel */
 
 .noChannel-Z1DQK7 {
@@ -1323,7 +1315,7 @@ body {
     }
 
     .content-yTz4x3 > .flex-spacer,
-    .content-yTz4x3 > .flex-1xMQg5,
+    .content-yTz4x3 > .scroller-wrap,
     .noChannel-Z1DQK7,
     .activityFeed-28jde9,
     .video-1FfuMD {
@@ -1354,7 +1346,7 @@ body {
     }
 
     .content-yTz4x3 > .flex-spacer,
-    .content-yTz4x3 > .flex-1xMQg5,
+    .content-yTz4x3 > .scroller-wrap,
     .noChannel-Z1DQK7,
     .activityFeed-28jde9,
     .video-1FfuMD,
