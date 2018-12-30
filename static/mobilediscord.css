@@ -209,6 +209,11 @@
 
 /* chat */
 
+.content-yTz4x3 {
+    /* avoid content sizing - Edge sometimes computes weird fractional heights for long member lists (>600000px) */
+    flex-basis: 0;
+}
+
 .content-yTz4x3 > .flex-spacer,
 .content-yTz4x3 > .scroller-wrap {
     flex: auto;
