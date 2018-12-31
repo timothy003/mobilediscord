@@ -134,6 +134,7 @@
 /* dropdown menu */
 .Select-menu {
     -ms-scroll-chaining: none;
+    overscroll-behavior: contain;
 }
 
 /* slider */
@@ -432,6 +433,13 @@
 
 .emojiPicker-3m1S-j .header-1nkwgG {
     position: relative; /* fix z-index */
+}
+
+/* autocompletes */
+
+.horizontalAutocompletes-x8hlrn {
+    -ms-scroll-chaining: none;
+    overscroll-behavior: contain;
 }
 
 /* video player */
