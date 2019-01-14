@@ -15,7 +15,7 @@
 .messagesPopout-24nkyi,
 .theme-light .messages-3amgkR,
 .theme-light .scroller-aV2LkH,
-#friends .scroller,
+.friendsTable-133bsv .friendsTableBody-1ZhKif,
 .theme-dark .inner-3wn6Q5.slideBody-35BNbg,
 .theme-light .body-3ND3kc .scroller-2FKFPG,
 .theme-light .note-QfFU8y textarea,
@@ -66,7 +66,7 @@
 .theme-dark .feed-1o0xmF,
 .theme-dark .messages-3amgkR,
 .theme-dark .scroller-aV2LkH,
-.theme-dark #friends .scroller,
+.theme-dark .friendsTable-133bsv .friendsTableBody-1ZhKif,
 .theme-dark .keyboardShortcutsModal-3piNz7 .scroller {
     background-color: #36393f;
 }
@@ -361,7 +361,7 @@
 .content-yTz4x3 > .scroller-wrap,
 .noChannel-Z1DQK7 > .wrapper-r-6rrt,
 .feed-1o0xmF,
-#friends .friends-table,
+.friendsTable-133bsv .friendsTableBody-1ZhKif,
 .privateChannels-1nO12o .scroller-2FKFPG {
     position: relative;
     z-index: 0;
@@ -964,10 +964,6 @@
     display: flex;
 }
 
-.tabBar-2MuP6- {
-    padding-right: 20px;
-}
-
 .body-3ND3kc {
     display: flex;
     flex-direction: column;
@@ -1266,48 +1262,8 @@ body {
 
 /* friends */
 
-@media not all and (min-width: 1011px) {
-    #friends .friends-table .friend-table-add-wrapper .friend-table-add-header .friends-table-add {
-        padding-right: 16px;
-        padding-left: 16px;
-    }
-
-    #friends .friends-table .friend-table-add-wrapper .friend-table-suggestions-header {
-        padding-right: 16px;
-        padding-left: 16px;
-    }
-
-    #friends .friends-table .friends-table-header {
-        padding-right: 16px;
-        padding-left: 16px;
-    }
-
-    #friends .friends-table .friends-table-header .friends-column-separator {
-        margin-right: 15px;
-        margin-left: 0;
-    }
-
-    #friends .friends-table .friends-row {
-        margin-right: 2px;
-        margin-left: 16px;
-    }
-
-    #friends .friends-table .friends-row .discord-tag .discriminator {
-        display: none;
-    }
-
-    #friends .friends-table .friends-row .friends-column + .friends-column {
-        margin-left: 16px;
-    }
-
-    #friends .friends-table .friends-row:hover {
-        margin-right: -8px;
-        margin-left: 6px;
-    }
-
-    #friends .friends-table .friends-column-name {
-        width: 150px;
-    }
+.friendsTable-133bsv .friendTableAddWrapper-nHHZtK .friendTableAddHeader-m9bzFr .friendsTableAdd-1w2_qZ {
+    min-width: 1px;
 }
 
 /* channel notices */
@@ -1468,7 +1424,7 @@ body {
     }
 
     .chat-3bRxxu,
-    #friends {
+    .container-3gCOGc {
         flex: 1 0 auto;
         width: calc(100vw - 70px);
         overflow: visible;
@@ -1498,7 +1454,7 @@ body {
     }
 
     .chat-3bRxxu,
-    #friends {
+    .container-3gCOGc {
         width: calc(100vw + 240px);
     }
 
@@ -1513,7 +1469,7 @@ body {
     .noChannel-Z1DQK7,
     .activityFeed-28jde9,
     .video-1FfuMD,
-    #friends .friends-table {
+    .friendsTable-133bsv {
         max-width: 100vw;
         overflow: visible; /* for Safari */
         contain: content;
@@ -1522,7 +1478,7 @@ body {
         scroll-snap-stop: always;
     }
 
-    #friends .friends-table {
+    .friendsTable-133bsv {
         max-width: none;
         min-height: 1px;
     }

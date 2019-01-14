@@ -744,7 +744,7 @@ mdLocalStorage.token;
                     ".content-yTz4x3 > .scroller-wrap," +
                     ".noChannel-Z1DQK7 > .wrapper-r-6rrt," +
                     ".feed-1o0xmF," +
-                    "#friends .friends-table"
+                    ".friendsTable-133bsv .friendsTableBody-1ZhKif"
                 );
                 const tooltip = document.querySelector(".tooltip");
                 // channels animation is buggy on Safari - use transition instead
@@ -772,7 +772,7 @@ mdLocalStorage.token;
                 ".messagesWrapper-3lZDfY," +
                 ".content-yTz4x3 > .scroller-wrap," +
                 ".feed-1o0xmF," +
-                "#friends .friends-table"
+                ".friendsTable-133bsv .friendsTableBody-1ZhKif"
             );
             if (!element.closest(".wrapperSelectedText-3dSUjC, .channel-2QD9_O.selected-1HYmZZ"))
                 animateNavigation(event, [chat, { animation: "md-fade-out .1s ease-in forwards" }]);
@@ -853,7 +853,7 @@ mdLocalStorage.token;
                 ".content-yTz4x3 > .flex-spacer," +
                 ".content-yTz4x3 > .scroller-wrap," +
                 ".activityFeed-28jde9," +
-                "#friends .friends-table"
+                ".friendsTable-133bsv"
             );
             chat.scrollIntoView({ behavior: "smooth" });
             return;
