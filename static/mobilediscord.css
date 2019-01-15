@@ -325,7 +325,9 @@
 }
 
 .content-yTz4x3 > .flex-spacer,
-.content-yTz4x3 > .scroller-wrap {
+.content-yTz4x3 > .spacer-1fA9zc,
+.content-yTz4x3 > .scroller-wrap,
+.scrollWrap-qwpLpa {
     flex: auto;
     width: 418px;
     min-width: 1px;
@@ -361,6 +363,7 @@
 .content-yTz4x3 > .scroller-wrap,
 .noChannel-Z1DQK7 > .wrapper-r-6rrt,
 .feed-1o0xmF,
+.scrollWrap-qwpLpa,
 .friendsTable-133bsv .friendsTableBody-1ZhKif,
 .privateChannels-1nO12o .scroller-2FKFPG {
     position: relative;
@@ -1434,10 +1437,12 @@ body {
     }
 
     .content-yTz4x3 > .flex-spacer,
+    .content-yTz4x3 > .spacer-1fA9zc,
     .content-yTz4x3 > .scroller-wrap,
     .noChannel-Z1DQK7,
     .activityFeed-28jde9,
-    .video-1FfuMD {
+    .video-1FfuMD,
+    .scrollWrap-qwpLpa {
         max-width: calc(100vw - 310px);
     }
 
@@ -1465,10 +1470,12 @@ body {
     }
 
     .content-yTz4x3 > .flex-spacer,
+    .content-yTz4x3 > .spacer-1fA9zc,
     .content-yTz4x3 > .scroller-wrap,
     .noChannel-Z1DQK7,
     .activityFeed-28jde9,
     .video-1FfuMD,
+    .scrollWrap-qwpLpa,
     .friendsTable-133bsv {
         max-width: 100vw;
         overflow: visible; /* for Safari */

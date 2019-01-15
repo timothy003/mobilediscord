@@ -744,6 +744,7 @@ mdLocalStorage.token;
                     ".content-yTz4x3 > .scroller-wrap," +
                     ".noChannel-Z1DQK7 > .wrapper-r-6rrt," +
                     ".feed-1o0xmF," +
+                    ".scrollWrap-qwpLpa," +
                     ".friendsTable-133bsv .friendsTableBody-1ZhKif"
                 );
                 const tooltip = document.querySelector(".tooltip");
@@ -772,6 +773,7 @@ mdLocalStorage.token;
                 ".messagesWrapper-3lZDfY," +
                 ".content-yTz4x3 > .scroller-wrap," +
                 ".feed-1o0xmF," +
+                ".scrollWrap-qwpLpa," +
                 ".friendsTable-133bsv .friendsTableBody-1ZhKif"
             );
             if (!element.closest(".wrapperSelectedText-3dSUjC, .channel-2QD9_O.selected-1HYmZZ"))
@@ -851,8 +853,10 @@ mdLocalStorage.token;
                 return;
             const chat = document.querySelector(
                 ".content-yTz4x3 > .flex-spacer," +
+                ".content-yTz4x3 > .spacer-1fA9zc," +
                 ".content-yTz4x3 > .scroller-wrap," +
                 ".activityFeed-28jde9," +
+                ".scrollWrap-qwpLpa," +
                 ".friendsTable-133bsv"
             );
             chat.scrollIntoView({ behavior: "smooth" });
