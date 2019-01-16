@@ -855,28 +855,28 @@
     }
 }
 
-.guildSettingsBaseSection-3XBkfG {
+.baseSection-36RRsg {
     flex-wrap: wrap;
     margin: -10px -10px 30px -10px;
 }
 
-.guildSettingsBaseSection-3XBkfG > .flex-1xMQg5,
-.guildSettingsBaseSection-3XBkfG > .flexChild-faoVW3 {
+.baseSection-36RRsg > .flex-1xMQg5,
+.baseSection-36RRsg > .flexChild-faoVW3 {
     margin: 10px !important;
     flex-basis: calc(50% - 20px) !important;
 }
 
-.guildSettingsBaseSection-3XBkfG + .divider-3573oO + .margin-bottom-40 > .horizontal-1ae9ci {
+.baseSection-36RRsg + .divider-3573oO + .marginBottom40-2vIwTv > .horizontal-1ae9ci {
     flex-wrap: wrap;
     margin: -10px;
 }
 
-.guildSettingsBaseSection-3XBkfG + .divider-3573oO + .margin-bottom-40 > .horizontal-1ae9ci > .flexChild-faoVW3 {
+.baseSection-36RRsg + .divider-3573oO + .marginBottom40-2vIwTv > .horizontal-1ae9ci > .flexChild-faoVW3 {
     flex-basis: 320px !important;
     margin: 10px;
 }
 
-.guild-settings-widget img.flexChild-faoVW3 {
+img.flexChild-faoVW3 {
     min-width: 1px;
 }
 
@@ -886,18 +886,18 @@
 }
 
 /* voice settings */
-.userSettingsVoice-iwdUCU > .flex-vertical > .horizontal-1ae9ci,
-.userSettingsVoice-iwdUCU > .flex-vertical > div > .horizontal-1ae9ci.alignStretch-DpGPf3 {
+.userSettingsVoice-iwdUCU > .vertical-V37hAW > .horizontal-1ae9ci,
+.userSettingsVoice-iwdUCU > .vertical-V37hAW > div > .horizontal-1ae9ci.alignStretch-DpGPf3 {
     flex-wrap: wrap;
     margin: -10px;
 }
 
-.userSettingsVoice-iwdUCU > .flex-vertical > .horizontal-1ae9ci.margin-bottom-20 {
+.userSettingsVoice-iwdUCU > .vertical-V37hAW > .horizontal-1ae9ci.marginBottom20-32qID7 {
     margin-bottom: 10px;
 }
 
-.userSettingsVoice-iwdUCU > .flex-vertical > .horizontal-1ae9ci > .flexChild-faoVW3,
-.userSettingsVoice-iwdUCU > .flex-vertical > div > .horizontal-1ae9ci.alignStretch-DpGPf3 > .flexChild-faoVW3 {
+.userSettingsVoice-iwdUCU > .vertical-V37hAW > .horizontal-1ae9ci > .flexChild-faoVW3,
+.userSettingsVoice-iwdUCU > .vertical-V37hAW > div > .horizontal-1ae9ci.alignStretch-DpGPf3 > .flexChild-faoVW3 {
     flex-basis: 320px !important;
     margin: 10px;
 }
@@ -1063,7 +1063,7 @@ body {
     right: 4px;
 }
 
-.userSettingsSecurity-3IYeMF > .flex-vertical > .directionRow-3v3tfG > .flexChild-faoVW3 {
+.userSettingsSecurity-3IYeMF > .vertical-V37hAW > .directionRow-3v3tfG > .flexChild-faoVW3 {
     min-width: 1px;
 }
 
