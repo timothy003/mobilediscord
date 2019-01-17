@@ -30,14 +30,14 @@
     }
     // loading spinner
     const container = document.createElement("div");
-    container.className = "md-loading";
+    container.className = "spinner-2enMB9 md-loading";
     const inner = document.createElement("span");
-    inner.className = "spinner-inner spinner-wandering-cubes";
+    inner.className = "inner-1gJC7_";
     const item = document.createElement("span");
-    item.className = "spinner-item";
+    item.className = "wanderingCubesItem-WPXqao";
     inner.appendChild(item);
     const item2 = document.createElement("span");
-    item2.className = "spinner-item";
+    item2.className = "wanderingCubesItem-WPXqao";
     inner.appendChild(item2);
     container.appendChild(inner);
     document.addEventListener("DOMContentLoaded", function ondomcontentloaded(event) {

@@ -800,9 +800,9 @@ mdLocalStorage.token;
             return;
         }
         // jump to message when tapping a search result
-        const sink = element.closest(".search-results-wrap .search-result .search-result-message.hit .clickOverride-1J40_l");
+        const sink = element.closest(".searchResultMessage-2VxO12.hit-NLlWXA .clickOverride-1J40_l");
         if (sink) {
-            const jumpButton = sink.parentElement.querySelector(".action-buttons .jump-button");
+            const jumpButton = sink.parentElement.querySelector(".jumpButton-Ia2hRJ");
             if (jumpButton) {
                 event.stopImmediatePropagation();
                 jumpButton.click();
@@ -846,8 +846,8 @@ mdLocalStorage.token;
             ".channelName-3kBz6H," +
             ".actionButtons-1sUUug .jumpButton-3DTcS_," +
             ".messageGroupWrapper-o-Zw7G .clickOverride-1J40_l," +
-            ".search-results-wrap .channel-separator .channel-name," +
-            ".search-results-wrap .action-buttons .jump-button"
+            ".channelName-1QajIf," +
+            ".jumpButton-Ia2hRJ"
         )) {
             if (element.closest(".iconSpacing-3JkGQO, .close-3hZ5Ni"))
                 return;
