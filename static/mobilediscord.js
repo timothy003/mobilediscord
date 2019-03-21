@@ -734,10 +734,10 @@ mdLocalStorage.token;
             return;
         const element = event.target;
         // animate guild navigation
-        if (element.closest(".guild-1EfMGQ .guildInner-3DSoA4 a")) {
-            if (!element.closest(".guild-1EfMGQ.selected-ML3OIq")) {
+        if (element.closest(".wrapper-2lTRaf a")) {
+            if (!element.closest(".selected-nT-gM3")) {
                 let channels = null;
-                if (!element.closest(".guild-1EfMGQ.selected-ML3OIq ~ .dms-rcsEnV"))
+                if (!(element.closest(".container-1aNBdK") && document.querySelector(".privateChannels-1nO12o")))
                     channels = document.querySelector(".scroller-2wx7Hm, .privateChannels-1nO12o .scroller-2FKFPG");
                 const chat = document.querySelector(
                     ".messagesWrapper-3lZDfY," +
@@ -841,7 +841,7 @@ mdLocalStorage.token;
             ".wrapperMutedText-1YBpvv," +
             ".wrapperSelectedText-3dSUjC," +
             ".wrapperUnreadText-2zuiuD," +
-            ".dms-rcsEnV a," +
+            ".container-1aNBdK a," +
             ".channel-2QD9_O a," +
             ".channelName-3kBz6H," +
             ".actionButtons-1sUUug .jumpButton-3DTcS_," +

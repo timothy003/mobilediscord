@@ -91,7 +91,7 @@
     background-color: rgb(234, 235, 235);
 }
 
-.guilds-1q_RqH {
+.scroller-2TZvBN {
     background-color: #202225;
 }
 
@@ -1024,12 +1024,12 @@ body {
 
 /* guilds */
 
-.guildsWrapper-5TJh6A {
-    border-radius: 0;
+.md-app .downloadAppButton-3FZHkU {
+    display: none;
 }
 
-.md-app .downloadAppButton-3EFlA6 {
-    display: none;
+.wrapper-1Rf91z {
+    z-index: 0;
 }
 
 /* user settings */
@@ -1346,7 +1346,7 @@ body {
         contain: content;
     }
 
-    .guildsWrapper-5TJh6A {
+    .wrapper-1Rf91z {
         scroll-snap-coordinate: 0% 0%;
         scroll-snap-align: start;
     }
