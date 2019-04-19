@@ -744,6 +744,7 @@ mdLocalStorage.token;
                     ".content-yTz4x3 > .scroller-wrap," +
                     ".noChannel-Z1DQK7 > .wrapper-r-6rrt," +
                     ".feed-1o0xmF," +
+                    ".layout-1cQCv2," +
                     ".scrollWrap-qwpLpa," +
                     ".friendsTable-133bsv .friendsTableBody-1ZhKif"
                 );
@@ -773,6 +774,7 @@ mdLocalStorage.token;
                 ".messagesWrapper-3lZDfY," +
                 ".content-yTz4x3 > .scroller-wrap," +
                 ".feed-1o0xmF," +
+                ".layout-1cQCv2," +
                 ".scrollWrap-qwpLpa," +
                 ".friendsTable-133bsv .friendsTableBody-1ZhKif"
             );
@@ -856,6 +858,7 @@ mdLocalStorage.token;
                 ".content-yTz4x3 > .spacer-1fA9zc," +
                 ".content-yTz4x3 > .scroller-wrap," +
                 ".activityFeed-28jde9," +
+                ".activityFeed-1C0EmJ," +
                 ".scrollWrap-qwpLpa," +
                 ".friendsTable-133bsv"
             );

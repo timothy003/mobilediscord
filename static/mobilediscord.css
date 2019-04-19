@@ -359,6 +359,7 @@
 .messagesWrapper-3lZDfY,
 .noChannel-Z1DQK7 > .wrapper-r-6rrt,
 .feed-1o0xmF,
+.layout-1cQCv2,
 .scrollWrap-qwpLpa,
 .friendsTable-133bsv .friendsTableBody-1ZhKif,
 .privateChannels-1nO12o .scroller-2FKFPG {
@@ -1230,6 +1231,10 @@ body {
     min-height: 1px;
 }
 
+.layout-1cQCv2 {
+    padding-right: 18px;
+}
+
 /* friends */
 
 .friendsTable-133bsv .friendTableAddWrapper-nHHZtK .friendTableAddHeader-m9bzFr .friendsTableAdd-1w2_qZ {
@@ -1364,6 +1369,7 @@ body {
     .content-yTz4x3 > .spacer-1fA9zc,
     .noChannel-Z1DQK7,
     .activityFeed-28jde9,
+    .activityFeed-1C0EmJ,
     .video-1FfuMD,
     .scrollWrap-qwpLpa {
         max-width: calc(100vw - 310px);
@@ -1387,7 +1393,8 @@ body {
     }
 
     .noChannel-Z1DQK7,
-    .activityFeed-28jde9 {
+    .activityFeed-28jde9,
+    .activityFeed-1C0EmJ {
         flex: 1 0 auto;
         width: 100vw;
     }
@@ -1395,6 +1402,7 @@ body {
     .content-yTz4x3 > .spacer-1fA9zc,
     .noChannel-Z1DQK7,
     .activityFeed-28jde9,
+    .activityFeed-1C0EmJ,
     .video-1FfuMD,
     .scrollWrap-qwpLpa,
     .friendsTable-133bsv {
