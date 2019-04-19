@@ -428,8 +428,8 @@
 }
 
 /* Spotify */
-.container-1e22Ot > div:not([class]),
-.container-1e22Ot > div:not([class]) > iframe {
+.embedSpotify-tvxDCr,
+.embedSpotify-tvxDCr > iframe {
     max-width: 100%;
 }
 
