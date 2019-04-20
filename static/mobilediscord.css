@@ -1129,6 +1129,10 @@ body {
     padding-right: 19px !important;
 }
 
+.messageGroupWrapper-o-Zw7G {
+    z-index: 0;
+}
+
 .actionButtons-1sUUug .jumpButton-3DTcS_ .loading-2bJK5L {
     display: none; /* high CPU usage on Edge */
 }
