@@ -1218,6 +1218,20 @@ body {
     height: auto; /* for bottom margin */
 }
 
+.searchResult-3pzFAB {
+    z-index: 0;
+}
+
+.searchResultMessage-2VxO12.after-2g0jjc,
+.searchResultMessage-2VxO12.before-1x1q5S,
+.searchResult-3pzFAB.expanded-v2Szsz .searchResultMessage-2VxO12:first-of-type {
+    border-radius: 0;
+}
+
+.searchResult-3pzFAB.expanded-v2Szsz .searchResultMessage-2VxO12:last-of-type {
+    border-radius: 0 !important;
+}
+
 /* no-channel */
 
 .noChannel-Z1DQK7 {
