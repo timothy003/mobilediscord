@@ -114,6 +114,10 @@
                 };
             }
             // handle back button
+            let stateChanged = false;
+            window.addEventListener("popstate", event => {
+                stateChanged = true;
+            }, true);
             const systemNavigationManager = Windows.UI.Core.SystemNavigationManager.getForCurrentView();
             systemNavigationManager.addEventListener("backrequested", eventArgs => {
                 if (eventArgs.handled)
@@ -148,7 +152,9 @@
                         btn.click();
                         return true;
                     }
-                    return false;
+                    stateChanged = false;
+                    history.back();
+                    return stateChanged;
                 })())
                     eventArgs.handled = true;
             });
