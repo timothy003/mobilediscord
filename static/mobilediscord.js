@@ -129,7 +129,7 @@
                     }
                     const activeElement = document.activeElement;
                     if (activeElement)
-                        if (activeElement.matches(".is-open .Select-input")) {
+                        if (activeElement.matches(".css-2yldzf-control .css-gj7qu5-dummyInput")) {
                             activeElement.blur();
                             return true;
                         }
@@ -137,11 +137,11 @@
                         document.webkitExitFullscreen();
                         return true;
                     }
-                    if (document.querySelector(".popout, .popout-3sVMXz")) {
+                    if (document.querySelector(".popout-3sVMXz")) {
                         document.body.click();
                         return true;
                     }
-                    const backdrop = document.querySelector(".callout-backdrop, .backdrop-1wrmKB");
+                    const backdrop = document.querySelector(".backdrop-1wrmKB");
                     if (backdrop) {
                         activeElement.blur();
                         backdrop.click();
@@ -196,7 +196,7 @@
                             if (!event.repeat)
                                 if (applicationView.viewMode === ApplicationViewMode.default) {
                                     const compactOptions = ViewModePreferences.createDefault(ApplicationViewMode.compactOverlay);
-                                    compactOptions.customSize = { width: 310, height: 500 };
+                                    compactOptions.customSize = { width: 312, height: 500 };
                                     applicationView.tryEnterViewModeAsync(ApplicationViewMode.compactOverlay, compactOptions);
                                 } else
                                     applicationView.tryEnterViewModeAsync(ApplicationViewMode.default);
@@ -534,12 +534,10 @@ mdLocalStorage.token;
             out: try {
                 if (!this.matches(
                     ".input-cIJ7To," +
+                    ".container-VSDcQc .input-1ppKdn," +
                     ".quickMessage-2XpSaN," +
-                    ".quick-message," +
-                    "#autocomplete-popout input[type=text]," +
-                    ".need-help-modal .header #help-query," +
-                    ".textArea-2Spzkt," +
-                    ".emojiPicker-3m1S-j .search-bar input"
+                    ".input-1Rv96N," +
+                    ".textArea-2Spzkt"
                 ))
                     break out;
                 // allow if a text box already has focus
@@ -740,59 +738,49 @@ mdLocalStorage.token;
             return;
         const element = event.target;
         // animate guild navigation
-        if (element.closest(".wrapper-2lTRaf a")) {
-            if (!element.closest(".selected-nT-gM3")) {
-                let channels = null;
-                if (!(element.closest(".container-1aNBdK") && document.querySelector(".privateChannels-1nO12o")))
-                    channels = document.querySelector(".scroller-2wx7Hm, .privateChannels-1nO12o .scroller-2FKFPG");
-                const chat = document.querySelector(
-                    ".messagesWrapper-3lZDfY," +
-                    ".content-yTz4x3 > .scroller-wrap," +
-                    ".noChannel-Z1DQK7 > .wrapper-r-6rrt," +
-                    ".feed-1o0xmF," +
-                    ".layout-1cQCv2," +
-                    ".scrollWrap-qwpLpa," +
-                    ".friendsTable-133bsv .friendsTableBody-1ZhKif"
-                );
-                const tooltip = document.querySelector(".tooltip");
-                // channels animation is buggy on Safari - use transition instead
-                animateNavigation(event,
-                    [channels, isSafari ? { opacity: "0", transitionTimingFunction: "ease-in" } : { animation: "md-fade-out .1s ease-in forwards" }],
-                    [chat, { animation: "md-fade-out .1s ease-in forwards" }],
-                    [tooltip, { display: "none" }]
-                );
-            }
+        if (element.closest(".acronym-2mOFsV, .wrapper-1BJsBx")) {
+            if (document.querySelector(".contextMenu-HLZMGh"))
+                return;
+            let channels = null;
+            if (!(element.closest(".blob-3RT82C") && document.querySelector(".privateChannels-1nO12o")))
+                channels = document.querySelector(".privateChannels-1nO12o .scroller-2FKFPG, .scroller-2wx7Hm");
+            const chat = document.querySelector(
+                ".messagesWrapper-3lZDfY," +
+                ".noChannel-Z1DQK7 > .wrapper-r-6rrt," +
+                ".scrollWrap-qwpLpa," +
+                ".friendsTable-133bsv .friendsTableBody-1ZhKif," +
+                ".layout-1cQCv2"
+            );
+            const tooltip = document.querySelector(".layer-v9HyYc");
+            // channels animation is buggy on Safari - use transition instead
+            animateNavigation(event,
+                [channels, isSafari ? { opacity: "0", transitionTimingFunction: "ease-in" } : { animation: "md-fade-out .1s ease-in forwards" }],
+                [chat, { animation: "md-fade-out .1s ease-in forwards" }],
+                [tooltip, { display: "none" }]
+            );
             return;
         }
         // animate channel navigation
-        if (element.closest(
-            ".wrapperDefaultText-2IWcE8," +
-            ".wrapperHoveredText-2geN_M," +
-            ".wrapperLockedText-wfOnM5," +
-            ".wrapperMutedText-1YBpvv," +
-            ".wrapperSelectedText-3dSUjC," +
-            ".wrapperUnreadText-2zuiuD," +
-            ".channel-2QD9_O a"
-        )) {
-            if (element.closest(".iconSpacing-3JkGQO, .close-3hZ5Ni"))
+        const channel = element.closest(".wrapper-1ucjTd, .channel-2QD9_O a");
+        if (channel) {
+            if (element.closest(".wrapper-1ucjTd [role=button], .close-3hZ5Ni"))
+                return;
+            if (channel.matches(".channel-2QD9_O a") && document.querySelector(".contextMenu-HLZMGh"))
                 return;
             const chat = document.querySelector(
                 ".messagesWrapper-3lZDfY," +
-                ".content-yTz4x3 > .scroller-wrap," +
-                ".feed-1o0xmF," +
-                ".layout-1cQCv2," +
                 ".scrollWrap-qwpLpa," +
-                ".friendsTable-133bsv .friendsTableBody-1ZhKif"
+                ".friendsTable-133bsv .friendsTableBody-1ZhKif," +
+                ".layout-1cQCv2"
             );
-            if (!element.closest(".wrapperSelectedText-3dSUjC, .channel-2QD9_O.selected-1HYmZZ"))
-                animateNavigation(event, [chat, { animation: "md-fade-out .1s ease-in forwards" }]);
+            animateNavigation(event, [chat, { animation: "md-fade-out .1s ease-in forwards" }]);
             return;
         }
         // animate settings navigation
         const button = element.closest(".flex-1xMQg5 > .button-2b6hmh:last-child");
         if (button) {
-            const layer = button.closest(".layers-3iHuyZ > .layer-3QrUeG, .layers > .layer");
-            const tooltip = document.querySelector(".tooltip");
+            const layer = button.closest(".layers-3iHuyZ > .layer-3QrUeG");
+            const tooltip = document.querySelector(".layer-v9HyYc");
             animateNavigation(event,
                 [layer, { animationName: "md-layer-under" }],
                 [tooltip, { display: "none" }]
@@ -801,8 +789,8 @@ mdLocalStorage.token;
         }
         const btn = element.closest(".closeButton-1tv5uR");
         if (btn) {
-            if (!document.querySelector(".container-2VW0UT, .ui-settings-notice")) {
-                const layer = btn.closest(".layers-3iHuyZ > .layer-3QrUeG, .layers > .layer");
+            if (!document.querySelector(".container-2VW0UT")) {
+                const layer = btn.closest(".layers-3iHuyZ > .layer-3QrUeG");
                 animateNavigation(event, [layer, { animationName: "md-layer-out" }]);
             }
             return;
@@ -832,10 +820,10 @@ mdLocalStorage.token;
             element.dispatchEvent(new MouseEvent("mouseup", event));
             if (isSidebarScrollable) {
                 // items are removed on selection
-                if (!document.contains(item) || item.matches(".itemSelected-1qLhcL"))
+                if (!document.contains(item) || item.matches(".selected-3s45Ha"))
                     document.querySelector(".contentRegionScrollerWrap-3YZXdm").scrollIntoView({ behavior: "smooth", inline: "end" });
             } else {
-                if (item.matches(".itemSelected-1qLhcL"))
+                if (item.matches(".selected-3s45Ha"))
                     document.querySelector(".contentRegion-3nDuYy").scrollIntoView({ behavior: "smooth", inline: "start" });
             }
             return;
@@ -843,36 +831,28 @@ mdLocalStorage.token;
 
         // scroll to chat when tapping a channel or jump button
         if (element.closest(
-            ".wrapperDefaultText-2IWcE8," +
-            ".wrapperHoveredText-2geN_M," +
-            ".wrapperLockedText-wfOnM5," +
-            ".wrapperMutedText-1YBpvv," +
-            ".wrapperSelectedText-3dSUjC," +
-            ".wrapperUnreadText-2zuiuD," +
-            ".container-1aNBdK a," +
-            ".channel-2QD9_O a," +
-            ".channelName-3kBz6H," +
-            ".actionButtons-1sUUug .jumpButton-3DTcS_," +
-            ".messageGroupWrapper-o-Zw7G .clickOverride-1J40_l," +
+            ".wrapper-1ucjTd," +
+            ".jumpButton-Ia2hRJ," +
             ".channelName-1QajIf," +
-            ".jumpButton-Ia2hRJ"
+            ".messageGroupWrapper-o-Zw7G .clickOverride-1J40_l," +
+            ".actionButtons-1sUUug .jumpButton-3DTcS_," +
+            ".channelName-3kBz6H," +
+            ".channel-2QD9_O a," +
+            ".blob-3RT82C"
         )) {
-            if (element.closest(".iconSpacing-3JkGQO, .close-3hZ5Ni"))
+            if (element.closest(".wrapper-1ucjTd [role=button], .close-3hZ5Ni"))
                 return;
             const chat = document.querySelector(
-                ".content-yTz4x3 > .flex-spacer," +
                 ".content-yTz4x3 > .spacer-1fA9zc," +
-                ".content-yTz4x3 > .scroller-wrap," +
-                ".activityFeed-28jde9," +
-                ".activityFeed-1C0EmJ," +
                 ".scrollWrap-qwpLpa," +
-                ".friendsTable-133bsv"
+                ".friendsTable-133bsv," +
+                ".activityFeed-1C0EmJ"
             );
             chat.scrollIntoView({ behavior: "smooth" });
             return;
         }
         // open topic
-        if (element.closest(".topic-2QX7LI")) {
+        if (element.closest(".topic-TCb_qw.expandable-9fI_e3")) {
             if (!document.querySelector(".modal-3HD5ck")) {
                 element.dispatchEvent(new MouseEvent("mousedown", event));
                 element.dispatchEvent(new MouseEvent("mouseup", event));
@@ -948,67 +928,72 @@ mdLocalStorage.token;
         });
     const mount = document.getElementById("app-mount");
     if (mount) {
+        // CSS animations for layers
+        const layerObserver = new MutationObserver((mutations, observer) => {
+            for (const { target: layer } of mutations)
+                if (layer.matches(".animating-rRxada"))
+                    if (layer.style.opacity === "0")
+                        layer.style.animationName = "md-layer-in";
+                    else
+                        layer.style.animationName = !layer.nextElementSibling ? "md-layer-out" : "md-layer-under";
+                else
+                    layer.style.animationName = "";
+        });
+        const observeLayer = layer => layerObserver.observe(layer, { attributes: true, attributeFilter: ["class"] });
+        const layersObserver = new MutationObserver((mutations, observer) => {
+            for (const mutation of mutations)
+                for (const node of mutation.addedNodes)
+                    if (node instanceof HTMLElement) {
+                        node.style.animationName = "md-layer-in";
+                        observeLayer(node);
+                    }
+        });
+
+        // adjust popout position
+        // TODO: handle window resize
+        const popoutsObserver = new MutationObserver((mutations, observer) => {
+            for (const mutation of mutations)
+                for (const node of mutation.addedNodes)
+                    if (node instanceof HTMLElement)
+                        if (node.matches(".popout-3sVMXz")) {
+                            const rect = node.getBoundingClientRect();
+                            if (rect.left < 0)
+                                node.style.left = node.offsetLeft - rect.left + "px";
+                            else {
+                                const viewportRight = document.documentElement.clientWidth;
+                                if (rect.right > viewportRight)
+                                    node.style.left = node.offsetLeft - (rect.right - viewportRight) + "px";
+                            }
+                        }
+        });
+
+        const observe = element => {
+            const layers = element.querySelector(".layers-3iHuyZ");
+            if (layers) {
+                for (let i = 0; i < layers.children.length; i++) {
+                    const layer = layers.children[i];
+                    if (layer instanceof HTMLElement)
+                        observeLayer(layer);
+                }
+                layersObserver.observe(layers, { childList: true });
+            }
+            const popouts = element.matches(".popouts-3dRSmE") ? element : element.querySelector(".popouts-3dRSmE");
+            if (popouts)
+                popoutsObserver.observe(popouts, { childList: true });
+        };
+        const appObserver = new MutationObserver((mutations, observer) => {
+            for (const mutation of mutations)
+                for (const node of mutation.addedNodes)
+                    if (node instanceof Element)
+                        observe(node);
+            updateImagePlaceholders();
+        });
         new MutationObserver((mutations, observer) => {
             for (const mutation of mutations)
                 for (const node of mutation.addedNodes)
                     if (node instanceof Element) {
-                        // CSS animations for layers
-                        const observe = element => {
-                            const layers = element.querySelector(".layers-3iHuyZ, .layers");
-                            if (layers) {
-                                const observeLayer = layer => {
-                                    new MutationObserver((mutations, observer) => {
-                                        if (layer.matches(".animating-rRxada, .animating"))
-                                            if (layer.style.opacity === "0")
-                                                layer.style.animationName = "md-layer-in";
-                                            else
-                                                layer.style.animationName = !layer.nextElementSibling ? "md-layer-out" : "md-layer-under";
-                                        else
-                                            layer.style.animationName = "";
-                                    }).observe(layer, { attributes: true, attributeFilter: ["class"] });
-                                };
-                                for (let i = 0; i < layers.children.length; i++) {
-                                    const layer = layers.children[i];
-                                    if (layer instanceof HTMLElement)
-                                        observeLayer(layer);
-                                }
-                                new MutationObserver((mutations, observer) => {
-                                    for (const mutation of mutations)
-                                        for (const node of mutation.addedNodes)
-                                            if (node instanceof HTMLElement) {
-                                                node.style.animationName = "md-layer-in";
-                                                observeLayer(node);
-                                            }
-                                }).observe(layers, { childList: true });
-                            }
-                        };
                         observe(node);
-                        new MutationObserver((mutations, observer) => {
-                            for (const mutation of mutations)
-                                for (const node of mutation.addedNodes)
-                                    if (node instanceof Element)
-                                        observe(node);
-                            updateImagePlaceholders();
-                        }).observe(node, { childList: true });
-                        // adjust popout position
-                        // TODO: handle window resize
-                        const popouts = node.matches(".popouts, .popouts-3dRSmE") ? node : node.querySelector(".tooltips + div, .popouts");
-                        if (popouts)
-                            new MutationObserver((mutations, observer) => {
-                                for (const mutation of mutations)
-                                    for (const node of mutation.addedNodes)
-                                        if (node instanceof HTMLElement)
-                                            if (node.matches(".popout, .popout-3sVMXz")) {
-                                                const rect = node.getBoundingClientRect();
-                                                if (rect.left < 0)
-                                                    node.style.left = node.offsetLeft - rect.left + "px";
-                                                else {
-                                                    const viewportRight = document.documentElement.clientWidth;
-                                                    if (rect.right > viewportRight)
-                                                        node.style.left = node.offsetLeft - (rect.right - viewportRight) + "px";
-                                                }
-                                            }
-                            }).observe(popouts, { childList: true });
+                        appObserver.observe(node, { childList: true });
                     }
         }).observe(mount, { childList: true });
     }
