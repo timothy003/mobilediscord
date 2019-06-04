@@ -965,9 +965,9 @@ body {
     word-wrap: break-word;
 }
 
-@media not all and (min-width: 1000px) {
+@media not all and (min-width: 448px) {
     .base-34jWEe {
-        background-size: 192px 80px, 0;
+        background-size: 192px 80px, 0 0;
     }
 }
 
@@ -1224,8 +1224,8 @@ body {
 
 /* media queries */
 
-/* fold channel members */
-@media not all and (min-width: 872px) {
+/* channel members breakpoint (312 + 448 + 240) */
+@media not all and (min-width: 1000px) {
     .container-2lgZY8 {
         overflow-x: auto;
         overflow-y: hidden;
@@ -1266,8 +1266,8 @@ body {
     }
 }
 
-/* fold guilds/channels */
-@media not all and (min-width: 632px) {
+/* chat breakpoint (312 + 448) */
+@media not all and (min-width: 760px) {
     .container-2lgZY8 {
         -ms-scroll-snap-points-x: snapList(0, 312px, 552px);
     }
