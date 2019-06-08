@@ -47,7 +47,6 @@
 .theme-dark .horizontalAutocompletes-x8hlrn,
 .theme-dark .scroller-1-nKid,
 .theme-dark .messagesPopout-24nkyi,
-.scroller-2wx7Hm,
 .theme-dark .searchResultsWrap-2DKFzt .scroller-2FKFPG,
 .privateChannels-1nO12o .scroller-2FKFPG,
 .theme-dark .body-3ND3kc .scroller-2FKFPG,
@@ -287,7 +286,7 @@
     bottom: auto; /* hide element to avoid slow scrolling in Chrome */
 }
 
-/* channels */
+/* RTCConnection */
 
 .inner-btChU7 .channel-SEolQq {
     line-height: 1.4;
@@ -923,12 +922,6 @@ body {
     z-index: 1;
 }
 
-/* guilds */
-
-.wrapper-1Rf91z {
-    z-index: 0;
-}
-
 /* user settings */
 
 .userSettingsAccount-2eMFVR .userInfoViewingButton-2-jbH9 {
@@ -1145,6 +1138,57 @@ body {
 
 .friendsTable-133bsv .friendTableAddWrapper-nHHZtK .friendTableAddHeader-m9bzFr .friendsTableAdd-1w2_qZ {
     min-width: 1px;
+}
+
+/* UnreadBar */
+
+.container-35XQWE {
+    z-index: auto; /* hide element to avoid slow scrolling in Chrome */
+}
+
+.container-35XQWE .bar-30k2ka {
+    z-index: 2;
+}
+
+/* Channels */
+
+.themeGhostHairlineChannels-3G0x9_ {
+    z-index: 1;
+}
+
+/* GuildHeader */
+
+.bannerImage-1jOskm {
+    z-index: 1; /* fix stacking with unread bar in Edge 14 */
+}
+
+/* GuildSidebar */
+
+.container-PNkimc {
+    z-index: 1;
+    overflow: hidden;
+    contain: strict;
+}
+
+/* Guilds */
+
+.wrapper-1Rf91z {
+    z-index: 1;
+    contain: strict;
+}
+
+.scrollerWrap-1IAIlv {
+    z-index: 1;
+}
+
+.unreadMentionsIndicatorBottom-BXS58x,
+.unreadMentionsIndicatorTop-gA6RCh {
+    z-index: auto; /* hide element to avoid slow scrolling in Chrome */
+}
+
+.unreadMentionsIndicatorBottom-BXS58x .bar-30k2ka,
+.unreadMentionsIndicatorTop-gA6RCh .bar-30k2ka {
+    z-index: 10;
 }
 
 /* layers */
