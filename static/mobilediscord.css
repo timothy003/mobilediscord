@@ -282,7 +282,7 @@
 
 /* tooltips */
 
-.layerContainer-yqaFcK {
+.layerContainer-yqaFcK:empty {
     bottom: auto; /* hide element to avoid slow scrolling in Chrome */
 }
 
@@ -1349,7 +1349,7 @@ body {
 
 /* hide mouseover elements for Mobile Safari */
 @media (any-hover: none) {
-    .layer-v9HyYc,
+    .tooltip-2QfLtc,
     .channel-2QD9_O:hover .close-3hZ5Ni,
     .iconVisibility-1bOqu7:hover .iconItem-1-bXkn {
         display: none;

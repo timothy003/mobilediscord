@@ -743,7 +743,7 @@ mdLocalStorage.token;
                 ".friendsTable-133bsv .friendsTableBody-1ZhKif," +
                 ".layout-1cQCv2"
             );
-            const tooltip = document.querySelector(".layer-v9HyYc");
+            const tooltip = document.querySelector(".tooltip-2QfLtc");
             // channels animation is buggy on Safari - use transition instead
             animateNavigation(event,
                 [channels, isSafari ? { opacity: "0", transitionTimingFunction: "ease-in" } : { animation: "md-fade-out .1s ease-in forwards" }],
@@ -772,7 +772,7 @@ mdLocalStorage.token;
         const button = element.closest(".flex-1xMQg5 > .button-2b6hmh:last-child");
         if (button) {
             const layer = button.closest(".layers-3iHuyZ > .layer-3QrUeG");
-            const tooltip = document.querySelector(".layer-v9HyYc");
+            const tooltip = document.querySelector(".tooltip-2QfLtc");
             animateNavigation(event,
                 [layer, { animationName: "md-layer-under" }],
                 [tooltip, { display: "none" }]
@@ -911,9 +911,10 @@ mdLocalStorage.token;
                 event.preventDefault();
             }
         });
-    const mount = document.getElementById("app-mount");
-    if (mount) {
+    const appMount = document.getElementById("app-mount");
+    if (appMount) {
         // CSS animations for layers
+        const layersCollection = document.getElementsByClassName("layers-3iHuyZ");
         const layerObserver = new MutationObserver((mutations, observer) => {
             for (const { target: layer } of mutations)
                 if (layer.matches(".animating-rRxada"))
@@ -936,50 +937,58 @@ mdLocalStorage.token;
 
         // adjust popout position
         // TODO: handle window resize
+        const layerContainers = document.getElementsByClassName("layerContainer-yqaFcK");
+        const popoutsCollection = document.getElementsByClassName("popouts-3dRSmE");
+        const moveIntoView = popout => {
+            const rect = popout.getBoundingClientRect();
+            const appRect = appMount.getBoundingClientRect();
+            const { style } = popout;
+            if (rect.left < appRect.left)
+                if (style.left)
+                    style.left = parseFloat(style.left) - (rect.left - appRect.left) + "px";
+                else
+                    style.right = parseFloat(style.right) + (rect.left - appRect.left) + "px";
+            else if (rect.right > appRect.right)
+                if (style.left)
+                    style.left = parseFloat(style.left) - (rect.right - appRect.right) + "px";
+                else
+                    style.right = parseFloat(style.right) + (rect.right - appRect.right) + "px";
+            if (rect.top < appRect.top)
+                if (style.top)
+                    style.top = parseFloat(style.top) - (rect.top - appRect.top) + "px";
+                else
+                    style.bottom = parseFloat(style.bottom) + (rect.top - appRect.top) + "px";
+            else if (rect.bottom > appRect.bottom)
+                if (style.top)
+                    style.top = parseFloat(style.top) - (rect.bottom - appRect.bottom) + "px";
+                else
+                    style.bottom = parseFloat(style.bottom) + (rect.bottom - appRect.bottom) + "px";
+        };
         const popoutsObserver = new MutationObserver((mutations, observer) => {
             for (const mutation of mutations)
                 for (const node of mutation.addedNodes)
                     if (node instanceof HTMLElement)
-                        if (node.matches(".popout-3sVMXz")) {
-                            const rect = node.getBoundingClientRect();
-                            if (rect.left < 0)
-                                node.style.left = node.offsetLeft - rect.left + "px";
-                            else {
-                                const viewportRight = document.documentElement.clientWidth;
-                                if (rect.right > viewportRight)
-                                    node.style.left = node.offsetLeft - (rect.right - viewportRight) + "px";
-                            }
-                        }
+                        moveIntoView(node);
         });
 
-        const observe = element => {
-            const layers = element.querySelector(".layers-3iHuyZ");
-            if (layers) {
-                for (let i = 0; i < layers.children.length; i++) {
-                    const layer = layers.children[i];
+        new MutationObserver((mutations, observer) => {
+            // also observe children
+            for (const mutation of mutations)
+                if (mutation.target === appMount)
+                    for (const node of mutation.addedNodes)
+                        observer.observe(node, { childList: true });
+
+            for (const layers of layersCollection) {
+                for (const layer of layers.children)
                     if (layer instanceof HTMLElement)
                         observeLayer(layer);
-                }
                 layersObserver.observe(layers, { childList: true });
             }
-            const popouts = element.matches(".popouts-3dRSmE") ? element : element.querySelector(".popouts-3dRSmE");
-            if (popouts)
+
+            for (const layerContainer of layerContainers)
+                popoutsObserver.observe(layerContainer, { childList: true });
+            for (const popouts of popoutsCollection)
                 popoutsObserver.observe(popouts, { childList: true });
-        };
-        const appObserver = new MutationObserver((mutations, observer) => {
-            for (const mutation of mutations)
-                for (const node of mutation.addedNodes)
-                    if (node instanceof Element)
-                        observe(node);
-            updateImagePlaceholders();
-        });
-        new MutationObserver((mutations, observer) => {
-            for (const mutation of mutations)
-                for (const node of mutation.addedNodes)
-                    if (node instanceof Element) {
-                        observe(node);
-                        appObserver.observe(node, { childList: true });
-                    }
-        }).observe(mount, { childList: true });
+        }).observe(appMount, { childList: true });
     }
 })(localStorage);
