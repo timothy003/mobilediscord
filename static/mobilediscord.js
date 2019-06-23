@@ -517,6 +517,31 @@ mdLocalStorage.token;
             };
         }
     }
+
+    // keep touch keyboard open on submit
+    let keyPressEvent = null;
+    window.addEventListener("keypress", event => {
+        // ChannelTextArea.handleKeyPress
+        if (event.target.matches(".textArea-2Spzkt"))
+            switch (event.which) {
+                case 13:
+                    if (!event.shiftKey && !event.ctrlKey) {
+                        setTimeout(() => {
+                            keyPressEvent = null;
+                        });
+                        keyPressEvent = event;
+                    }
+            }
+    }, true);
+    const origSetAttribute = Element.prototype.setAttribute;
+    Element.prototype.setAttribute = function setAttribute(qualifiedName, value) {
+        if (keyPressEvent != null && keyPressEvent.eventPhase != Event.NONE)
+            if (this === keyPressEvent.target)
+                if (qualifiedName == "disabled")
+                    return;
+        return origSetAttribute.apply(this, arguments);
+    };
+
     // prevent auto focusing
     // touch keyboard is shown when focusing a text box in touch/tablet mode
     function hasTouchKeyboard() {
