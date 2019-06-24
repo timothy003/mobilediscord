@@ -1,6 +1,6 @@
 /* make scrollers opaque for subpixel antialiasing */
 
-.theme-light .inner-3wn6Q5,
+.theme-light .inner-2Z5QZX,
 .theme-light.contextMenu-HLZMGh .contextMenu-HLZMGh .scroller-2PSBSf,
 .theme-light .autocompleteScroller-iInVqR,
 .theme-light .note-3HfJZ5 textarea,
@@ -17,7 +17,7 @@
 .theme-light .messages-3amgkR,
 .theme-light .scroller-hUf6zQ,
 .friendsTable-133bsv .friendsTableBody-1ZhKif,
-.theme-dark .inner-3wn6Q5.slideBody-35BNbg,
+.theme-dark .inner-2Z5QZX.slideBody-35BNbg,
 .theme-light .body-3ND3kc .scroller-2FKFPG,
 .theme-light .note-QfFU8y textarea,
 .theme-light .keyboardShortcutsModal-3piNz7 .scroller-2FKFPG {
@@ -56,7 +56,7 @@
 }
 
 .theme-dark .scrollerStore-390omS,
-.theme-dark .inner-3wn6Q5,
+.theme-dark .inner-2Z5QZX,
 .theme-dark .contentRegionScroller-26nc1e,
 .theme-dark .contentRegionScroller-26nc1e .tools-3-3s-N,
 .theme-dark .customScroller-26gWhv,
@@ -164,14 +164,14 @@
 
 /* modal */
 
-.modal-3HD5ck {
+.modal-3v8ziU {
     z-index: 0;
     max-width: 100%;
     max-height: none; /* for Safari */
     overflow: hidden;
 }
 
-.scrollerThemed-2oenus.themeGhostHairline-DBD-2d .inner-3wn6Q5 {
+.scrollerThemed-2oenus.themeGhostHairline-DBD-2d .inner-2Z5QZX {
     padding-right: 20px;
 }
 
@@ -360,7 +360,7 @@
     z-index: 0;
 }
 
-.inner-1JeGVc .imageWrapper-2p5ogY {
+.inner-2VEzy9 .imageWrapper-2p5ogY {
     display: block;
 }
 
@@ -890,12 +890,12 @@ img.flexChild-faoVW3 {
     -ms-content-zoom-limit: 100% 100%; /* reset zoom */
 }
 
-.modal-1UGdnR {
+.modal-36zFtW {
     position: absolute;
     contain: style; /* allow modals to overflow */
 }
 
-.inner-1JeGVc {
+.inner-2VEzy9 {
     margin: auto;
     max-width: 100%;
     min-height: 1px;
