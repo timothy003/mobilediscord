@@ -137,7 +137,7 @@
                         document.webkitExitFullscreen();
                         return true;
                     }
-                    if (document.querySelector(".popout-3sVMXz")) {
+                    if (document.querySelector(".popout-2iWAc-")) {
                         document.body.click();
                         return true;
                     }
@@ -863,7 +863,7 @@ mdLocalStorage.token;
         }
         // open topic
         if (element.closest(".topic-TCb_qw.expandable-9fI_e3")) {
-            if (!document.querySelector(".modal-3HD5ck")) {
+            if (!document.querySelector(".modal-yWgWj-")) {
                 element.dispatchEvent(new MouseEvent("mousedown", event));
                 element.dispatchEvent(new MouseEvent("mouseup", event));
             }
@@ -963,7 +963,7 @@ mdLocalStorage.token;
         // adjust popout position
         // TODO: handle window resize
         const layerContainers = document.getElementsByClassName("layerContainer-yqaFcK");
-        const popoutsCollection = document.getElementsByClassName("popouts-3dRSmE");
+        const popoutsCollection = document.getElementsByClassName("popouts-2bnG9Z");
         const moveIntoView = popout => {
             const rect = popout.getBoundingClientRect();
             const appRect = appMount.getBoundingClientRect();
