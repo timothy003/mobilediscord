@@ -165,10 +165,13 @@
 /* Modal */
 
 .modal-yWgWj- {
-    z-index: 0;
     max-width: 100%;
     max-height: none; /* for Safari */
-    overflow: hidden;
+}
+
+.content-1EtbQh:last-child .inner-ZyuQk0 {
+    z-index: 0;
+    border-radius: 0 0 5px 5px;
 }
 
 .scrollerThemed-2oenus.themeGhostHairline-DBD-2d .inner-ZyuQk0 {
@@ -1026,19 +1029,26 @@ body {
     display: flex;
 }
 
-/* phone verification */
+/* PhoneField */
 
 .phoneField-38N1bJ .inputField-aNPXsv {
     min-width: 1px;
 }
 
-.phoneFieldPopout-h7c9mt .scrollerWrap-NaJt1D {
-    height: 196px !important;
+.phoneFieldPopout-h7c9mt {
+    top: auto;
+    bottom: 40px;
 }
 
-.input-3yHnCz {
-    min-width: 1px;
+.theme-light .phoneFieldPopout-h7c9mt .phoneFieldScroller-2IJUdK {
+    background: #fff;
 }
+
+.theme-dark .phoneFieldPopout-h7c9mt .phoneFieldScroller-2IJUdK {
+    background: #36393f;
+}
+
+/* PhoneVerificationModal */
 
 .phoneVerificationModal-OzcDc3 {
     max-width: calc(100% - 20px);
@@ -1047,17 +1057,6 @@ body {
 .phoneVerificationModal-OzcDc3 .animationContainer-WJHr_z {
     left: auto;
     right: auto;
-}
-
-.phoneVerificationModal-OzcDc3 .field-wKpjTl {
-    margin-left: 0;
-    margin-right: 0;
-    align-items: stretch;
-}
-
-.phoneVerificationModal-OzcDc3 .field-wKpjTl .button-38aScr {
-    margin-right: auto;
-    margin-left: auto;
 }
 
 /* video call */
