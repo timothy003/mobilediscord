@@ -228,6 +228,11 @@
         // HACK: login page must be loaded on discordapp.com for reCAPTCHA
         function getScript() {
             let s = `if (!("mdLocalStorage" in window)) {
+    // HACK: Edge 14 is unsupported
+    const compatibleUserAgent = navigator.userAgent.replace(" Edge/14.", " Edge/15.");
+    if (compatibleUserAgent != navigator.userAgent)
+        Object.defineProperty(navigator, "userAgent", { value: compatibleUserAgent });
+
     // reCAPTCHA expects HTMLIFrameElement.contentWindow == MessageEvent.source, but Discord removes the iframe upon verification before all the messages are processed, preventing reCAPTCHA from closing the challenge.
     // Copy Chrome by making MessageEvent.source return undefined if the iframe is no longer in the DOM.
     const origSource = Object.getOwnPropertyDescriptor(MessageEvent.prototype, "source").get;
