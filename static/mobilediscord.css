@@ -1346,4 +1346,8 @@ body {
     .iconVisibility-1bOqu7:hover .iconItem-1-bXkn {
         display: none;
     }
+
+    .containerDefault-1ZnADq.selected-37j_iU .iconItem-1-bXkn {
+        display: block;
+    }
 }
