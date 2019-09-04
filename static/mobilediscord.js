@@ -723,63 +723,71 @@ mdLocalStorage.token;
         if (videoWrapper)
             videoWrapper.tabIndex = -1;
     });
-    function deferEvent(event, applyStyles, revertStyles) {
-        try {
-            applyStyles();
-            const target = event.target;
-            const clonedEvent = new event.constructor(event.type, event);
-            setTimeout(() => {
-                try {
-                    target.dispatchEvent(clonedEvent);
-                } finally {
-                    revertStyles();
-                }
-            });
-        } catch (e) {
-            revertStyles();
-            throw e;
-        }
-        event.preventDefault();
-        event.stopImmediatePropagation();
+
+    function hideTooltip() {
+        for (const tooltip of document.querySelectorAll(".tooltip-2QfLtc"))
+            tooltip.hidden = true;
     }
-    function animateNavigation(event, ...styles) {
-        deferEvent(event, () => {
-            for (const [element, props] of styles)
-                if (element)
-                    for (const key in props)
-                        element.style[key] = props[key];
-        }, () => {
-            for (const [element, props] of styles)
-                if (element)
-                    for (const key in props)
-                        element.style[key] = "";
+    function deferEvent(event) {
+        return new Promise((resolve, reject) => {
+            const target = event.target;
+            event.mdDeferred = true;
+            Object.defineProperty(event, "defaultPrevented", { value: false });
+            // https://nolanlawson.com/2018/09/25/accurately-measuring-layout-on-the-web/
+            requestAnimationFrame(time => {
+                setTimeout(() => {
+                    target.dispatchEvent(event);
+                    resolve();
+                });
+            });
+            event.preventDefault();
+            event.stopImmediatePropagation();
+        });
+    }
+    function animateLayer(event, button, animationName) {
+        const layer = button.closest(".layers-3iHuyZ > .layer-3QrUeG");
+        layer.style.animationName = animationName;
+        deferEvent(event).then(() => {
+            if (!layer.matches(".animating-rRxada"))
+                layer.style.animationName = "";
+        });
+    }
+    function animateNavigation(event, ...classes) {
+        document.documentElement.classList.add("md-navigating", ...classes);
+        deferEvent(event).then(() => {
+            document.documentElement.classList.remove("md-navigating", ...classes);
         });
     }
     window.addEventListener("click", event => {
-        if (!event.isTrusted)
+        if (event.mdDeferred)
             return;
         const element = event.target;
+
+        // animate settings navigation
+        const button = element.closest(".iconItem-1-bXkn, .button-2JbWXs");
+        if (button) {
+            if (button.querySelector("svg[name='Gear']")) {
+                hideTooltip();
+                animateLayer(event, button, "md-layer-under");
+            }
+            return;
+        }
+        const btn = element.closest(".closeButton-1tv5uR");
+        if (btn) {
+            if (!document.querySelector(".container-2VW0UT"))
+                animateLayer(event, btn, "md-layer-out");
+            return;
+        }
+
         // animate guild navigation
         if (element.closest(".acronym-2mOFsV, .wrapper-1BJsBx")) {
             if (document.querySelector(".contextMenu-HLZMGh"))
                 return;
-            let channels = null;
-            if (!(element.closest(".blob-3RT82C") && document.querySelector(".privateChannels-1nO12o")))
-                channels = document.querySelector(".privateChannels-1nO12o .scroller-2FKFPG, .scroller-2wx7Hm");
-            const chat = document.querySelector(
-                ".messagesWrapper-3lZDfY," +
-                ".noChannel-Z1DQK7 > .wrapper-r-6rrt," +
-                ".scrollWrap-qwpLpa," +
-                ".friendsTable-133bsv .friendsTableBody-1ZhKif," +
-                ".layout-1cQCv2"
-            );
-            const tooltip = document.querySelector(".tooltip-2QfLtc");
-            // channels animation is buggy on Safari - use transition instead
-            animateNavigation(event,
-                [channels, isSafari ? { opacity: "0", transitionTimingFunction: "ease-in" } : { animation: "md-fade-out .1s ease-in forwards" }],
-                [chat, { animation: "md-fade-out .1s ease-in forwards" }],
-                [tooltip, { display: "none" }]
-            );
+            hideTooltip();
+            if (element.closest(".blob-3RT82C") && document.querySelector(".privateChannels-1nO12o"))
+                animateNavigation(event);
+            else
+                animateNavigation(event, "md-navigating-guild");
             return;
         }
         // animate channel navigation
@@ -789,34 +797,10 @@ mdLocalStorage.token;
                 return;
             if (channel.matches(".channel-2QD9_O a") && document.querySelector(".contextMenu-HLZMGh"))
                 return;
-            const chat = document.querySelector(
-                ".messagesWrapper-3lZDfY," +
-                ".scrollWrap-qwpLpa," +
-                ".friendsTable-133bsv .friendsTableBody-1ZhKif," +
-                ".layout-1cQCv2"
-            );
-            animateNavigation(event, [chat, { animation: "md-fade-out .1s ease-in forwards" }]);
+            animateNavigation(event);
             return;
         }
-        // animate settings navigation
-        const button = element.closest(".flex-1xMQg5 > .button-2b6hmh:last-child");
-        if (button) {
-            const layer = button.closest(".layers-3iHuyZ > .layer-3QrUeG");
-            const tooltip = document.querySelector(".tooltip-2QfLtc");
-            animateNavigation(event,
-                [layer, { animationName: "md-layer-under" }],
-                [tooltip, { display: "none" }]
-            );
-            return;
-        }
-        const btn = element.closest(".closeButton-1tv5uR");
-        if (btn) {
-            if (!document.querySelector(".container-2VW0UT")) {
-                const layer = btn.closest(".layers-3iHuyZ > .layer-3QrUeG");
-                animateNavigation(event, [layer, { animationName: "md-layer-out" }]);
-            }
-            return;
-        }
+
         // jump to message when tapping a search result
         const sink = element.closest(".searchResultMessage-2VxO12.hit-NLlWXA .clickOverride-1J40_l");
         if (sink) {
@@ -947,12 +931,13 @@ mdLocalStorage.token;
         const layersCollection = document.getElementsByClassName("layers-3iHuyZ");
         const layerObserver = new MutationObserver((mutations, observer) => {
             for (const { target: layer } of mutations)
-                if (layer.matches(".animating-rRxada"))
-                    if (layer.style.opacity === "0")
-                        layer.style.animationName = "md-layer-in";
-                    else
-                        layer.style.animationName = !layer.nextElementSibling ? "md-layer-out" : "md-layer-under";
-                else
+                if (layer.matches(".animating-rRxada")) {
+                    if (!layer.style.animationName)
+                        if ((layer.style.opacity || 1) < 0.5)
+                            layer.style.animationName = "md-layer-in";
+                        else
+                            layer.style.animationName = !layer.nextElementSibling ? "md-layer-out" : "md-layer-under";
+                } else
                     layer.style.animationName = "";
         });
         const observeLayer = layer => layerObserver.observe(layer, { attributes: true, attributeFilter: ["class"] });
