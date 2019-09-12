@@ -752,10 +752,19 @@ mdLocalStorage.token;
                 layer.style.animationName = "";
         });
     }
-    function animateNavigation(event, ...classes) {
-        document.documentElement.classList.add("md-navigating", ...classes);
+    function animateNavigation(event, guild) {
+        let selectors = ".messagesWrapper-3lZDfY," +
+            ".noChannel-Z1DQK7 > .wrapper-r-6rrt," +
+            ".scrollWrap-qwpLpa," +
+            ".friendsTable-133bsv .friendsTableBody-1ZhKif," +
+            ".layout-1cQCv2";
+        if (guild)
+            selectors += ", .privateChannels-1nO12o .scroller-2FKFPG, .scroller-2wx7Hm";
+        for (const element of document.querySelectorAll(selectors))
+            element.style.animation = ".1s cubic-bezier(0.4, 0.0, 1, 1) forwards md-fade-out";
         deferEvent(event).then(() => {
-            document.documentElement.classList.remove("md-navigating", ...classes);
+            for (const element of document.querySelectorAll(selectors))
+                element.style.animation = ".2s cubic-bezier(0.0, 0.0, 0.2, 1) md-fade-in";
         });
     }
     window.addEventListener("click", event => {
@@ -784,10 +793,7 @@ mdLocalStorage.token;
             if (document.querySelector(".contextMenu-HLZMGh"))
                 return;
             hideTooltip();
-            if (element.closest(".blob-3RT82C") && document.querySelector(".privateChannels-1nO12o"))
-                animateNavigation(event);
-            else
-                animateNavigation(event, "md-navigating-guild");
+            animateNavigation(event, !(element.closest(".blob-3RT82C") && document.querySelector(".privateChannels-1nO12o")));
             return;
         }
         // animate channel navigation
@@ -797,7 +803,7 @@ mdLocalStorage.token;
                 return;
             if (channel.matches(".channel-2QD9_O a") && document.querySelector(".contextMenu-HLZMGh"))
                 return;
-            animateNavigation(event);
+            animateNavigation(event, false);
             return;
         }
 

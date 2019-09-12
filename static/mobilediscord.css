@@ -332,17 +332,6 @@
 .scroller-2wx7Hm {
     position: relative;
     z-index: 0;
-    animation: .2s cubic-bezier(0.0, 0.0, 0.2, 1) md-fade-in !important;
-}
-
-.md-navigating .messagesWrapper-3lZDfY,
-.md-navigating .noChannel-Z1DQK7 > .wrapper-r-6rrt,
-.md-navigating .scrollWrap-qwpLpa,
-.md-navigating .friendsTable-133bsv .friendsTableBody-1ZhKif,
-.md-navigating-guild .privateChannels-1nO12o .scroller-2FKFPG,
-.md-navigating .layout-1cQCv2,
-.md-navigating-guild .scroller-2wx7Hm {
-    animation: .1s cubic-bezier(0.4, 0.0, 1, 1) forwards md-fade-out !important;
 }
 
 /* modals */
