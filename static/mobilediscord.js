@@ -350,6 +350,10 @@ mdLocalStorage.token;
         document.documentElement.classList.add("md-app");
     }
 
+    // polyfill CSS variables for Edge 14
+    if ("cssVars" in window)
+        cssVars();
+
     // fix broken URLs when running locally
     if (location.protocol != "https:") {
         const origOpen = XMLHttpRequest.prototype.open;
