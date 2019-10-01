@@ -763,7 +763,7 @@ mdLocalStorage.token;
             ".friendsTable-133bsv .friendsTableBody-1ZhKif," +
             ".layout-1cQCv2";
         if (guild)
-            selectors += ", .privateChannels-1nO12o .scroller-2FKFPG, .scroller-2wx7Hm";
+            selectors += ", .scroller-1JbKMe, .scroller-2wx7Hm";
         for (const element of document.querySelectorAll(selectors))
             element.style.animation = ".1s cubic-bezier(0.4, 0.0, 1, 1) forwards md-fade-out";
         deferEvent(event).then(() => {
@@ -777,7 +777,7 @@ mdLocalStorage.token;
         const element = event.target;
 
         // animate settings navigation
-        const button = element.closest(".iconItem-1-bXkn, .button-2JbWXs");
+        const button = element.closest(".iconItem-1-bXkn, .button-14-BFJ");
         if (button) {
             if (button.querySelector("svg[name='Gear']")) {
                 hideTooltip();
@@ -794,18 +794,14 @@ mdLocalStorage.token;
 
         // animate guild navigation
         if (element.closest(".acronym-2mOFsV, .wrapper-1BJsBx")) {
-            if (document.querySelector(".contextMenu-HLZMGh"))
-                return;
             hideTooltip();
             animateNavigation(event, !(element.closest(".blob-3RT82C") && document.querySelector(".privateChannels-1nO12o")));
             return;
         }
         // animate channel navigation
-        const channel = element.closest(".wrapper-1ucjTd, .channel-2QD9_O a");
+        const channel = element.closest(".wrapper-1ucjTd, .channel-2QD9_O");
         if (channel) {
             if (element.closest(".wrapper-1ucjTd [role=button], .close-3hZ5Ni"))
-                return;
-            if (channel.matches(".channel-2QD9_O a") && document.querySelector(".contextMenu-HLZMGh"))
                 return;
             animateNavigation(event, false);
             return;
@@ -840,19 +836,19 @@ mdLocalStorage.token;
 
         // scroll to chat when tapping a channel or jump button
         if (element.closest(
-            ".wrapper-1ucjTd," +
+            ".modeSelected-1zApJ_," +
             ".jumpButton-Ia2hRJ," +
             ".channelName-1QajIf," +
             ".messageGroupWrapper-o-Zw7G .clickOverride-1J40_l," +
             ".actionButtons-1sUUug .jumpButton-3DTcS_," +
             ".channelName-3kBz6H," +
-            ".channel-2QD9_O a," +
+            ".channel-2QD9_O," +
             ".blob-3RT82C"
         )) {
             if (element.closest(".wrapper-1ucjTd [role=button], .close-3hZ5Ni"))
                 return;
             const chat = document.querySelector(
-                ".content-yTz4x3 > .spacer-1fA9zc," +
+                ".chatContent-a9vAAp," +
                 ".scrollWrap-qwpLpa," +
                 ".friendsTable-133bsv," +
                 ".activityFeed-1C0EmJ"

@@ -41,38 +41,48 @@
 
 /* make scrollers opaque for subpixel antialiasing */
 
+.contentRegionScroller-26nc1e .tools-3-3s-N,
+.customScroller-26gWhv,
+.toolsContainer-1edPuj,
+.sidebarScrollable-1qPI87 {
+    background-color: var(--background-primary);
+}
+
+.container-2Rl01u:not(.hasBanner-14PPlG) ~ .scrollerWrap-2lJEkd .scroller-2wx7Hm,
+.body-3ND3kc .scroller-2FKFPG,
+.note-QfFU8y textarea {
+    background-color: var(--background-secondary);
+}
+
+.container-2lgZY8 {
+    background-color: var(--background-tertiary);
+}
+
+.textArea-2Spzkt {
+    background-color: var(--channeltextarea-background);
+}
+
 .theme-light .inner-ZyuQk0,
-.theme-light.contextMenu-HLZMGh .contextMenu-HLZMGh .scroller-2PSBSf,
 .theme-light .autocompleteScroller-iInVqR,
-.theme-light .note-3HfJZ5 textarea,
-.theme-light .contentRegionScroller-26nc1e,
-.theme-light .contentRegionScroller-26nc1e .tools-3-3s-N,
-.theme-light .customScroller-26gWhv,
-.theme-light .toolsContainer-1edPuj,
+.theme-light .note-3HfJZ5 textarea:not(:focus),
 .theme-light .scroller-2CvAgC,
-.theme-light .sidebarScrollable-1qPI87,
-.theme-light .scroller-305q3I,
 .emojiPicker-3m1S-j .scroller-3vODG7,
 .theme-light .reactors-Blmlhw .scroller-2FKFPG,
-.messagesPopout-24nkyi,
-.theme-light .messages-3amgkR,
+.theme-light .phoneFieldPopout-h7c9mt .phoneFieldScroller-2IJUdK,
 .theme-light .scroller-hUf6zQ,
-.friendsTable-133bsv .friendsTableBody-1ZhKif,
 .theme-dark .inner-ZyuQk0.slideBody-35BNbg,
-.theme-light .body-3ND3kc .scroller-2FKFPG,
-.theme-light .note-QfFU8y textarea,
 .theme-light .keyboardShortcutsModal-3piNz7 .scroller-2FKFPG {
     background-color: #fff;
 }
 
-.theme-light .scrollerStore-390omS,
-.theme-light .textArea-2Spzkt,
-.theme-light .container-2jxBbw,
-.theme-light .scroller-zPkAnE {
+.theme-light .horizontalAutocompletes-x8hlrn {
+    background-color: #f8f9f9;
+}
+
+.theme-light .container-2jxBbw {
     background-color: #f6f6f7;
 }
 
-.theme-light .sidebarRegionScroller-3MXcoP,
 .theme-light .scroller-1-nKid {
     background-color: #f3f3f4;
 }
@@ -82,55 +92,25 @@
 }
 
 .theme-dark .autocompleteScroller-iInVqR,
-.theme-dark .note-3HfJZ5 textarea,
-.theme-dark .sidebarRegionScroller-3MXcoP,
+.theme-dark .note-3HfJZ5 textarea:not(:focus),
 .theme-dark .container-2jxBbw,
 .theme-dark .horizontalAutocompletes-x8hlrn,
 .theme-dark .scroller-1-nKid,
-.theme-dark .messagesPopout-24nkyi,
-.theme-dark .searchResultsWrap-2DKFzt .scroller-2FKFPG,
-.privateChannels-1nO12o .scroller-2FKFPG,
-.theme-dark .body-3ND3kc .scroller-2FKFPG,
-.theme-dark .note-QfFU8y textarea,
-.theme-dark .scroller-zPkAnE {
+.theme-dark .searchResultsWrap-2DKFzt .scroller-2FKFPG {
     background-color: #2f3136;
 }
 
-.theme-dark .scrollerStore-390omS,
 .theme-dark .inner-ZyuQk0,
-.theme-dark .contentRegionScroller-26nc1e,
-.theme-dark .contentRegionScroller-26nc1e .tools-3-3s-N,
-.theme-dark .customScroller-26gWhv,
-.theme-dark .toolsContainer-1edPuj,
 .theme-dark .scroller-2CvAgC,
-.theme-dark .sidebarScrollable-1qPI87,
-.theme-dark .scroller-305q3I,
 .theme-dark .reactors-Blmlhw .scroller-2FKFPG,
-.theme-dark .messages-3amgkR,
+.theme-dark .phoneFieldPopout-h7c9mt .phoneFieldScroller-2IJUdK,
 .theme-dark .scroller-hUf6zQ,
-.theme-dark .friendsTable-133bsv .friendsTableBody-1ZhKif,
 .theme-dark .keyboardShortcutsModal-3piNz7 .scroller-2FKFPG {
     background-color: #36393f;
 }
 
-.theme-dark.contextMenu-HLZMGh .contextMenu-HLZMGh .scroller-2PSBSf {
-    background-color: #18191c;
-}
-
-.theme-dark .textArea-2Spzkt {
-    background-color: rgb(72, 75, 81);
-}
-
 .theme-brand .textArea-2Spzkt {
     background-color: #8ea1e1;
-}
-
-.theme-light .horizontalAutocompletes-x8hlrn {
-    background-color: rgb(234, 235, 235);
-}
-
-.scroller-2TZvBN {
-    background-color: #202225;
 }
 
 /* loading screen */
@@ -345,7 +325,7 @@
     flex-basis: 0;
 }
 
-.content-yTz4x3 > .spacer-1fA9zc,
+.chatContent-a9vAAp,
 .scrollWrap-qwpLpa {
     flex: auto;
     width: 418px;
@@ -368,7 +348,7 @@
 .noChannel-Z1DQK7 > .wrapper-r-6rrt,
 .scrollWrap-qwpLpa,
 .friendsTable-133bsv .friendsTableBody-1ZhKif,
-.privateChannels-1nO12o .scroller-2FKFPG,
+.scroller-1JbKMe,
 .layout-1cQCv2,
 .scroller-2wx7Hm {
     position: relative;
@@ -720,7 +700,7 @@
     }
 
     .theme-light .closeButton-1tv5uR {
-        background-color: #fff;
+        background-color: var(--background-primary);
         /* .lightElevationLow-3_Ybxi */
         box-shadow: 0 1px 5px rgba(0,0,0,.2);
     }
@@ -731,7 +711,7 @@
     }
     
     .theme-dark .closeButton-1tv5uR {
-        background-color: #36393f;
+        background-color: var(--background-primary);
         /* .darkElevationLow-DABD7i */
         box-shadow: 0 1px 5px 0 rgba(0,0,0,.3);
     }
@@ -747,10 +727,8 @@
         box-shadow: none;
     }
 
-    .theme-light .contentRegionScroller-26nc1e .tools-3-3s-N,
-    .theme-dark .contentRegionScroller-26nc1e .tools-3-3s-N,
-    .theme-light .toolsContainer-1edPuj,
-    .theme-dark .toolsContainer-1edPuj {
+    .contentRegionScroller-26nc1e .tools-3-3s-N,
+    .toolsContainer-1edPuj {
         background-color: transparent;
     }
 }
@@ -1079,14 +1057,6 @@ body {
     bottom: 40px;
 }
 
-.theme-light .phoneFieldPopout-h7c9mt .phoneFieldScroller-2IJUdK {
-    background: #fff;
-}
-
-.theme-dark .phoneFieldPopout-h7c9mt .phoneFieldScroller-2IJUdK {
-    background: #36393f;
-}
-
 /* PhoneVerificationModal */
 
 .phoneVerificationModal-OzcDc3 {
@@ -1327,7 +1297,7 @@ body {
         scroll-snap-align: end;
     }
 
-    .content-yTz4x3 > .spacer-1fA9zc,
+    .chatContent-a9vAAp,
     .noChannel-Z1DQK7,
     .activityFeed-1C0EmJ,
     .video-1FfuMD,
@@ -1336,6 +1306,8 @@ body {
     }
 
     .base-3dtUhz {
+        right: auto;
+        min-width: calc(100% - 72px);
         overflow: visible;
         contain: content;
     }
@@ -1358,7 +1330,7 @@ body {
         width: 100vw;
     }
 
-    .content-yTz4x3 > .spacer-1fA9zc,
+    .chatContent-a9vAAp,
     .noChannel-Z1DQK7,
     .activityFeed-1C0EmJ,
     .video-1FfuMD,
