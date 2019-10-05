@@ -996,14 +996,6 @@ body {
     max-width: 334px;
 }
 
-@media (pointer: coarse) {
-    .md-app .reactionBtn-2na4rd,
-    .md-app .button-3Jq0g9 {
-        width: 0;
-        height: 0;
-    }
-}
-
 .markup-2BOw-j pre {
     max-width: none;
 }

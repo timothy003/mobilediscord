@@ -58,11 +58,15 @@
     if ("Windows" in self) { // Windows Runtime
         embedded = true;
         try {
-            const applicationView = Windows.UI.ViewManagement.ApplicationView.getForCurrentView();
+            const { ApplicationView, StatusBar } = Windows.UI.ViewManagement;
+            const applicationView = ApplicationView.getForCurrentView();
+            const statusBar = StatusBar ? StatusBar.getForCurrentView() : null;
+
             // phone status bar
-            if ("StatusBar" in Windows.UI.ViewManagement) {
-                const statusBar = Windows.UI.ViewManagement.StatusBar.getForCurrentView();
+            if (statusBar) {
                 const progressIndicator = statusBar.progressIndicator;
+                progressIndicator.hideAsync();
+                statusBar.showAsync();
                 let timeoutId = 0;
                 const origWarn = console.warn;
                 console.warn = function (...data) {
@@ -204,6 +208,54 @@
                         }
                     });
             }
+
+            // color title/status bar
+            const { fromArgb } = Windows.UI.ColorHelper;
+            const titleBar = applicationView.titleBar;
+            new MutationObserver((mutations, observer) => {
+                if (document.documentElement.matches(".theme-dark")) {
+                    const backgroundColor = fromArgb(255, 32, 34, 37);
+                    const foregroundColor = Windows.UI.Colors.white;
+                    titleBar.backgroundColor = backgroundColor;
+                    titleBar.foregroundColor = foregroundColor;
+                    titleBar.buttonBackgroundColor = backgroundColor;
+                    titleBar.buttonForegroundColor = foregroundColor;
+                    titleBar.buttonHoverBackgroundColor = fromArgb(255, 53, 55, 58);
+                    titleBar.buttonHoverForegroundColor = foregroundColor;
+                    titleBar.buttonPressedBackgroundColor = fromArgb(255, 76, 78, 80);
+                    titleBar.buttonPressedForegroundColor = foregroundColor;
+                    titleBar.inactiveBackgroundColor = backgroundColor;
+                    titleBar.inactiveForegroundColor = fromArgb(255, 121, 122, 124);
+                    titleBar.buttonInactiveBackgroundColor = backgroundColor;
+                    titleBar.buttonInactiveForegroundColor = fromArgb(255, 121, 122, 124);
+                    if (statusBar) {
+                        statusBar.backgroundColor = backgroundColor;
+                        statusBar.backgroundOpacity = 1;
+                        statusBar.foregroundColor = fromArgb(255, 199, 200, 200);
+                    }
+                }
+                if (document.documentElement.matches(".theme-light")) {
+                    const backgroundColor = fromArgb(255, 227, 229, 232);
+                    const foregroundColor = Windows.UI.Colors.black;
+                    titleBar.backgroundColor = backgroundColor;
+                    titleBar.foregroundColor = foregroundColor;
+                    titleBar.buttonBackgroundColor = backgroundColor;
+                    titleBar.buttonForegroundColor = foregroundColor;
+                    titleBar.buttonHoverBackgroundColor = fromArgb(255, 204, 206, 209);
+                    titleBar.buttonHoverForegroundColor = foregroundColor;
+                    titleBar.buttonPressedBackgroundColor = fromArgb(255, 181, 183, 185);
+                    titleBar.buttonPressedForegroundColor = foregroundColor;
+                    titleBar.inactiveBackgroundColor = backgroundColor;
+                    titleBar.inactiveForegroundColor = fromArgb(255, 136, 137, 139);
+                    titleBar.buttonInactiveBackgroundColor = backgroundColor;
+                    titleBar.buttonInactiveForegroundColor = fromArgb(255, 136, 137, 139);
+                    if (statusBar) {
+                        statusBar.backgroundColor = backgroundColor;
+                        statusBar.backgroundOpacity = 1;
+                        statusBar.foregroundColor = fromArgb(255, 91, 92, 93);
+                    }
+                }
+            }).observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
         } catch (e) {
             console.error(e);
         }
@@ -346,8 +398,6 @@ mdLocalStorage.token;
     if (embedded) {
         // hide download nag
         localStorage.hideNag = "true";
-        // hide "download apps" button
-        document.documentElement.classList.add("md-app");
     }
 
     // polyfill CSS variables for Edge 14
