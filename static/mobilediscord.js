@@ -709,6 +709,8 @@ mdLocalStorage.token;
         if (qualifiedName == "src")
             if (value == "/assets/0bdc0497eb3a19e66f2b1e3d5741634c.webm")
                 arguments[1] = "/assets/md/connecting.webm";
+            else if (value == "/assets/3d5696326e1a1f22f5025061e6701193.webm")
+                arguments[1] = "/assets/md/connecting-light.webm";
         HTMLElement.prototype.setAttribute.apply(this, arguments);
     };
 
