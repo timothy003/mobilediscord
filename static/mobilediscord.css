@@ -1164,6 +1164,19 @@ body {
     contain: strict;
 }
 
+/* GuildFolder */
+
+.closedFolderIconWrapper-15K9MK {
+    /* IE10-compatible grid auto-placement */
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
+.guildIcon-GuAC7C {
+    margin: 2px;
+}
+
 /* Guilds */
 
 .wrapper-1Rf91z {
