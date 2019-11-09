@@ -533,7 +533,8 @@
         resolve(this._nativePC.createOffer(nativeOptions).then(function (offerSDP) {
           // HACK: This is a hack to force VP8 while we're waiting for VP9 to be
           // fully implemented.
-          offerSDP.sdp = offerSDP.sdp.replace(' 101 100', ' 100 101');
+          offerSDP.sdp = offerSDP.sdp.replace(" VP9/", " VP8/");
+          offerSDP.sdp = offerSDP.sdp.replace(" H264/", " VP8/");
           return new RTCSessionDescription(offerSDP);
         }));
       });
@@ -545,7 +546,8 @@
         resolve(this._nativePC.createAnswer(nativeOptions).then(function (answerSDP) {
           // HACK: This is a hack to force VP8 while we're waiting for VP9 to be
           // fully implemented.
-          answerSDP.sdp = answerSDP.sdp.replace(' 101 100', ' 100 101');
+          answerSDP.sdp = answerSDP.sdp.replace(" VP9/", " VP8/");
+          answerSDP.sdp = answerSDP.sdp.replace(" H264/", " VP8/");
           return new RTCSessionDescription(answerSDP);
         }));
       });
