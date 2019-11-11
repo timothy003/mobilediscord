@@ -622,8 +622,12 @@ mdLocalStorage.token;
                     ".quickMessage-2XpSaN," +
                     ".input-1Rv96N," +
                     ".textArea-2Spzkt"
-                ))
+                )) {
+                    if (this.matches(".addFriendInput-4bcerK"))
+                        if (!(window.event && event.type == "click"))
+                            return;
                     break out;
+                }
                 // allow if a text box already has focus
                 const activeElement = document.activeElement;
                 if (activeElement instanceof HTMLInputElement && activeElement.type === "text" || activeElement instanceof HTMLTextAreaElement)
