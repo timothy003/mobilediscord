@@ -490,6 +490,12 @@
     min-width: 1px;
 }
 
+/* ChannelTextAreaButton */
+
+.buttonWrapper-1ZmCpA[hidden] {
+    display: none;
+}
+
 /* ChannelTextArea */
 
 .textArea-2Spzkt {

@@ -578,34 +578,85 @@ mdLocalStorage.token;
     }
 
     // keep touch keyboard open on submit
-    let keyPressEvent = null;
-    window.addEventListener("keypress", event => {
+    function isSendKey(event) {
         // ChannelTextArea.handleKeyPress
         if (event.target.matches(".textArea-2Spzkt"))
-            switch (event.which) {
+            switch (event.keyCode) {
                 case 13:
-                    if (!event.shiftKey && !event.ctrlKey) {
-                        setTimeout(() => {
-                            keyPressEvent = null;
-                        });
-                        keyPressEvent = event;
-                    }
+                    if (!event.shiftKey && !event.ctrlKey)
+                        return true;
             }
-    }, true);
+        return false;
+    }
     const origSetAttribute = Element.prototype.setAttribute;
     Element.prototype.setAttribute = function setAttribute(qualifiedName, value) {
-        if (keyPressEvent != null && keyPressEvent.eventPhase != Event.NONE)
-            if (this === keyPressEvent.target)
-                if (qualifiedName == "disabled")
-                    return;
+        if (qualifiedName == "disabled")
+            if (window.event && event.type == "keypress")
+                if (this === event.target)
+                    if (isSendKey(event))
+                        return;
         return origSetAttribute.apply(this, arguments);
     };
+
+    // send button
+    function updateButtons(textArea) {
+        const { form } = textArea;
+        if (!form)
+            return;
+        let sendButton = form.querySelector(".md-send-button");
+        if (!sendButton) {
+            const buttons = form.querySelector(".buttons-205you");
+            if (!buttons)
+                return;
+            textArea.addEventListener("input", handleInput);
+            sendButton = document.createElement("button");
+            sendButton.className = "md-send-button buttonWrapper-1ZmCpA button-38aScr lookBlank-3eh9lL colorBrand-3pXr91 grow-q77ONN";
+            sendButton.innerHTML = '<div class="contents-18-Yxp button-3AYNKb button-2vd_v_ icon-3D60ES">Send</div>';
+            sendButton.onclick = handleSend;
+            sendButton.hidden = true;
+            buttons.appendChild(sendButton);
+        }
+        const isEmpty = textArea.value == "";
+        if (sendButton.hidden != isEmpty) {
+            sendButton.hidden = isEmpty;
+            for (const button of form.querySelectorAll(".buttonWrapper-1ZmCpA:not(.md-send-button)"))
+                button.hidden = !isEmpty;
+        }
+    }
+    function handleInput(event) {
+        updateButtons(this);
+    }
+    const origFocus = HTMLElement.prototype.focus;
+    function handleSend(event) {
+        event.preventDefault();
+        const { currentTarget: { form } } = event;
+        const textArea = form.querySelector(".textArea-2Spzkt");
+        const keyboardEvent = new KeyboardEvent("keypress", {
+            bubbles: true,
+            key: "Enter",
+            keyCode: 13
+        });
+        if (keyboardEvent.keyCode !== 13)
+            Object.defineProperty(keyboardEvent, "keyCode", { value: 13 });
+        origFocus.call(textArea);
+        const { selectionStart } = textArea;
+        textArea.selectionStart = 0;
+        textArea.dispatchEvent(keyboardEvent);
+        textArea.selectionStart = selectionStart;
+    }
+    window.addEventListener("keypress", event => {
+        if (!event.isTrusted)
+            return;
+        if (isSendKey(event))
+            if (hasTouchKeyboard())
+                event.stopImmediatePropagation();
+    }, true);
 
     // prevent auto focusing
     // touch keyboard is shown when focusing a text box in touch/tablet mode
     function hasTouchKeyboard() {
         if ("Windows" in self)
-            return Windows.UI.ViewManagement.UIViewSettings.getForCurrentView().userInteractionMode === Windows.UI.ViewManagement.UserInteractionMode.touch;
+            return !new Windows.Devices.Input.KeyboardCapabilities().keyboardPresent;
         else
             return window.matchMedia("(pointer: coarse)").matches;
     }
@@ -628,6 +679,8 @@ mdLocalStorage.token;
                             return;
                     break out;
                 }
+                if (this instanceof HTMLTextAreaElement)
+                    updateButtons(this);
                 // allow if a text box already has focus
                 const activeElement = document.activeElement;
                 if (activeElement instanceof HTMLInputElement && activeElement.type === "text" || activeElement instanceof HTMLTextAreaElement)
@@ -642,10 +695,10 @@ mdLocalStorage.token;
             return origFocus.apply(this, arguments);
         };
     }
-    HTMLTextAreaElement.prototype.focus = wrapFocus(HTMLTextAreaElement.prototype.focus);
+    HTMLElement.prototype.focus = wrapFocus(HTMLElement.prototype.focus);
     Object.defineProperty(HTMLTextAreaElement.prototype, "selectionStart", { set: wrapFocus(Object.getOwnPropertyDescriptor(HTMLTextAreaElement.prototype, "selectionStart").set) });
     Object.defineProperty(HTMLTextAreaElement.prototype, "selectionEnd", { set: wrapFocus(Object.getOwnPropertyDescriptor(HTMLTextAreaElement.prototype, "selectionEnd").set) });
-    HTMLInputElement.prototype.focus = wrapFocus(HTMLInputElement.prototype.focus);
+
     // handle gateway authentication failure on Edge
     // Edge fires a CloseEvent with status code 1005 instead of 4004, preventing Discord from logging out automatically.
     const origCode = Object.getOwnPropertyDescriptor(CloseEvent.prototype, "code").get;
