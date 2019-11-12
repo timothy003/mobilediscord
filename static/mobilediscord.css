@@ -49,6 +49,7 @@
     background-color: var(--background-primary);
 }
 
+.emojiPicker-3m1S-j .scroller-3vODG7,
 .container-2Rl01u:not(.hasBanner-14PPlG) ~ .scrollerWrap-2lJEkd .scroller-2wx7Hm,
 .body-3ND3kc .scroller-2FKFPG,
 .note-QfFU8y textarea {
@@ -67,7 +68,6 @@
 .theme-light .autocompleteScroller-iInVqR,
 .theme-light .note-3HfJZ5 textarea:not(:focus),
 .theme-light .scroller-2CvAgC,
-.emojiPicker-3m1S-j .scroller-3vODG7,
 .theme-light .reactors-Blmlhw .scroller-2FKFPG,
 .theme-light .phoneFieldPopout-h7c9mt .phoneFieldScroller-2IJUdK,
 .theme-light .scroller-hUf6zQ,
