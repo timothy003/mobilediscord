@@ -4,6 +4,7 @@
         ADD_REACTION: "Add Reaction",
         COPY: "Copy",
         COPY_LINK: "Copy Link",
+        SEND_MESSAGE: "Send message",
         STATUSBAR_CONNECTING: "Connecting...",
         STATUSBAR_DISCONNECTED_RECONNECTING: seconds => `Disconnected — reconnecting in ${seconds} sec`,
         STATUSBAR_DISCONNECTED_RETRYING: seconds => `Disconnected — retrying in ${seconds} sec`,
@@ -611,9 +612,13 @@ mdLocalStorage.token;
             textArea.addEventListener("input", handleInput);
             sendButton = document.createElement("button");
             sendButton.className = "md-send-button buttonWrapper-1ZmCpA button-38aScr lookBlank-3eh9lL colorBrand-3pXr91 grow-q77ONN";
-            sendButton.innerHTML = '<div class="contents-18-Yxp button-3AYNKb button-2vd_v_ icon-3D60ES">Send</div>';
+            sendButton.title = strings.SEND_MESSAGE;
             sendButton.onclick = handleSend;
             sendButton.hidden = true;
+            sendButton.innerHTML = `<div class="contents-18-Yxp button-3AYNKb button-2vd_v_"><svg class="icon-3D60ES" width="24px" height="24px" viewBox="0 0 24 24">
+    <path fill="currentColor" d="M21,11c0.488,0,0.905-0.352,0.986-0.833c0.081-0.481-0.198-0.95-0.659-1.11l-18-6.156 C2.93,2.763,2.488,2.89,2.224,3.216C1.959,3.541,1.926,3.999,2.143,4.359l3.693,6.155C6.017,10.815,6.342,11,6.693,11H21z"/>
+    <path fill="currentColor" d="M6.693,13c-0.352,0-0.677,0.186-0.857,0.485l-3.694,6.157c-0.217,0.359-0.183,0.818,0.081,1.144 c0.265,0.326,0.706,0.451,1.104,0.314l18-6.155c0.461-0.159,0.74-0.629,0.659-1.11C21.906,13.352,21.489,13,21,13H6.693z"/>
+</svg></div>`;
             buttons.appendChild(sendButton);
         }
         const isEmpty = textArea.value == "";
