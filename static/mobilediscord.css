@@ -904,8 +904,7 @@ img.flexChild-faoVW3 {
 
 /* Modals */
 
-.popouts-2bnG9Z + .theme-dark,
-.popouts-2bnG9Z + .theme-light {
+.popouts-2bnG9Z + div {
     position: fixed;
     top: 0;
     right: 0;
@@ -916,8 +915,7 @@ img.flexChild-faoVW3 {
     -ms-content-zooming: zoom;
 }
 
-.popouts-2bnG9Z + .theme-dark:empty,
-.popouts-2bnG9Z + .theme-light:empty {
+.popouts-2bnG9Z + div:empty {
     visibility: hidden;
     -ms-content-zoom-limit: 100% 100%; /* reset zoom */
 }
