@@ -212,6 +212,12 @@
     overflow: hidden;
 }
 
+/* Layer */
+
+.layer-v9HyYc {
+    max-width: 100%;
+}
+
 /* AutocompletePopout */
 
 .positionTop-3e-X1p .sectionTag-pXyto9 {
@@ -528,6 +534,25 @@
     position: relative; /* fix z-index */
 }
 
+.emojiPicker-3m1S-j .stickyHeader-1SS0JU {
+    right: 16px;
+}
+
+.emojiPicker-3m1S-j .scroller-3vODG7 {
+    padding-right: 16px;
+    z-index: 0;
+    contain: none;
+}
+
+.emojiPicker-3m1S-j .scroller-3vODG7 .emojiItem-109bjA {
+    margin-right: calc((100% - 280px) / 20);
+    margin-left: calc((100% - 280px) / 20);
+}
+
+.emojiPicker-3m1S-j .categories-1feg4n {
+    border-radius: 0 0 5px 5px;
+}
+
 /* autocompletes */
 
 .horizontalAutocompletes-x8hlrn {
@@ -595,6 +620,7 @@
 }
 
 .contentRegionScrollerWrap-3YZXdm > .contentRegionScroller-26nc1e {
+    z-index: 0;
     contain: none;
 }
 
