@@ -516,20 +516,6 @@
     overflow: visible;
 }
 
-.emojiPicker-3m1S-j .dimmer-3iH-5D {
-    /* hide element to avoid slow scrolling in Chrome */
-    background-color: hsla(0,0%,100%,.6);
-    visibility: hidden;
-    opacity: 0;
-    transition-property: opacity, visibility;
-}
-
-.emojiPicker-3m1S-j .dimmer-3iH-5D.visible-3k45bQ {
-    visibility: visible;
-    opacity: 1;
-    transition-property: opacity;
-}
-
 .emojiPicker-3m1S-j .header-1nkwgG {
     position: relative; /* fix z-index */
 }
