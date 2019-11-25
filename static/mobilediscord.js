@@ -778,29 +778,36 @@ mdLocalStorage.token;
 
     // insert image placeholders
     // prevents messages from jumping when images load
-    function updateImagePlaceholders() {
-        const images = document.querySelectorAll(".imageWrapper-2p5ogY[style], .embedVideo-3nf0O9[style]");
-        for (let i = 0; i < images.length; ++i) {
-            const wrapper = images[i];
-            if (!wrapper.matches(".embedVideo-3nf0O9 > .imageWrapper-2p5ogY")) {
-                const width = parseInt(wrapper.style.width, 10);
-                const height = parseInt(wrapper.style.height, 10);
-                let placeholder = wrapper.querySelector(".md-image-placeholder");
-                if (placeholder) {
-                    if (width)
-                        placeholder.width = width;
-                    if (height)
-                        placeholder.height = height;
-                } else {
-                    placeholder = document.createElement("canvas");
-                    placeholder.className = "md-image-placeholder";
-                    placeholder.width = width;
-                    placeholder.height = height;
-                    wrapper.insertBefore(placeholder, wrapper.firstChild);
-                }
-            }
-            wrapper.removeAttribute("style");
+    function updateImage(wrapper) {
+        const { width, height } = wrapper.style;
+        let placeholder = wrapper.querySelector(".md-image-placeholder");
+        if (placeholder) {
+            if (width)
+                placeholder.width = parseInt(width, 10);
+            if (height)
+                placeholder.height = parseInt(height, 10);
+        } else {
+            placeholder = document.createElement("canvas");
+            placeholder.className = "md-image-placeholder";
+            placeholder.width = parseInt(width, 10);
+            placeholder.height = parseInt(height, 10);
+            wrapper.insertBefore(placeholder, wrapper.firstChild);
         }
+        wrapper.removeAttribute("style");
+    }
+    const imageObserver = new MutationObserver((mutations, observer) => {
+        for (const { target } of mutations)
+            updateImage(target);
+        imageObserver.takeRecords();
+    });
+    function updateImagePlaceholders() {
+        for (const wrapper of document.querySelectorAll(".imageWrapper-2p5ogY[style], .embedVideo-3nf0O9[style]"))
+            if (wrapper.matches(".embedVideo-3nf0O9 > .imageWrapper-2p5ogY"))
+                wrapper.removeAttribute("style");
+            else {
+                updateImage(wrapper);
+                imageObserver.observe(wrapper, { attributes: true, attributeFilter: ["style"] });
+            }
     }
     const origOffsetHeight = Object.getOwnPropertyDescriptor(HTMLElement.prototype, "offsetHeight").get;
     Object.defineProperty(HTMLElement.prototype, "offsetHeight", {
@@ -1074,6 +1081,10 @@ mdLocalStorage.token;
         // TODO: handle window resize
         const layerContainers = document.getElementsByClassName("layerContainer-yqaFcK");
         const popoutsCollection = document.getElementsByClassName("popouts-2bnG9Z");
+        const messagesPopouts = document.getElementsByClassName("messagesPopout-24nkyi");
+        const messagesPopoutObserver = new MutationObserver((mutations, observer) => {
+            updateImagePlaceholders();
+        });
         const moveIntoView = popout => {
             const rect = popout.getBoundingClientRect();
             const appRect = appMount.getBoundingClientRect();
@@ -1100,6 +1111,10 @@ mdLocalStorage.token;
                     style.bottom = parseFloat(style.bottom) + (rect.bottom - appRect.bottom) + "px";
         };
         const popoutsObserver = new MutationObserver((mutations, observer) => {
+            updateImagePlaceholders();
+            for (const messagesPopout of messagesPopouts)
+                messagesPopoutObserver.observe(messagesPopout, { childList: true });
+
             for (const mutation of mutations)
                 for (const node of mutation.addedNodes)
                     if (node instanceof HTMLElement)

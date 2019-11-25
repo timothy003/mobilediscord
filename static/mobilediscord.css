@@ -381,17 +381,10 @@
     height: auto;
 }
 
-/* image */
+/* Image */
 
-.imageWrapper-2p5ogY,
-.embedVideo-3nf0O9 {
-    display: inline-block;
-    align-self: flex-start;
+.imageWrapper-2p5ogY {
     z-index: 0;
-}
-
-.inner-1ilYF7 .imageWrapper-2p5ogY {
-    display: block;
 }
 
 .md-image-placeholder {
@@ -404,7 +397,7 @@
 .imageWrapper-2p5ogY > .wrapper-2TxpI8,
 .imagePlaceholder-1AxUV5,
 .embedVideo-3nf0O9 > .imageWrapper-2p5ogY,
-.embedVideo-3nf0O9 > iframe {
+.embedIframe-2hcNY5 {
     position: absolute;
     top: 0;
     left: 0;
@@ -412,24 +405,28 @@
     height: 100% !important;
 }
 
-/* embed */
+/* Embed */
 
-.embed-IeVjo6 {
-    align-self: stretch;
+.grid-1nZz7S {
+    display: -ms-inline-grid;
+    display: inline-grid;
+    -ms-grid-columns: minmax(0, max-content);
+    grid-template-columns: minmax(0, max-content);
 }
 
-/* Spotify */
+.grid-1nZz7S.hasThumbnail-3FJf1w {
+    -ms-grid-columns: minmax(0, max-content) minmax(16px, max-content);
+    grid-template-columns: minmax(0, max-content) minmax(16px, max-content);
+}
+
 .embedSpotify-tvxDCr,
 .embedSpotify-tvxDCr > iframe {
     max-width: 100%;
 }
 
-.embedInner-1-fpTo {
-    z-index: 0;
-}
-
-.embedProvider-3k5pfl {
-    max-width: 100%;
+.embedAuthor-3l5luH {
+    -ms-grid-row: 2;
+    grid-row: 2;
 }
 
 .embedAuthorName-3mnTWj {
@@ -437,23 +434,44 @@
 }
 
 .embedTitle-3OXDkz {
+    -ms-grid-row: 3;
+    grid-row: 3;
     max-width: 100%;
 }
 
-.embedImage-2W1cML {
-    z-index: 0;
+.embedDescription-1Cuq9a {
+    -ms-grid-row: 4;
+    grid-row: 4;
 }
 
-.embedImage-2W1cML .imageWrapper-2p5ogY {
-    border-radius: 0;
+.embedThumbnail-2Y84-K {
+    -ms-grid-row-span: 7;
+    -ms-grid-column: 2;
+    grid-column: 2;
+    -ms-grid-row-align: start;
+    align-self: start;
+    -ms-grid-column-align: end;
 }
 
-.embedGIFTag-n_mDqR {
-    z-index: 1;
+.embedFooter-3yVop- {
+    -ms-grid-row: 7;
+    grid-row: 7;
 }
 
 .embedFooterText-28V_Wb {
     min-width: 1px;
+}
+
+.embedFields-2IPs5Z {
+    -ms-grid-row: 5;
+    grid-row: 5;
+}
+
+.embedMedia-1guQoW {
+    -ms-grid-row: 6;
+    grid-row: 6;
+    -ms-grid-column-align: start;
+    justify-self: start;
 }
 
 /* upload modal */
