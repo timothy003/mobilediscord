@@ -657,6 +657,36 @@ mdLocalStorage.token;
                 event.stopImmediatePropagation();
     }, true);
 
+    // dispatch input event before keydown/keyup
+    //
+    // Edge fires the input event asynchronously, so one or more keyboard events can happen before it.
+    // E.g.: keydown, keypress, textInput, keyup, keydown, keypress, textInput, keyup, input
+    // For SlateChannelTextArea, Discord stores a copy of the text on input and resets the selection on keydown/keyup.
+    // However, if the copy isn't up to date, and the new selection is out of range, the selection gets moved back.
+    let inputState = "stable";
+    window.addEventListener("textInput", event => {
+        if (event.target.matches(".slateTextArea-1bp44y"))
+            if (!event.defaultPrevented)
+                inputState = "pending";
+    });
+    function updateInput(target) {
+        if (inputState == "pending") {
+            target.dispatchEvent(new Event("input", { bubbles: true }));
+            inputState = "dispatched";
+        }
+    }
+    window.addEventListener("keydown", event => {
+        updateInput(event.target);
+    }, true);
+    window.addEventListener("keyup", event => {
+        updateInput(event.target);
+    }, true);
+    window.addEventListener("input", event => {
+        if (inputState == "dispatched")
+            event.stopImmediatePropagation();
+        inputState = "stable";
+    }, true);
+
     // prevent auto focusing
     // touch keyboard is shown when focusing a text box in touch/tablet mode
     function hasTouchKeyboard() {
