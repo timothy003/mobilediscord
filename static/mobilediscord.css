@@ -1089,17 +1089,12 @@ body {
 .markup-2BOw-j .hljs {
     overflow-x: visible;
 }
- 
+
+/* TypingUsers */
+
 .typing-2GQL18 .text-1y-e8- {
     flex: 1;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
 }
-
-.typing-2GQL18 .ellipsis-19qdx6 {
-    margin-top: -2px;
-} 
 
 /* messages popout */
 
