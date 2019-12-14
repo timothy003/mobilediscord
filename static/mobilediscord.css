@@ -626,19 +626,14 @@
     border-radius: 0;
 }
 
-/* invite button */
+/* InviteButton */
 
 .wrapper-35wsBm {
     max-width: 100%;
 }
 
-.content-2U5lSY {
-    flex-wrap: wrap;
-    margin: -5px;
-}
-
-.content-2U5lSY > * {
-    margin: 5px;
+.guildBadge-1w1qIy {
+    flex: none;
 }
 
 /* system message */
