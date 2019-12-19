@@ -573,9 +573,37 @@
 
 /* ChannelTextArea */
 
+.scrollableContainer-38zsVD {
+    position: relative;
+    z-index: 0;
+    overflow-y: auto;
+    overflow-y: overlay;
+}
+
+.attachWrapper-1_D-pj {
+    position: static; /* can't nest position:sticky in Edge */
+}
+
 .textArea-2Spzkt {
     min-width: 1px;
-    margin-left: 2px;
+}
+
+.webkit-26NYEN .buttons-205you {
+    margin-right: 6px;
+}
+
+@supports not ((position: sticky) or (position: -webkit-sticky)) {
+    .textArea-2Spzkt {
+        max-height: 122px;
+    }
+
+    .webkit-26NYEN .buttons-205you {
+        margin-right: 4px;
+    }
+}
+
+.innerDisabled-2mc-iF .buttons-205you {
+    margin-right: 0;
 }
 
 /* emoji picker */
