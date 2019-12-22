@@ -60,7 +60,7 @@
     background-color: var(--background-tertiary);
 }
 
-.textArea-2Spzkt {
+.textArea-12jD-V {
     background-color: var(--channeltextarea-background);
 }
 
@@ -76,7 +76,7 @@
     background-color: #fff;
 }
 
-.theme-light .horizontalAutocompletes-x8hlrn {
+.theme-light .horizontalAutocompletes-3blb-Z {
     background-color: #f8f9f9;
 }
 
@@ -95,7 +95,7 @@
 .theme-dark .autocompleteScroller-iInVqR,
 .theme-dark .note-3HfJZ5 textarea:not(:focus),
 .theme-dark .container-2jxBbw,
-.theme-dark .horizontalAutocompletes-x8hlrn,
+.theme-dark .horizontalAutocompletes-3blb-Z,
 .theme-dark .scroller-1-nKid,
 .theme-dark .searchResultsWrap-2DKFzt .scroller-2FKFPG {
     background-color: #2f3136;
@@ -110,7 +110,7 @@
     background-color: #36393f;
 }
 
-.theme-brand .textArea-2Spzkt {
+.theme-brand .textArea-12jD-V {
     background-color: #8ea1e1;
 }
 
@@ -132,12 +132,6 @@
     width: 100%;
     height: 100%;
     background-color: #282b30;
-}
-
-/* app content */
-
-.app-19_DXt:first-child {
-    position: static; /* for Edge */
 }
 
 /* app downloads */
@@ -571,38 +565,38 @@
     display: none;
 }
 
-/* ChannelTextArea */
+/* ChannelTextAreaContainer */
 
-.scrollableContainer-38zsVD {
+.scrollableContainer-2NUZem {
     position: relative;
     z-index: 0;
     overflow-y: auto;
     overflow-y: overlay;
 }
 
-.attachWrapper-1_D-pj {
+.attachWrapper-2TRKBi {
     position: static; /* can't nest position:sticky in Edge */
 }
 
-.textArea-2Spzkt {
+.textArea-12jD-V {
     min-width: 1px;
 }
 
-.webkit-26NYEN .buttons-205you {
+.webkit-HjD9Er .buttons-3JBrkn {
     margin-right: 6px;
 }
 
 @supports not ((position: sticky) or (position: -webkit-sticky)) {
-    .textArea-2Spzkt {
+    .textArea-12jD-V {
         max-height: 122px;
     }
 
-    .webkit-26NYEN .buttons-205you {
+    .webkit-HjD9Er .buttons-3JBrkn {
         margin-right: 4px;
     }
 }
 
-.innerDisabled-2mc-iF .buttons-205you {
+.innerDisabled-1YTFPN .buttons-3JBrkn {
     margin-right: 0;
 }
 
@@ -636,9 +630,9 @@
     border-radius: 0 0 5px 5px;
 }
 
-/* autocompletes */
+/* ChannelAutoComplete */
 
-.horizontalAutocompletes-x8hlrn {
+.horizontalAutocompletes-3blb-Z {
     contain: content;
     -ms-scroll-chaining: none;
     overscroll-behavior: contain;

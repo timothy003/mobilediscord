@@ -581,7 +581,7 @@ mdLocalStorage.token;
     // keep touch keyboard open on submit
     function isSendKey(event) {
         // ChannelTextArea.handleKeyPress
-        if (event.target.matches(".textArea-2Spzkt"))
+        if (event.target.matches(".textArea-12jD-V"))
             switch (event.keyCode) {
                 case 13:
                     if (!event.shiftKey && !event.ctrlKey)
@@ -606,7 +606,7 @@ mdLocalStorage.token;
             return;
         let sendButton = form.querySelector(".md-send-button");
         if (!sendButton) {
-            const buttons = form.querySelector(".buttons-205you");
+            const buttons = form.querySelector(".buttons-3JBrkn");
             if (!buttons)
                 return;
             textArea.addEventListener("input", handleInput);
@@ -615,7 +615,7 @@ mdLocalStorage.token;
             sendButton.title = strings.SEND_MESSAGE;
             sendButton.onclick = handleSend;
             sendButton.hidden = true;
-            sendButton.innerHTML = `<div class="contents-18-Yxp button-3AYNKb button-2vd_v_"><svg class="icon-3D60ES" width="24px" height="24px" viewBox="0 0 24 24">
+            sendButton.innerHTML = `<div class="contents-18-Yxp button-3AYNKb button-318s1X"><svg class="icon-3D60ES" width="24px" height="24px" viewBox="0 0 24 24">
     <path fill="currentColor" d="M21,11c0.488,0,0.905-0.352,0.986-0.833c0.081-0.481-0.198-0.95-0.659-1.11l-18-6.156 C2.93,2.763,2.488,2.89,2.224,3.216C1.959,3.541,1.926,3.999,2.143,4.359l3.693,6.155C6.017,10.815,6.342,11,6.693,11H21z"/>
     <path fill="currentColor" d="M6.693,13c-0.352,0-0.677,0.186-0.857,0.485l-3.694,6.157c-0.217,0.359-0.183,0.818,0.081,1.144 c0.265,0.326,0.706,0.451,1.104,0.314l18-6.155c0.461-0.159,0.74-0.629,0.659-1.11C21.906,13.352,21.489,13,21,13H6.693z"/>
 </svg></div>`;
@@ -635,7 +635,7 @@ mdLocalStorage.token;
     function handleSend(event) {
         event.preventDefault();
         const { currentTarget: { form } } = event;
-        const textArea = form.querySelector(".textArea-2Spzkt");
+        const textArea = form.querySelector(".textArea-12jD-V");
         const keyboardEvent = new KeyboardEvent("keypress", {
             bubbles: true,
             key: "Enter",
@@ -665,7 +665,7 @@ mdLocalStorage.token;
     // However, if the copy isn't up to date, and the new selection is out of range, the selection gets moved back.
     let inputState = "stable";
     window.addEventListener("textInput", event => {
-        if (event.target.matches(".slateTextArea-1bp44y"))
+        if (event.target.matches(".slateTextArea-1Mkdgw"))
             if (!event.defaultPrevented)
                 inputState = "pending";
     });
@@ -707,7 +707,7 @@ mdLocalStorage.token;
                     ".container-VSDcQc .input-1ppKdn," +
                     ".quickMessage-2XpSaN," +
                     ".input-1Rv96N," +
-                    ".textArea-2Spzkt"
+                    ".textArea-12jD-V"
                 )) {
                     if (this.matches(".addFriendInput-4bcerK"))
                         if (!(window.event && event.type == "click"))
