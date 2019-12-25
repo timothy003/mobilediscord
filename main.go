@@ -18,8 +18,7 @@ import (
 )
 
 var (
-	links []byte
-	tmpl  *template.Template
+	tmpl *template.Template
 )
 
 func main() {
@@ -38,14 +37,11 @@ func main() {
 	tr.IdleConnTimeout = 300 * time.Second
 	tr.TLSNextProto = map[string]func(string, *tls.Conn) http.RoundTripper{}
 
-	var err error
-	if links, err = ioutil.ReadFile("links.html"); err != nil {
-		log.Fatal("failed to read links.html: ", err)
-	}
-	tmpl = template.Must(template.ParseFiles("scripts.html"))
+	tmpl = template.Must(template.ParseFiles("app.gohtml"))
 
 	http.Handle("/", &httputil.ReverseProxy{Director: director, ModifyResponse: modifyResponse})
 	http.Handle("/md/", http.NotFoundHandler())
+	http.Handle("/assets/", addHeaders(http.HandlerFunc(assetsHandler)))
 	http.Handle("/assets/md/", http.StripPrefix("/assets/md", addHeaders(http.FileServer(http.Dir("static")))))
 
 	srv := &http.Server{Addr: ":" + port}
@@ -72,15 +68,19 @@ func main() {
 	<-idleConnsClosed
 }
 
+func getOrigin(req *http.Request) string {
+	if strings.HasPrefix(req.Host, "canary") {
+		return "canary.discordapp.com"
+	} else if strings.HasPrefix(req.Host, "ptb") {
+		return "ptb.discordapp.com"
+	} else {
+		return "discordapp.com"
+	}
+}
+
 func director(req *http.Request) {
 	req.URL.Scheme = "https"
-	if strings.HasPrefix(req.Host, "canary") {
-		req.URL.Host = "canary.discordapp.com"
-	} else if strings.HasPrefix(req.Host, "ptb") {
-		req.URL.Host = "ptb.discordapp.com"
-	} else {
-		req.URL.Host = "discordapp.com"
-	}
+	req.URL.Host = getOrigin(req)
 	req.Host = req.URL.Host
 
 	if !strings.HasPrefix(req.URL.Path, "/assets/") {
@@ -128,30 +128,42 @@ func modifyResponse(res *http.Response) error {
 	}
 
 	// inject links and scripts
-	s, err := ioutil.ReadAll(res.Body)
+	b, err := ioutil.ReadAll(res.Body)
 	if err != nil {
 		return err
 	}
 	res.Body.Close()
-	if i1 := bytes.Index(s, []byte("</head>")); i1 == -1 {
+	s := string(b)
+	s = strings.ReplaceAll(s, " integrity=", " crossorigin integrity=")
+	if iMeta := strings.Index(s, "<meta "); iMeta == -1 {
+		log.Print("modifyResponse: missing <meta> tag")
+	} else if iHead := strings.Index(s[iMeta:], "</head>"); iHead == -1 {
 		log.Print("modifyResponse: missing </head> tag")
-	} else if i2 := bytes.Index(s[i1:], []byte("<script ")); i2 == -1 {
+	} else if iScript := strings.Index(s[iMeta+iHead:], "<script src="); iScript == -1 {
 		log.Print("modifyResponse: missing <script> tag")
 	} else {
-		i2 += i1
+		iHead += iMeta
+		iScript += iHead
 		origin := "https://" + res.Request.URL.Host
 		r, w := io.Pipe()
 		go func() {
-			err := tmpl.Execute(w, origin)
+			data := struct {
+				Meta    template.HTML
+				Head    template.HTML
+				Body    template.HTML
+				Scripts template.HTML
+				Origin  string
+			}{
+				Meta:    template.HTML(s[:iMeta]),
+				Head:    template.HTML(s[iMeta:iHead]),
+				Body:    template.HTML(s[iHead:iScript]),
+				Scripts: template.HTML(s[iScript:]),
+				Origin:  origin,
+			}
+			err := tmpl.Execute(w, data)
 			w.CloseWithError(err)
 		}()
-		res.Body = ioutil.NopCloser(io.MultiReader(
-			bytes.NewReader(s[:i1]),
-			bytes.NewReader(links),
-			bytes.NewReader(s[i1:i2]),
-			r,
-			bytes.NewReader(s[i2:]),
-		))
+		res.Body = ioutil.NopCloser(r)
 		res.Header.Del("Content-Length")
 		res.Header.Del("Etag")
 
@@ -168,7 +180,7 @@ func modifyResponse(res *http.Response) error {
 
 		return nil
 	}
-	res.Body = ioutil.NopCloser(bytes.NewReader(s))
+	res.Body = ioutil.NopCloser(bytes.NewReader(b))
 	return nil
 }
 
@@ -177,4 +189,8 @@ func addHeaders(h http.Handler) http.Handler {
 		w.Header().Set("Cache-Control", "public, max-age=600, stale-if-error=1200")
 		h.ServeHTTP(w, r)
 	})
+}
+
+func assetsHandler(w http.ResponseWriter, r *http.Request) {
+	http.Redirect(w, r, "https://"+getOrigin(r)+r.RequestURI, http.StatusFound)
 }
