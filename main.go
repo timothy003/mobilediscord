@@ -163,7 +163,7 @@ func modifyResponse(res *http.Response) error {
 			err := tmpl.Execute(w, data)
 			w.CloseWithError(err)
 		}()
-		res.Body = ioutil.NopCloser(r)
+		res.Body = r
 		res.Header.Del("Content-Length")
 		res.Header.Del("Etag")
 
