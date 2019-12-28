@@ -172,8 +172,11 @@ func modifyResponse(res *http.Response) error {
 			for i, csp := range v {
 				// add origin for API requests
 				csp = strings.Replace(csp, "'self'", "'self' "+origin, -1)
-				// add unsafe-inline fallback for CSP 1 compatibility
-				csp = strings.Replace(csp, "'nonce-", "'unsafe-inline' 'nonce-", -1)
+				// icons use wrong protocol
+				if res.Request.Header.Get("X-Forwarded-Proto") != "https" {
+					csp = strings.Replace(csp, "https://*.discordapp.com", "*.discordapp.com", -1)
+					csp = strings.Replace(csp, "wss://*.discord.media", "ws://*.discord.media", -1)
+				}
 				v[i] = csp
 			}
 		}

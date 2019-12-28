@@ -279,8 +279,7 @@
         });
 
         // HACK: login page must be loaded on discordapp.com for reCAPTCHA
-        function getScript() {
-            let s = `if (!("mdLocalStorage" in window)) {
+        const INIT_SCRIPT = `if (!("mdLocalStorage" in window)) {
     // HACK: Edge 14 is unsupported
     const compatibleUserAgent = navigator.userAgent.replace(" Edge/14.", " Edge/15.");
     if (compatibleUserAgent != navigator.userAgent)
@@ -298,21 +297,9 @@
         }
     });
     window.mdLocalStorage = localStorage;
-`;
-            // Include inline scripts from the current document.
-            // CSP requires a nonce, which isn't supported on Edge 14.
-            if (!("nonce" in HTMLElement.prototype))
-                for (let i = 0; i < document.scripts.length; i++) {
-                    const script = document.scripts[i];
-                    if (script.hasAttribute("nonce"))
-                        s += `    eval(\`${script.text.replace(/[`$]/g, "\\$&")}\`);
-`;
-                }
-            s += `}
+}
 mdLocalStorage.token;
 `;
-            return s;
-        }
         const origin = document.currentScript.dataset.origin;
         const appMount = document.getElementById("app-mount");
         class Login {
@@ -321,7 +308,7 @@ mdLocalStorage.token;
                 this.webview = webview;
                 webview.className = "md-login";
                 this.script = `delete localStorage.token;
-` + getScript();
+` + INIT_SCRIPT;
                 webview.addEventListener("MSWebViewContentLoading", event => {
                     if (!this.webview)
                         return;
@@ -344,7 +331,7 @@ mdLocalStorage.token;
                         this.close();
                     };
                     operation.start();
-                    this.script = getScript();
+                    this.script = INIT_SCRIPT;
                 });
                 webview.addEventListener("MSWebViewNavigationCompleted", event => {
                     if (!event.isSuccess) {
@@ -405,64 +392,15 @@ mdLocalStorage.token;
     if ("cssVars" in window)
         cssVars();
 
-    // fix broken URLs when running locally
+    // Redirect is not allowed for a preflight request.
     if (location.protocol != "https:") {
         const origOpen = XMLHttpRequest.prototype.open;
-        XMLHttpRequest.prototype.open = function (method, url, async, user, password) {
-            url = String(url)
-            if (url.startsWith(location.protocol))
+        XMLHttpRequest.prototype.open = function open(method, url) {
+            url = String(url);
+            if (url.startsWith(location.protocol + window.GLOBAL_ENV.API_ENDPOINT))
                 arguments[1] = url.replace(location.protocol, "https:");
-            origOpen.apply(this, arguments);
+            return origOpen.apply(this, arguments);
         };
-
-        if ("backgroundImage" in CSSStyleDeclaration.prototype) {
-            const origSetBackgroundImage = Object.getOwnPropertyDescriptor(CSSStyleDeclaration.prototype, "backgroundImage").set;
-            Object.defineProperty(CSSStyleDeclaration.prototype, "backgroundImage", {
-                set(value) {
-                    if (value !== null)
-                        value = String(value).replace(location.protocol, "https:");
-                    origSetBackgroundImage.call(this, value);
-                }
-            });
-        } else {
-            const origGetStyle = Object.getOwnPropertyDescriptor(HTMLElement.prototype, "style").get;
-            Object.defineProperty(HTMLElement.prototype, "style", {
-                get() {
-                    const style = origGetStyle.call(this);
-                    const proxy = new Proxy(style, {
-                        get(target, p, receiver) {
-                            return Reflect.get(target, p);
-                        },
-                        set(target, p, value, receiver) {
-                            if (p == "backgroundImage")
-                                if (value !== null)
-                                    value = String(value).replace(location.protocol, "https:");
-                            return Reflect.set(target, p, value);
-                        }
-                    });
-                    Object.defineProperty(this, "style", {
-                        configurable: true,
-                        enumerable: true,
-                        value: proxy
-                    });
-                    return proxy;
-                }
-            });
-        }
-
-        const origSetAttribute = Element.prototype.setAttribute;
-        Element.prototype.setAttribute = function (qualifiedName, value) {
-            if (qualifiedName == "src")
-                arguments[1] = String(value).replace(location.protocol, "https:");
-            origSetAttribute.apply(this, arguments);
-        };
-
-        WebSocket = new Proxy(WebSocket, {
-            construct(target, argumentsList, newTarget) {
-                argumentsList[0] = String(argumentsList[0]).replace("ws:", "wss:");
-                return Reflect.construct(target, argumentsList, newTarget);
-            }
-        });
     }
 
     // disable xhr caching for Edge < 14
