@@ -917,9 +917,17 @@ mdLocalStorage.token;
         const item = element.closest(".side-8zPYf6 .item-PXvHYJ, .role-3wi9Tf");
         if (item) {
             if (item.matches(".role-3wi9Tf"))
-                document.querySelector(".contentRegionScrollerWrap-3YZXdm").scrollIntoView({ behavior: "smooth", inline: "end" });
+                document.querySelector(".contentRegionScrollerWrap-3YZXdm").scrollIntoView({
+                    behavior: "smooth",
+                    block: "nearest",
+                    inline: "end"
+                });
             else if (item.matches(".selected-3s45Ha"))
-                document.querySelector(".contentRegion-3nDuYy").scrollIntoView({ behavior: "smooth", inline: "start" });
+                document.querySelector(".contentRegion-3nDuYy").scrollIntoView({
+                    behavior: "smooth",
+                    block: "nearest",
+                    inline: "start"
+                });
             return;
         }
 
@@ -942,7 +950,7 @@ mdLocalStorage.token;
                 ".friendsTable-133bsv," +
                 ".activityFeed-1C0EmJ"
             );
-            chat.scrollIntoView({ behavior: "smooth" });
+            chat.scrollIntoView({ behavior: "smooth", block: "nearest" });
             return;
         }
         // open topic
