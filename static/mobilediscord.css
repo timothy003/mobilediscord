@@ -238,6 +238,12 @@
     margin: 4px 10px 0;
 }
 
+/* ActivityStatus */
+
+.textRuler-wO-qHe {
+    position: fixed; /* avoid overflowing scroll container */
+}
+
 /* spinner */
 
 @keyframes spinner-wandering-cubes-1eyF3t {
