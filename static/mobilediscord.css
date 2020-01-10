@@ -1249,14 +1249,15 @@ body {
 
 /* Channels */
 
-.themeGhostHairlineChannels-3G0x9_ {
+.container-PNkimc .scrollerWrap-2lJEkd {
     z-index: 1;
 }
 
 /* GuildHeader */
 
+.animatedContainer-1pJv5C,
 .bannerImage-1jOskm {
-    z-index: 1; /* fix stacking with unread bar in Edge 14 */
+    will-change: transform;
 }
 
 /* GuildSidebar */
