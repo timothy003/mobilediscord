@@ -142,7 +142,11 @@
                         document.webkitExitFullscreen();
                         return true;
                     }
-                    if (document.querySelector(".popout-2iWAc-, .emojiPicker-3m1S-j")) {
+                    if (document.querySelector(
+                        ".userPopout-3XzG_A," +
+                        ".popout-2iWAc-," +
+                        ".emojiPicker-3m1S-j"
+                    )) {
                         document.body.click();
                         return true;
                     }

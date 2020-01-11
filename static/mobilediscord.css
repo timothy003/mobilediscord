@@ -66,6 +66,7 @@
 
 .theme-light .inner-ZyuQk0,
 .theme-light .autocompleteScroller-iInVqR,
+.theme-light .userPopout-3XzG_A,
 .theme-light .note-3HfJZ5 textarea:not(:focus),
 .theme-light .scroller-2CvAgC,
 .theme-light .reactors-Blmlhw .scroller-2FKFPG,
@@ -93,6 +94,7 @@
 }
 
 .theme-dark .autocompleteScroller-iInVqR,
+.theme-dark .userPopout-3XzG_A,
 .theme-dark .note-3HfJZ5 textarea:not(:focus),
 .theme-dark .container-2jxBbw,
 .theme-dark .horizontalAutocompletes-3blb-Z,
@@ -242,6 +244,21 @@
 
 .textRuler-wO-qHe {
     position: fixed; /* avoid overflowing scroll container */
+}
+
+/* UserPopout */
+
+.customStatus-1bh2V9 {
+    word-wrap: break-word;
+}
+
+.userPopout-3XzG_A {
+    position: relative;
+    z-index: 0;
+}
+
+.scrollerThemed-2oenus.themeGhostHairline-DBD-2d .bodyInner-245q0L {
+    padding-right: 10px;
 }
 
 /* spinner */
