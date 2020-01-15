@@ -1,9 +1,6 @@
 (function (localStorage) {
     "use strict";
     const strings = {
-        ADD_REACTION: "Add Reaction",
-        COPY: "Copy",
-        COPY_LINK: "Copy Link",
         SEND_MESSAGE: "Send message",
         STATUSBAR_CONNECTING: "Connecting...",
         STATUSBAR_DISCONNECTED_RECONNECTING: seconds => `Disconnected — reconnecting in ${seconds} sec`,
@@ -50,11 +47,7 @@
             } while (element = element.parentElement);
             return null;
         };
-    function copyTextToClipboard(textToCopy) {
-        const dataPackage = new Windows.ApplicationModel.DataTransfer.DataPackage();
-        dataPackage.setText(textToCopy);
-        Windows.ApplicationModel.DataTransfer.Clipboard.setContent(dataPackage);
-    }
+
     let embedded = false;
     if ("Windows" in self) { // Windows Runtime
         embedded = true;
@@ -966,72 +959,50 @@ mdLocalStorage.token;
             return;
         }
     });
-    // context menu for messages
-    if ("Windows" in self)
-        window.addEventListener("contextmenu", event => {
-            if (event.defaultPrevented)
-                return;
-            const message = event.target.closest(".message-1PNnaP, .content-3dzVd8");
-            if (message) {
-                const menu = new Windows.UI.Popups.PopupMenu();
-                const addCommand = (label, action) => {
-                    try {
-                        menu.commands.append(new Windows.UI.Popups.UICommand(label, action));
-                    } catch (e) {
-                        console.warn(e);
+
+    // monkey patch to enable message context menu
+    function copy(e) {
+        var t = document.body;
+        if (null == t)
+            throw new Error("[Utils] ClipboardUtils.copy(): assert failed: document.body != null");
+        var n = document.createRange(), a = window.getSelection(), i = document.createElement("textarea");
+        i.value = e, i.contentEditable = "true", i.style.visibility = "none", t.appendChild(i), n.selectNodeContents(i), a.removeAllRanges(), a.addRange(n), i.focus(), i.setSelectionRange(0, e.length);
+        var r = document.execCommand("copy");
+        return t.removeChild(i), r;
+    }
+    window.mdCopy = function (text) {
+        if (text)
+            copy(text);
+        else
+            document.execCommand("copy");
+    };
+    const jsonpArray = window["webpackJsonp"] = window["webpackJsonp"] || [];
+    let jsonpPush = jsonpArray.push;
+    Object.defineProperty(jsonpArray, "push", {
+        configurable: true,
+        enumerable: true,
+        get() {
+            return jsonpPush;
+        },
+        set(webpackJsonpCallback) {
+            jsonpPush = function push([chunkIds, moreModules]) {
+                if (jsonpPush == push)
+                    for (const moduleId in moreModules) {
+                        let module = moreModules[moduleId].toString();
+                        if (module.includes('"NativeCopyItem"') || module.includes('"NativeLinkGroup"')) {
+                            module = module.replace(/\w+\.default\.embedded\b/, "true");
+                            module = module.replace(/\w+\.default\.copy\b/, "mdCopy");
+                        } else if (module.includes('"ConnectedMessageGroup"'))
+                            module = module.replace(/\w+\.default\.embedded\b/, "true");
+                        else
+                            continue;
+                        moreModules[moduleId] = (0, eval)(`(${module})`);
                     }
-                };
-                if (!document.getSelection().isCollapsed)
-                    addCommand(strings.COPY, command => {
-                        copyTextToClipboard(document.getSelection());
-                    });
-                if (message.querySelector(".reactionBtn-2na4rd"))
-                    addCommand(strings.ADD_REACTION, command => {
-                        const btn = message.querySelector(".reactionBtn-2na4rd");
-                        btn.click();
-                    });
-                const btn = message.querySelector(".button-3Jq0g9");
-                if (btn) {
-                    const action = command => {
-                        const btn = message.querySelector(".button-3Jq0g9");
-                        if (!btn.classList.contains("popout-open"))
-                            btn.click();
-                        const popout = document.querySelector(".container-3cGP6G");
-                        try {
-                            for (const item of popout.querySelectorAll(".item-2J1YMK"))
-                                if (item.textContent === command.label) {
-                                    item.click();
-                                    break;
-                                }
-                        } finally {
-                            document.body.click();
-                            popout.parentElement.style.display = "none";
-                        }
-                    };
-                    btn.click();
-                    const popout = document.querySelector(".container-3cGP6G");
-                    try {
-                        for (const item of popout.querySelectorAll(".item-2J1YMK"))
-                            addCommand(item.textContent, action);
-                    } finally {
-                        document.body.click();
-                        popout.parentElement.style.display = "none";
-                    }
-                }
-                const link = event.target.closest("a");
-                if (link)
-                    if (link.href)
-                        addCommand(strings.COPY_LINK, command => {
-                            copyTextToClipboard(link.href);
-                        });
-                const zoomFactor = document.documentElement.msContentZoomFactor;
-                menu.showAsync({
-                    x: (event.pageX - pageXOffset) * zoomFactor,
-                    y: (event.pageY - pageYOffset) * zoomFactor
-                });
-                event.preventDefault();
-            }
-        });
+                return webpackJsonpCallback.apply(this, arguments);
+            };
+        }
+    });
+
     const appMount = document.getElementById("app-mount");
     if (appMount) {
         // CSS animations for layers
