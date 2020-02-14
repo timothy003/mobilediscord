@@ -293,6 +293,15 @@
             return source;
         }
     });
+
+    // fix QR code
+    const origDecrypt = SubtleCrypto.prototype.decrypt;
+    SubtleCrypto.prototype.decrypt = function decrypt(algorithm, key, data) {
+        if (algorithm.hash == undefined)
+            algorithm.hash = "SHA-256";
+        return origDecrypt.apply(this, arguments);
+    };
+
     window.mdLocalStorage = localStorage;
 }
 mdLocalStorage.token;
