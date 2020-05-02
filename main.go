@@ -70,9 +70,9 @@ func main() {
 
 func getOrigin(req *http.Request) string {
 	if strings.HasPrefix(req.Host, "canary") {
-		return "canary.discordapp.com"
+		return "canary.discord.com"
 	} else if strings.HasPrefix(req.Host, "ptb") {
-		return "ptb.discordapp.com"
+		return "ptb.discord.com"
 	} else {
 		return "discordapp.com"
 	}
