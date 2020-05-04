@@ -834,10 +834,12 @@ mdLocalStorage.token;
             Object.defineProperty(event, "defaultPrevented", { value: false });
             // https://nolanlawson.com/2018/09/25/accurately-measuring-layout-on-the-web/
             requestAnimationFrame(time => {
-                setTimeout(() => {
+                const channel = new MessageChannel();
+                channel.port1.onmessage = () => {
                     target.dispatchEvent(event);
                     resolve();
-                });
+                };
+                channel.port2.postMessage(undefined);
             });
             event.preventDefault();
             event.stopImmediatePropagation();
