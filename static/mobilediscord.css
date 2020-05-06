@@ -214,6 +214,12 @@
     max-width: 100%;
 }
 
+/* EmptyState */
+
+.image-1GzsFd {
+    max-width: 100%;
+}
+
 /* AutocompletePopout */
 
 .positionTop-3e-X1p .sectionTag-pXyto9 {
@@ -362,10 +368,11 @@
     }
 }
 
+.friendsEmpty-1K9B4k .wrapper-r-6rrt,
+.peopleColumn-29fq28 .scroller-2FKFPG,
 .messagesWrapper-3lZDfY,
 .noChannel-Z1DQK7 > .wrapper-r-6rrt,
 .scrollWrap-qwpLpa,
-.friendsTable-133bsv .friendsTableBody-1ZhKif,
 .scroller-1JbKMe,
 .layout-1cQCv2,
 .scroller-2wx7Hm {
@@ -970,6 +977,33 @@ img.flexChild-faoVW3 {
     padding-right: 0 !important;
 }
 
+/* FriendsEmptyState */
+
+.friendsEmpty-1K9B4k {
+    padding: 16px 30px;
+}
+
+/* AddFriend */
+
+.addInputWrapper-1BOZ3d {
+    min-width: 1px;
+}
+
+/* PeoplePage */
+
+.peopleColumn-29fq28 {
+    flex-basis: 528px;
+    min-width: 1px;
+}
+
+@media (max-width: 1200px) {
+    .nowPlayingColumn-2sl4cE {
+        display: block;
+        flex-basis: 360px;
+        min-width: 1px;
+    }
+}
+
 /* user profile */
 
 .root-SR8cQa {
@@ -1242,12 +1276,6 @@ body {
     padding-right: 18px;
 }
 
-/* friends */
-
-.friendsTable-133bsv .friendTableAddWrapper-nHHZtK .friendTableAddHeader-m9bzFr .friendsTableAdd-1w2_qZ {
-    min-width: 1px;
-}
-
 /* UnreadBar */
 
 .container-35XQWE {
@@ -1390,7 +1418,7 @@ body {
 
 /* media queries */
 
-/* channel members breakpoint (312 + 448 + 240) */
+/* 2-column breakpoint (312 + 448 + 240) */
 @media not all and (min-width: 1000px) {
     .container-2lgZY8 {
         overflow-x: auto;
@@ -1408,8 +1436,8 @@ body {
         scroll-snap-align: start;
     }
 
-    .chat-3bRxxu,
-    .container-3gCOGc {
+    .container-1D34oG,
+    .chat-3bRxxu {
         flex: 1 0 auto;
         width: calc(100vw - 72px);
         overflow: visible;
@@ -1418,6 +1446,7 @@ body {
         scroll-snap-align: end;
     }
 
+    .peopleColumn-29fq28,
     .chatContent-a9vAAp,
     .noChannel-Z1DQK7,
     .activityFeed-1C0EmJ,
@@ -1434,14 +1463,14 @@ body {
     }
 }
 
-/* chat breakpoint (312 + 448) */
+/* 1-column breakpoint (312 + 448) */
 @media not all and (min-width: 760px) {
     .container-2lgZY8 {
         -ms-scroll-snap-points-x: snapList(0, 312px, 552px);
     }
 
-    .chat-3bRxxu,
-    .container-3gCOGc {
+    .container-1D34oG,
+    .chat-3bRxxu {
         width: calc(100vw + 240px);
     }
 
@@ -1451,23 +1480,18 @@ body {
         width: 100vw;
     }
 
+    .peopleColumn-29fq28,
     .chatContent-a9vAAp,
     .noChannel-Z1DQK7,
     .activityFeed-1C0EmJ,
     .video-1FfuMD,
-    .scrollWrap-qwpLpa,
-    .friendsTable-133bsv {
+    .scrollWrap-qwpLpa {
         max-width: 100vw;
         overflow: visible; /* for Safari */
         contain: content;
         scroll-snap-coordinate: 0% 0%;
         scroll-snap-align: start;
         scroll-snap-stop: always;
-    }
-
-    .friendsTable-133bsv {
-        max-width: none;
-        min-height: 1px;
     }
 }
 

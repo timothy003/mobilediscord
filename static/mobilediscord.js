@@ -854,10 +854,11 @@ mdLocalStorage.token;
         });
     }
     function animateNavigation(event, guild) {
-        let selectors = ".messagesWrapper-3lZDfY," +
+        let selectors = ".friendsEmpty-1K9B4k .wrapper-r-6rrt," +
+            ".peopleColumn-29fq28 .scroller-2FKFPG," +
+            ".messagesWrapper-3lZDfY," +
             ".noChannel-Z1DQK7 > .wrapper-r-6rrt," +
             ".scrollWrap-qwpLpa," +
-            ".friendsTable-133bsv .friendsTableBody-1ZhKif," +
             ".layout-1cQCv2";
         if (guild)
             selectors += ", .scroller-1JbKMe, .scroller-2wx7Hm";
@@ -953,9 +954,9 @@ mdLocalStorage.token;
             if (element.closest(".wrapper-1ucjTd [role=button], .close-3hZ5Ni"))
                 return;
             const chat = document.querySelector(
+                ".peopleColumn-29fq28," +
                 ".chatContent-a9vAAp," +
                 ".scrollWrap-qwpLpa," +
-                ".friendsTable-133bsv," +
                 ".activityFeed-1C0EmJ"
             );
             chat.scrollIntoView({ behavior: "smooth", block: "nearest" });
