@@ -692,6 +692,41 @@
     min-width: 1px;
 }
 
+/* NowPlayingItem */
+
+.header-211Syv,
+.voiceSection-1uiU7a,
+.applicationStreamingSection-1YWLV7,
+.xboxSection-Lw6vjc,
+.twitchSectionHeader-2QggTa,
+.gameSection-DL895r,
+.activitySection-cEg8ae {
+    display: flex;
+    margin-left: -12px;
+}
+
+.header-211Syv > *,
+.voiceSection-1uiU7a > *,
+.applicationStreamingSection-1YWLV7 > *,
+.xboxSection-Lw6vjc > *,
+.twitchSectionHeader-2QggTa > *,
+.gameSection-DL895r > *,
+.activitySection-cEg8ae > * {
+    flex: none;
+    margin-left: 12px;
+}
+
+.header-211Syv > :nth-child(2),
+.voiceSection-1uiU7a > :nth-child(2),
+.applicationStreamingSection-1YWLV7 > :nth-child(2),
+.xboxSection-Lw6vjc > :nth-child(2),
+.twitchSectionHeader-2QggTa > :nth-child(2),
+.gameSection-DL895r > :nth-child(2),
+.activitySection-cEg8ae > :nth-child(2) {
+    flex: 1;
+    min-width: 20px;
+}
+
 /* reactions */
 
 .reactors-Blmlhw {
