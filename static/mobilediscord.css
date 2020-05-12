@@ -1024,6 +1024,38 @@ img.flexChild-faoVW3 {
     min-width: 1px;
 }
 
+.description-1EvxpH {
+    white-space: normal;
+    word-wrap: break-word;
+}
+
+/* ActionButton */
+
+.actionButton-uPB8Fs {
+    flex: none;
+}
+
+/* BlockedRow */
+
+.listItemContents-BUaJR_ {
+    min-width: 1px;
+}
+
+/* PendingRow */
+
+.listItemContents-2w6nwE {
+    min-width: 1px;
+    justify-content: space-between;
+}
+
+.userInfo-3bsjnc {
+    flex-shrink: 1;
+}
+
+.actions-FAbeWr {
+    margin-left: 8px;
+}
+
 /* PeoplePage */
 
 .peopleColumn-29fq28 {
