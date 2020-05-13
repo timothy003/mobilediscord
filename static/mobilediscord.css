@@ -1374,7 +1374,115 @@ body {
     contain: strict;
 }
 
+/* BlobMask */
+
+/* Making multiple DOM changes at once triggers layout and paint on all <use> elements in Edge.
+   This causes animations to freeze on mobile due to a bug in react-spring
+   (https://github.com/react-spring/react-spring/issues/770).
+   As a workaround, disable SVG masking and use border-radius instead. */
+.svg-1X37T1 > defs,
+.svg-1X37T1 > mask,
+.focusStroke-1ApElc,
+.focusFill-3Y4YuU {
+    display: none;
+}
+
+.svg-1X37T1 > foreignObject {
+    mask: none;
+    overflow: visible;
+}
+
+.circleIconButton-jET_ig,
+.childWrapper-anI2G9,
+.icon-27yU2q {
+    border-radius: 24px;
+    transition: .15s ease-out;
+    transition-property: color, background-color, border-radius;
+}
+
+.circleIconButton-jET_ig.selected-ugP_am,
+.circleIconButton-jET_ig:hover,
+.circleIconButton-jET_ig:active {
+    border-radius: 16px;
+    color: #fff;
+    background-color: #43b581;
+}
+
+.wrapper-1BJsBx.selected-bZ3Lue .childWrapper-anI2G9,
+.wrapper-1BJsBx.selected-bZ3Lue .icon-27yU2q,
+.wrapper-1BJsBx:hover .childWrapper-anI2G9,
+.wrapper-1BJsBx:hover .icon-27yU2q,
+.wrapper-1BJsBx:active .childWrapper-anI2G9,
+.wrapper-1BJsBx:active .icon-27yU2q,
+.folder-21wGz3 {
+    border-radius: 16px;
+}
+
+/* add a square to cover corners */
+.circleIconButton-jET_ig::before,
+.folder-21wGz3::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.childWrapper-anI2G9 {
+    position: relative;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.wrapper-1BJsBx:active .childWrapper-anI2G9 {
+    color: #fff;
+    background-color: #7289da;
+}
+
+.keyboard-mode .circleIconButton-jET_ig:focus,
+.keyboard-mode .blobContainer-239gwq:focus .childWrapper-anI2G9,
+.keyboard-mode .blobContainer-239gwq:focus .icon-27yU2q,
+.keyboard-mode .wrapper-1BJsBx:focus .childWrapper-anI2G9,
+.keyboard-mode .wrapper-1BJsBx:focus .icon-27yU2q,
+.keyboard-mode .folder-21wGz3:focus {
+    box-shadow: 0 0 0 4px var(--focus-primary);
+}
+
+.scroller-2TZvBN .base-PmTxvP {
+    box-shadow: 0 0 0 4px var(--background-tertiary);
+}
+
+/* GuildDropTarget */
+
+/* increase tap target size in Edge */
+.half-1OBsd2,
+.edge-1OJQxL,
+.middle-3rAgAl {
+    display: none;
+}
+
+.autoPointerEvents-jwJdCs {
+    display: block;
+}
+
 /* GuildFolder */
+
+.expandedFolderBackground-2sPsd- {
+    margin: -4px;
+    padding: 4px;
+    border-radius: 20px;
+}
+
+.wrapper-21YSNc .blobContainer-239gwq .base-PmTxvP {
+    box-shadow: 0 0 0 4px var(--background-secondary);
+}
+
+.folder-21wGz3:hover,
+.folder-21wGz3:active {
+    background-color: var(--background-primary);
+}
 
 .closedFolderIconWrapper-15K9MK {
     /* IE10-compatible grid auto-placement */
