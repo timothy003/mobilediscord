@@ -1,6 +1,6 @@
 # MobileDiscord
 
-MobileDiscord is a custom third-party mod for Discord (https://discordapp.com/).
+MobileDiscord is a custom third-party mod for Discord (https://discord.com/).
 
 Neither the code nor its author are affiliated with Discord.
 
