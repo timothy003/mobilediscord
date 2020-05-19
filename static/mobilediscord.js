@@ -275,7 +275,7 @@
             window.dispatchEvent(online);
         });
 
-        // HACK: login page must be loaded on discordapp.com for reCAPTCHA
+        // HACK: login page must be loaded on discord.com for reCAPTCHA
         const INIT_SCRIPT = `if (!("mdLocalStorage" in window)) {
     // HACK: Edge 14 is unsupported
     const compatibleUserAgent = navigator.userAgent.replace(" Edge/14.", " Edge/15.");
@@ -345,7 +345,7 @@ mdLocalStorage.token;
                         this.close();
                     }
                 });
-                webview.src = (origin || "https://discordapp.com") + "/login";
+                webview.src = (origin || "https://discord.com") + "/login";
                 document.body.appendChild(webview);
                 webview.focus();
                 appMount.hidden = true;
