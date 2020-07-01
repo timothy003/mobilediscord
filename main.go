@@ -134,7 +134,7 @@ func modifyResponse(res *http.Response) error {
 	}
 	res.Body.Close()
 	s := string(b)
-	s = strings.ReplaceAll(s, " integrity=", " crossorigin integrity=")
+	s = strings.ReplaceAll(s, " integrity=", " data-integrity=")
 	if iMeta := strings.Index(s, "<meta "); iMeta == -1 {
 		log.Print("modifyResponse: missing <meta> tag")
 	} else if iHead := strings.Index(s[iMeta:], "</head>"); iHead == -1 {
