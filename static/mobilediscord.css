@@ -1153,6 +1153,11 @@ a, abbr, acronym, address, applet, big, blockquote, body, caption, cite, code, d
     font-size: inherit; /* https://github.com/timothy003/mobilediscord/issues/4 */
 }
 
+a {
+    color: #00b0f4; /* for Edge 14 */
+    color: var(--text-link);
+}
+
 body {
     -webkit-overflow-scrolling: touch;
     -webkit-touch-callout: none;
@@ -1160,6 +1165,7 @@ body {
     -ms-content-zooming: none;
     text-size-adjust: none;
     background-color: #282b30;
+    color: #fff;
 }
 
 /* expand icon */
